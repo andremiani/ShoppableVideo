@@ -1,5 +1,215 @@
 @import "compass";
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #ffffff no-repeat;
+  background-size: 100%;
+  background-position: top center;
+  color: #999999;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.body-wrap {
+  margin-top: 100px;
+}
+
+
+//Styling for header bar (from smart video)
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+header .main-nav {
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+header .main-nav li {
+  margin: 15px;
+  display: inline-block;
+}
+header .main-nav li a {
+  padding: 5px;
+  color: #cecece;
+  transition: color 0.2s;
+}
+header .main-nav li a:hover {
+  color: #fff;
+  border-bottom: 2px solid #ef4c7f;
+  text-decoration: none;
+}
+header .main-nav li a.active {
+  color: #fff;
+  border-bottom: 2px solid #f79f3a;
+}
+
+header .context-menu {
+  position: relative;
+  background: #9f3359;
+  padding: 10px;
+}
+header .context-menu .header-index {
+  color: #ccc;
+  position: absolute;
+  transform: translatex(-50%);
+  left: 50%;
+  top: 15px;
+  margin: 0;
+}
+header .context-menu .header-index a {
+  color: #ccc;
+  margin: 0 10px;
+}
+header .context-menu .header-index a.active {
+  color: #fff;
+}
+header .context-menu .video-title {
+  background-color: #9f3359;
+  display: inline-block;
+  padding: 10px;
+  padding-right: 40px;
+  margin: 0;
+  position: relative;
+  transition: background 0.2s;
+  border-radius: 5px;
+  border-style: none;
+}
+header .context-menu .video-title:hover {
+  background-color: #ef4c7f;
+  cursor: pointer;
+}
+header .context-menu .video-title:hover:after {
+  opacity: 1;
+}
+header .context-menu .video-title:after {
+  content: "";
+  opacity: 0.2;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  background-image: url('../assets/images/edit.png');
+  background-repeat: no-repeat;
+  background-size: 22px;
+}
+header .context-menu .option-menu {
+  float: right;
+}
+header .context-menu .option-menu > ul {
+  background: #1a1a1a;
+  right: 0;
+}
+
+.btn {
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  padding: 8px 24px;
+  border-radius: 30px;
+}
+.btn.pink {
+  background: #ef4c7f;
+}
+
+.option-menu {
+  position: relative;
+  padding: 10px 0;
+  display: inline-block;
+}
+.option-menu .options {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transition: all 0.2s;
+  transform: rotate(90deg);
+}
+.option-menu .options .lineball {
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s;
+}
+.option-menu .options .lineball.second {
+  top: 25%;
+}
+.option-menu .options .lineball.third {
+  top: 75%;
+}
+.option-menu:hover .options {
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+.option-menu:hover .options .lineball {
+  width: 12px;
+  height: 2px;
+  border-radius: 0;
+}
+.option-menu:hover ul {
+  display: block;
+}
+.option-menu ul {
+  top: 40px;
+  display: none;
+  position: absolute;
+  background: #9f3359;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.option-menu ul li a {
+  display: inline-block;
+  padding: 5px;
+  color: #fff;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+// END Styling for header bar (from smart video)
+
+.column-header {
+  text-align: center;
+}
+.column-header h2 {
+  display: inline-block;
+  border-bottom: 2px solid #f79f3a;
+  margin-bottom: 40px;
+}
+
+.product-card {
+  height: 130px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background-color: #ffffff
+
+}
+.product-card-title {
+  width: 100%;
+}
+
+.product-card-image {
+  width: 100px;
+  height: 100px;
+}
+
+
+/*
 // The main tab container
 .tab-container {
   background: #8dc8fb; // Make the background blue
@@ -146,4 +356,4 @@
       border-top:1px solid #ddd;
     }
   }
-}
+}*/

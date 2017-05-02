@@ -44,6 +44,11 @@ command to install the Sass gem.
 > npm install --save-dev jshint gulp-jshint
 
 
+* Install gulp jshint-stylish-module.
+
+> npm install jshint-stylish
+
+
 * ...Install a bunch of other gulp modules in the same manner if needed.
 
 

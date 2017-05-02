@@ -1,36 +1,47 @@
-// Declare the chromeTabsApp module and its dependency 'ui.bootstrap'
-var app = angular.module('chromeTabsApp', ['ui.bootstrap']);
+// Declare the shoppableVideo module and its dependency 'ui.bootstrap'
+var app = angular.module('shoppableVideo', ['ui.bootstrap']);
 // Declare the AppCtrl controller
 app
   .controller('AppCtrl', ['$scope', function ($scope) {
 
-    // Tab counter
+    // Card counter
     var counter = 1;
-    // Array to store the tabs
-    $scope.tabs = [];
 
-    // Add tab to the end of the array
-var addTab = function () {
-  $scope.tabs.push({ title: 'Tab ' + counter, content: 'Tab ' + counter });
+    // Variable for the video title
+    $scope.videoTitle = "";
+
+
+    // Array to store the productCards
+    $scope.productCards = [];
+
+    // Array to store the products
+    $scope.products = [];
+
+    //Collapse variable
+    $scope.isCollapsed = true;
+
+    // Add productCard to the end of the array
+var addProductCard = function () {
+  $scope.productCards.push({ title: 'Product Card ' + counter, content: 'Product Card ' + counter, imageURL: '../assets/images/placeholder.png' });
   counter++;
-  $scope.tabs[$scope.tabs.length - 1].active = true;
+  $scope.productCards[$scope.productCards.length - 1].active = true;
 };
 
-// Remove tab by index
-var removeTab = function (event, index) {
+// Remove product card by index
+var removeProductCard = function (event, index) {
   event.preventDefault();
   event.stopPropagation();
-  $scope.tabs.splice(index, 1);
+  $scope.productCards.splice(index, 1);
   counter--;
 };
 
 // Initialize the scope functions
-$scope.addTab    = addTab;
-$scope.removeTab = removeTab;
+$scope.addProductCard    = addProductCard;
+$scope.removeProductCard = removeProductCard;
 
-// For demonstration add 10 tabs
-for (var i = 0; i < 10; i++) {
-  addTab();
+// For demonstration add 5 productCards
+for (var i = 0; i < 5; i++) {
+  addProductCard();
 }
 
   }])

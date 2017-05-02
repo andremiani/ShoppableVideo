@@ -1,7 +1,7 @@
 {
   "name": "shoppableVideo",
   "version": "1.0.0",
-  "description": "Shoppable video interface built with AngularJS",
+  "description": "Shoppable video UI built with AngularJS",
   "engines": {
     "node": ">= 0.10"
   },
