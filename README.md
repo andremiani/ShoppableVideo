@@ -13,32 +13,53 @@ In your open terminal window type:
 
 > gem install sass
 
-This will install Sass and any dependencies for you.
 If you get an error message then it's likely you will need to use the sudo
 command to install the Sass gem.
 
 > sudo gem install sass
 
-Double-check. You should now have Sass installed, but it never hurts to
-double-check. In your terminal application you can type:
 
-> sass -v
+* Install compass
 
-It should return Sass 3.4.22 (Selective Steve). Congratulations!
-You've successfully installed Sass.
+> sudo gem install compass
+
+
+* Install Homebrew
+
+> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+* Install Node.
+
+> brew install node
 
 
 * Install gulp globally.
 
-> pm install --global gulp
+> npm install --global gulp
 
-* Install gulp in dir.
+
+* Install gulp jshint-module.
+
+> npm install --save-dev jshint gulp-jshint
+
+
+* ...Install a bunch of other gulp modules in the same manner if needed.
+
+
+* Install gulp in directory.
 
 > npm install gulp
 
-* Run application.
+
+* Compile application.
 
 > gulp
 
+* Install a bunch of other gulp modules in this manner until successful
+  compilation.
 
-* dist/index.html in your browser.
+> npm install <'name of module'>
+
+
+* Open dist/index.html in your browser.
