@@ -18,7 +18,7 @@ app
     $scope.products = [];
 
     //Collapse variable
-    $scope.isCollapsed = true;
+    $scope.isCollapsed = false;
 
     // Add productCard to the end of the array
 var addProductCard = function () {

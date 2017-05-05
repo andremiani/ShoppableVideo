@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- tell angular this is shoppableVideo -->
 <html lang="en" ng-app="shoppableVideo">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shoppable Video Application</title>
@@ -9,106 +10,116 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- include our compiled CSS -->
     <link href="css/style.css" rel="stylesheet">
-  </head>
-  <!-- this will be the only controller AppCtrl -->
-  <body ng-controller="AppCtrl">
-<header>
+</head>
+<!-- this will be the only controller AppCtrl -->
 
-    <div class="container-fluid">
+<body ng-controller="AppCtrl">
+    <header>
 
-    <div class="row context-menu">
-      <div class="col-sm-4">
-        <input class="video-title" ng-model="videoTitle" type="text" name="" value="" placeholder="Smart Video Title">
-      </div>
-              <div class="col-sm-4">
-        <ul class="main-nav">
-                      <li><a href="smartvideo.html" class="active" >Product timeline</a></li>
-                      <li><a href="">Appearance</a></li>
-                      <li><a href="">Publish</a></li>
-                  </ul>
-      </div>
-      <div class="col-sm-4">
-        <div class="option-menu">
-                      <div class="options">
-                          <span class="lineball"></span>
-                          <span class="lineball second"></span>
-                          <span class="lineball third"></span>
-                      </div>
-                      <ul>
-                          <li><a href="#">Change video source</a></li>
-                          <li><a href="#">Remove Smart video</a></li>
-                      </ul>
-                  </div>
-                  <a href="#" class="btn pink" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
-      </div>
-    </div>
-  </div>
+        <div class="container-fluid">
 
-  </header>
+            <div class="row context-menu">
+                <div class="col-sm-4">
+                    <input class="video-title" ng-model="videoTitle" type="text" name="" value="" placeholder="Smart Video Title">
+                </div>
+                <div class="col-sm-4">
+                    <ul class="main-nav">
+                        <li><a href="smartvideo.html" class="active">Product timeline</a></li>
+                        <li><a href="">Appearance</a></li>
+                        <li><a href="">Publish</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div class="option-menu">
+                        <div class="options">
+                            <span class="lineball"></span>
+                            <span class="lineball second"></span>
+                            <span class="lineball third"></span>
+                        </div>
+                        <ul>
+                            <li><a href="#">Change video source</a></li>
+                            <li><a href="#">Remove Smart video</a></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn pink" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
 
 
     <div class="body-wrap container-fluid">
-      <!--Left column-->
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-sm-12 column-header">
-            <h2>Preview</h2>
-          </div>
+        <!--Left column-->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12 column-header">
+                    <h2>Preview</h2>
+                </div>
+            </div>
+
+            <!-- Video code goes here! -->
+            <p>Video here</p>
+
         </div>
 
-          <!-- Video code goes here! -->
-          <p>Video here</p>
+        <!--Right column-->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12 column-header">
+                    <h2>Products</h2>
+                </div>
+            </div>
 
-      </div>
 
-    <!--Right column-->
-    <div class="col-sm-6">
-        <div class="row">
-            <div class="col-sm-12 column-header">
-                <h2>Products</h2>
+
+            <div class="container-fluid">
+                <div class="card-container">
+                    <div ng-repeat="productCard in productCards">
+
+                        <div class="col-sm-12 product-card">
+
+                            <div class="col-sm-3 product-card-thumb">
+                                <input class="product-card-title" ng-model="productCard.title" type="text" name="" value="" placeholder="{{productCard.title}}">
+                                <img class="product-card-image" src="{{productCard.imageURL}}" alt="product image" style="background-color: aquamarine">
+                            </div>
+
+                            <div class="col-sm-8">
+                                <p>Timeline goes here</p>
+                                {{isCollapsed}}
+                            </div>
+
+                            <div class="col-sm-1 product-card-toggle">
+                                <button type="button" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
+                            </div>
+                        </div>
+                        <div uib-collapse="!isCollapsed">
+                            <div class="well well-lg">
+                                <p>Title: </p>
+                                <p>Link: </p>
+                                <p>Special offer: </p>
+                                <p>Button Text: </p>
+                                <p>Target Group: </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <!--Static bar for add product card-->
+                <div class="product-card-add">
+                    <button type="button" class="glyphicon glyphicon-plus" ng-click="addProductCard()"></button>
+                    <span class="add-timeline">
+                    <img src="../assets/images/add-timeline.png">
+                    <span class="hover-help">Add timeline segment</span>
+                    </span>
+                </div>
+
             </div>
         </div>
-
-        <div class="">
-          <!-- Add new product card -->
-        </div>
-
-        <div ng-repeat="productCard in productCards" class="container-fluid">
-
-          <div class="col-sm-12 product-card">
-
-          <div class="col-sm-3">
-            <input class="product-card-title" ng-model="productCard.title" type="text" name="" value="" placeholder="{{productCard.title}}">
-            <img class="product-card-image" src="{{productCard.imageURL}}" alt="product image">
-          </div>
-
-          <div class="col-sm-7">
-            <p>Timeline goes here</p>
-          </div>
-
-          <div class="col-sm-2">
-              <button type="button" class="glyphicon glyphicon-triangle-bottom" ng-click="isCollapsed = !isCollapsed"></button>
-          </div>
-        </div>
-
-
-          <div uib-collapse="isCollapsed">
-            <div class="well well-lg">
-              <p>Title: </p>
-              <p>Link: </p>
-              <p>Special offer: </p>
-              <p>Button Text: </p>
-              <p>Target Group: </p>
-
-            </div>
-          </div>
-
-
-        </div>
-
     </div>
-
-  </div>
 
 
     <!-- include the JavaScript dependencies: jQuery, AngularJS, AngularUI Bootstrap -->
@@ -118,5 +129,6 @@
 
     <!-- include our JavaScript -->
     <script src="js/app.js"></script>
-  </body>
+</body>
+
 </html>
