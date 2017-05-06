@@ -75,31 +75,65 @@
 
             <div class="container-fluid">
                 <div class="card-container">
-                    <div ng-repeat="productCard in productCards">
+                    <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
 
                         <div class="col-sm-12 product-card">
-
                             <div class="col-sm-3 product-card-thumb">
-                                <input class="product-card-title" ng-model="productCard.title" type="text" name="" value="" placeholder="{{productCard.title}}">
-                                <img class="product-card-image" src="{{productCard.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
+                                <img class="product-card-image" src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: aquamarine">
                             </div>
-
-                            <div class="col-sm-8">
+                            <div class="col-sm-7">
                                 <p>Timeline goes here</p>
-                                {{isCollapsed}}
                             </div>
-
-                            <div class="col-sm-1 product-card-toggle">
+                            <div class="col-sm-2 product-card-toggle">
+                                <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProductCard($event, $index)"></button>
                                 <button type="button" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
                             </div>
                         </div>
+
                         <div uib-collapse="!isCollapsed">
                             <div class="well well-lg">
-                                <p>Title: </p>
-                                <p>Link: </p>
-                                <p>Special offer: </p>
-                                <p>Button Text: </p>
-                                <p>Target Group: </p>
+
+                                <div ng-repeat="product in productCard.products">
+
+                                    <div class="product">
+                                        <div class="col-sm-2 product-thumb">
+                                            <img class="product-image" src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p>{{product.productTitle}}</p>
+                                        </div>
+                                        <div class="col-sm-2 product-card-toggle">
+                                            <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProduct(productCardIndex, $event, $index)"></button>
+                                            <button type="button" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }" ng-click="isProductCollapsed = !isProductCollapsed"></button>
+                                        </div>
+                                    </div>
+                                    <div uib-collapse="!isProductCollapsed">
+                                        <div class="well well-lg product-collapse">
+
+                                                <div class="col-sm-6">
+                                                    <p>Title: {{product.productTitle}}</p>
+                                                    <p>Link: {{product.link}}</p>
+                                                    <p>Special offer: {{product.specialOffer}}</p>
+                                                    <p>Button Text: {{product.buttonText}}</p>
+                                                    <p>Target Group: {{product.targetGroup}}</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <img class="product-image-collapse" src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                                </div>
+                                            <button type="button" class="">Save</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-add">
+                                    <button type="button" class="glyphicon glyphicon-plus" ng-click="addProduct($index)"></button>
+                                    <span class="add-timeline">
+                                        <img src="../assets/images/add-timeline.png">
+                                        <span class="hover-help">Add product</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,8 +146,8 @@
                 <div class="product-card-add">
                     <button type="button" class="glyphicon glyphicon-plus" ng-click="addProductCard()"></button>
                     <span class="add-timeline">
-                    <img src="../assets/images/add-timeline.png">
-                    <span class="hover-help">Add timeline segment</span>
+                        <img src="../assets/images/add-timeline.png">
+                        <span class="hover-help">Add timeline segment</span>
                     </span>
                 </div>
 

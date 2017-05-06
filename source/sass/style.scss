@@ -219,8 +219,8 @@ $c: #888;
 
 .card-container {
     overflow-y: scroll;
-    max-height: 28em;
-    height: 28em;
+    /*max-height: 28em;*/
+    height: 60vh;
     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
@@ -276,7 +276,7 @@ $c: #888;
 
 .product-card-image {
     width: 100%;
-    //height: 100px;
+    height: 100px;
 }
 
 .product-card-toggle {
@@ -353,7 +353,8 @@ span {
 }
 
 .product-card-add button {
-    float: right;
+    color: white;
+    margin-left: auto;
     border: none;
     background-color: inherit;
     display: inline-block;
@@ -367,6 +368,69 @@ span {
     transition: all 0.2s;
     z-index: 1;
 }
+
+.product {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding-left: 0;
+}
+
+.product button {
+    border: none;
+    background-color: inherit;
+}
+
+.product-add {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding-left: 0;
+}
+
+.product-add button {
+    color: white;
+    margin-left: 10px;
+    border: none;
+    background-color: inherit;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    background: #ef4c7f url('../assets/images/plus.png') no-repeat;
+    background-position: center;
+    background-size: 17px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    z-index: 1;
+}
+
+.product-thumb {
+    padding-left: 0;
+}
+
+.product-image {
+    width: 100%;
+    height: 50px;
+}
+
+//wraps save button
+.product-collapse {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.product-collapse button {
+    margin:auto;
+}
+
+
 /*
 // The main tab container
 .tab-container {
