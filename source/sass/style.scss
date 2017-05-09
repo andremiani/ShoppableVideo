@@ -1,5 +1,8 @@
 @import "compass";
 
+$productCardHeight: 130px;
+$productHeight: 50px;
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #ffffff no-repeat;
@@ -82,6 +85,7 @@ header .context-menu .header-index a.active {
 }
 
 header .context-menu .video-title {
+    color: #ffffff;
     background-color: #9f3359;
     display: inline-block;
     padding: 10px 40px 10px 10px;
@@ -219,8 +223,7 @@ $c: #888;
 
 .card-container {
     overflow-y: scroll;
-    /*max-height: 28em;*/
-    height: 60vh;
+    max-height: 60vh;
     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
@@ -256,9 +259,8 @@ $c: #888;
 .product-card {
     display: flex;
     align-items: center;
-    height: 130px;
+    height: $productCardHeight;
     border: 1px solid #666;
-    border-radius: 5px;
     background-color: #ffffff;
     padding-left: 0;
 }
@@ -347,7 +349,6 @@ span {
     align-items: center;
     height: 65px;
     border: 1px solid #666;
-    border-radius: 5px;
     background-color: #ffffff;
     padding-left: 0;
 }
@@ -369,12 +370,19 @@ span {
     z-index: 1;
 }
 
+.product-card-collapse {
+    padding-top: $productCardHeight;
+}
+
+.product-card-well {
+    padding-top: 0px;
+}
+
 .product {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: $productHeight;
     border: 1px solid #666;
-    border-radius: 5px;
     background-color: #ffffff;
     padding-left: 0;
 }
@@ -387,9 +395,8 @@ span {
 .product-add {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: $productHeight;
     border: 1px solid #666;
-    border-radius: 5px;
     background-color: #ffffff;
     padding-left: 0;
 }
