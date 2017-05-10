@@ -72,16 +72,13 @@
                 </div>
             </div>
 
-
-
             <div class="container-fluid">
-                <div class="card-container">
-                    <div ng-repeat="productCard in productCards">
-
-                        <div class="col-sm-12 product-card">
+                <div id="card-container" class="card-container">
+                    <div ng-repeat="productCard in productCards" ng-class="{'last' : $last && productCards.length > 3}">
+                        <div class="product-card">
                             <div class="col-sm-3 product-card-thumb">
                                 <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
-                                <img class="product-card-image" src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: aquamarine">
+                                <img class="product-card-image" src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: #FFB86F">
                             </div>
                             <div class="col-sm-8">
                                 <div class="timeline">
@@ -105,10 +102,9 @@
                             <div class="well well-sm product-card-well" ui-sortable="sortableOptions" ng-model="productCard.products">
 
                                 <div ng-repeat="product in productCard.products">
-
                                     <div class="product">
                                         <div class="col-sm-2 product-thumb">
-                                            <img class="product-image" src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                            <img class="product-image" src="{{product.imageURL}}" alt="product image" style="background-color: #FFB86F">
                                         </div>
                                         <div class="col-sm-8">
                                             <span>{{product.productTitle}}</span>
@@ -121,7 +117,6 @@
                                     </div>
                                     <div uib-collapse="!isProductCollapsed">
                                         <div class="well well-sm product-collapse">
-
                                             <div class="col-sm-6">
                                                 <p>Title: {{product.productTitle}}</p>
                                                 <p>Link: {{product.link}}</p>
@@ -133,17 +128,12 @@
                                                 <img class="product-image-collapse" src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
                                             </div>
                                             <button type="button" class="">Save</button>
-
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="product-add">
                                     <button type="button" ng-click="addProduct($index)"></button>
-                                    <span class="add-timeline">
-                                        <img src="../assets/images/add-timeline.png">
-                                        <span class="hover-help">Add product</span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -156,10 +146,6 @@
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
                     <button type="button" ng-click="addProductCard()"></button>
-                    <span class="add-timeline">
-                        <img src="../assets/images/add-timeline.png">
-                        <span class="hover-help">Add timeline segment</span>
-                    </span>
                 </div>
 
             </div>

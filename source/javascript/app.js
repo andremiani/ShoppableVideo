@@ -80,3 +80,27 @@ app
         }*/
 
     }]);
+
+//scrolling shadow fail
+    $('.card-container').css('position', 'relative');
+    var $contentShadow = $("<div class='card-container-shadow'></div>)");
+
+    if ($('#card-container').height() == '65vh') {
+    $('.card-container').append($contentShadow);
+
+    // flexbox 却是 .container on scroll 事件
+    $('.card-container').on('scroll', function(e){
+      if (e.target.scrollTop === 0){
+        $contentShadow.removeClass('top').addClass('bottom');
+      }
+      else
+      if (e.target.offsetHeight + e.target.scrollTop == e.target.scrollHeight){
+        $contentShadow.addClass('top').removeClass('bottom');
+      }
+      else{
+        $contentShadow.removeClass('top bottom');
+      }
+
+      // console.log(e);
+  }); };
+    $('.card-container').scroll();
