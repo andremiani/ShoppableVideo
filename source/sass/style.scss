@@ -1,4 +1,6 @@
 @import "compass";
+$productCardHeight: 130px;
+$productHeight: 50px;
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -14,10 +16,14 @@ body {
 }
 
 .body-wrap {
-    margin-top: 100px;
+    margin-top: 80px;
 }
-//Styling for header bar (from smart video)
 
+textarea, input, select {
+    outline: none;
+}
+
+//Styling for header bar (from SM)
 header {
     position: fixed;
     top: 0;
@@ -82,6 +88,8 @@ header .context-menu .header-index a.active {
 }
 
 header .context-menu .video-title {
+    color: #ffffff;
+    font-size: 1.1em;
     background-color: #9f3359;
     display: inline-block;
     padding: 10px 40px 10px 10px;
@@ -108,7 +116,7 @@ header .context-menu .video-title:after {
     height: 30px;
     width: 30px;
     right: 0;
-    background-image: url('../assets/images/edit.png');
+    background-image: url('../../assets/images/edit.png');
     background-repeat: no-repeat;
     background-size: 22px;
 }
@@ -131,6 +139,10 @@ header .context-menu .option-menu > ul {
 
 .btn.pink {
     background: #ef4c7f;
+}
+
+button:focus {
+  outline: none !important;
 }
 
 .option-menu {
@@ -203,7 +215,150 @@ header .context-menu .option-menu > ul {
     font-size: 14px;
     min-width: 150px;
 }
-// END Styling for header bar (from smart video)
+// END Styling for header bar (from SM)
+
+//Styling for product library
+#myModal{
+  top: -140px;
+}
+
+.modal-content{
+  background: black;
+  height: auto;
+  padding: 5px 0;
+  border-radius: 5px;
+  height: 83vh;
+}
+/*
+.modal-content ::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 80px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent transparent #000000;
+  border-style: solid;
+  border-width: 30px;
+
+}
+*/
+
+.modal-content .modal-header {
+  width: 100%;
+  border-bottom: 0;
+  text-align:center;
+}
+
+/*.modal-title{
+  margin-bottom: 15px;
+}*/
+
+.modal-content hr{
+  width: 10vw;
+  margin: 0 auto;
+}
+
+.modal-content .modal-body{
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.modal-content .modal-input{
+  width:100%;
+  height:30px;
+}
+
+.modal-content .modal-body .search, select{
+  width: 50%;
+  margin: 15px 15px;
+  background: none;
+  border: none;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  transition: all 0.2s;
+  color: white;
+  background: url(../../assets/images/search.png) no-repeat;
+  background-size: 14px;
+  background-position: right center;
+}
+
+.modal-content textarea, input, select{
+    outline: none;
+}
+
+.modal-content select {
+    background: url(../../assets/images/dropdown.png) no-repeat;
+    background-position: right center;
+    background-size: 10px;
+    padding: 5px;
+    width: 25%;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    color: white;
+}
+
+.items {
+  overflow-y: scroll;
+  height: 50vh;
+    display: block;
+    list-style: none;
+    padding: 5px;
+}
+
+.items .item .item-thumb {
+    padding: 15px 5px 0px 5px;
+}
+
+.items .item .item-thumb img {
+    max-width: 100%;
+}
+
+.modal-content .modal-body .item.selected {
+  box-shadow: 0 0 0px 10px #ef4c7f;
+}
+
+.items.grid > li {
+    display: inline-block;
+    max-width: 20%;
+}
+
+.items.grid > li a:active{
+  
+}
+
+.items.grid a{
+  text-decoration: none;
+}
+
+.items .item .item-txt{
+  margin: 0px 5px;
+    background: #9F3359;
+}
+
+.items.grid .item .item-txt h6 {
+    margin: 0 5px;
+    padding: 5px 0;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+
+}
+
+.modal-footer{
+  border-top: 0;
+  margin: 5px 40px;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+//END styling product library
+
+
+
 
 //Styling for video
 
@@ -384,18 +539,15 @@ input[type="range"]::-ms-fill-upper {
     text-align: center;
 }
 
-.column-header h2 {
+.column-header h3 {
     display: inline-block;
-    border-bottom: 2px solid #f79f3a;
-    margin-bottom: 40px;
+    /*border-bottom: 2px solid #f79f3a;*/
+    margin-bottom: 30px;
 }
-
 $c: #888;
 
 .card-container {
-    overflow-y: scroll;
-    max-height: 28em;
-    height: 28em;
+
     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
@@ -405,35 +557,33 @@ $c: #888;
     background-color: white;
     background-size: 100% 5em, 100% 5em, 100% 1em, 100% 1em;
     background-attachment: local, local, scroll, scroll;
+    overflow-y: auto;
+    max-height: 65vh;
+    /*height: 65vh;*/
+    transition: box-shadow .2s ease;
 
 }
-// Works but not dynamic
-/*.card-container:after {
-    display:block;
-    content: "";
-    position: absolute;
-    width: 100%;
-    margin: 0 auto;
-    height: 12px;
-    border: 0;
-    -moz-box-shadow: inset 0 -12px 12px -12px rgba(0,0,0,0.5);
-    -webkit-box-shadow: inset 0 -12px 12px -12px rgba(0,0,0,0.5);
-    box-shadow: inset 0 -12px 12px -12px rgba(0,0,0,0.5);
-    bottom: 0;
 
-}*/
-/*
-.card-container:after{
+.shadow-top {
+  height: 20px;
+  position: absolute;
+  background-image: radial-gradient(farthest-side at 50% 0%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  display: none;
+}
 
-}*/
-
+.shadow-bottom {
+  height: 20px;
+  position: absolute;
+  background-image: radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  display: none;
+}
 
 .product-card {
+    width: 100%;
     display: flex;
     align-items: center;
-    height: 130px;
-    border: 1px solid #666;
-    border-radius: 5px;
+    /*height: $productCardHeight;*/
+    border-bottom: 1px solid #666;
     background-color: #ffffff;
     padding-left: 0;
 }
@@ -445,15 +595,173 @@ $c: #888;
 }
 
 .product-card-title {
+    font-size: .8em;
     width: 100%;
     padding-left: 0;
 }
 
 .product-card-image {
     width: 100%;
-    //height: 100px;
+    height: 100px;
 }
 
+
+.marker {
+    top:-45px;
+    left:0;
+    position: absolute;
+	z-index: 10;
+    height: 90px;
+    width: 2px;
+    background: #999;
+    margin: 10px 0 10px 0;
+    cursor: grab;
+    /*transform: translateY(-50%);*/
+    .time {
+			position: absolute;
+			top: 0;
+			left: 10px;
+			white-space: nowrap;
+			background: #1a1a1a;
+			text-align: center;
+			color: #999;
+			padding: 5px 10px;
+			border-radius: 30px;
+			font-size: 12px;
+			transform: translateY(-50%);
+			.current {
+				color: #fff;
+			}
+		}
+}
+
+/* Time line from SM */
+.timeline {
+    flex-grow: 2;
+    position: relative;
+
+    p {
+        position: absolute;
+        top: -30px;
+        color: #999;
+    }
+
+    .product-timeline {
+        width: 100%;
+        height: 20px;
+        border-bottom: 1px solid #333;
+        border-top: 1px solid #333;
+
+        .product-bar {
+            position: absolute;
+            width: 10%;
+            height: 20px;
+            background: #ef4c7f url('../../assets/images/drag.png') no-repeat;
+            background-position: center;
+            background-size: 6px;
+            border-radius: 5px;
+            transition: border 0.2s;
+
+            &.ui-widget-content {
+                border: 2px solid #ef4c7f;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: #ee648f;
+                border: 2px solid #ef4c7f;
+
+                .seg-end,
+                .seg-start {
+                    opacity: 1;
+                }
+            }
+
+            &.edit-resize {
+                border: 2px solid #fed04f;
+
+                .seg-end,
+                .seg-start {
+                    opacity: 1;
+                }
+
+                .del-seg {
+                    display: block;
+                }
+
+                &:after,
+                &:before {
+                    content: "";
+                    position: absolute;
+                    pointer-events: none;
+                    top: 0;
+                    height: 100%;
+                    width: 8px;
+                    background: #fed04f url('../../assets/images/drag.png') no-repeat;
+                    background-position: center;
+                    background-size: 6px;
+                }
+
+                &:after {
+                    right: 0;
+                }
+
+                &:before {
+                    left: 0;
+                }
+            }
+
+            .seg-end,
+            .seg-start {
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                white-space: nowrap;
+                background: #1a1a1a;
+                text-align: center;
+                color: #999;
+                padding: 5px 10px;
+                border-radius: 30px;
+                font-size: 12px;
+                transform: translateX(-50%);
+            }
+
+            .seg-start {
+                top: 20px;
+                left: 0;
+            }
+
+            .seg-end {
+                bottom: 20px;
+                left: 100%;
+            }
+
+            .del-seg {
+                display: none;
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                margin-left: 10px;
+                transform: translateY(-50%);
+
+                a {
+                    display: block;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    background: #9f3359 url('../../assets/images/cross.png') no-repeat;
+                    background-size: 10px;
+                    background-position: center;
+
+                    &:hover {
+                        background-color: #ef4c7f;
+                    }
+                }
+            }
+        }
+    }
+}
+/* END time line from SM */
 .product-card-toggle {
     display: flex;
     align-items: center;
@@ -505,7 +813,7 @@ span {
         width: 40px;
         height: 26px;
         text-indent: -999px;
-        background: url('../assets/images/trash.png') no-repeat;
+        background: url('../../assets/images/trash.png') no-repeat;
         background-size: 50%;
         opacity: 0.8;
 
@@ -516,177 +824,142 @@ span {
     }
 }
 
+.timeline-btns {
+    /*width: 150px;*/
+
+    span {
+        display: inline-block;
+        position: relative;
+        padding: 5px;
+
+        img {
+            width: 30px;
+        }
+    }
+
+    .edit-timeline {
+        &.active {
+            img {
+                opacity: 0.5;
+            }
+        }
+    }
+}
 
 .product-card-add {
     display: flex;
     align-items: center;
-    height: 65px;
-    border: 1px solid #666;
-    border-radius: 5px;
+    /*height: 65px;*/
+    /*border-bottom: 1px solid #666;*/
     background-color: #ffffff;
     padding-left: 0;
 }
 
 .product-card-add button {
-    float: right;
+    color: white;
+    margin-left: auto;
+    margin-top: 20px;
     border: none;
     background-color: inherit;
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
     padding: 10px;
-    background: #ef4c7f url('../assets/images/plus.png') no-repeat;
+    background: #ef4c7f url('../../assets/images/plus.png') no-repeat;
     background-position: center;
     background-size: 17px;
     border-radius: 50%;
     transition: all 0.2s;
     z-index: 1;
 }
+
+//Adds padding to the last product card for better workability
+// (Conflicts with ui-draggable)
+.last {
+    /*margin-bottom: 250px;*/
+}
+
+.product-card-well {
+    padding-top: 0;
+    clear: both;
+}
+
+.well {
+    margin-bottom: 10px;
+}
 /*
-// The main tab container
-.tab-container {
-  background: #8dc8fb; // Make the background blue
-  margin: 0;
-  padding: 0;
-  max-height: 40px;
+//Try to limit the glitch on productCard collapse
+.collapse.in {
+    height: auto !important;
+}
+*/
 
-  ul {
-    &.nav-tabs {
-      margin: 0;
-      list-style-type: none;
-      line-height: 40px;
-      max-height: 40px;
-      overflow: hidden;
-      display: inline-block;
-      @include display-flex; // This is the magic that will dynamically expand/shrink the width tabs
-      padding-right: 20px;
-      border-bottom: 5px solid #f7f7f7;
+.product {
+    display: flex;
+    align-items: center;
+    /*height: $productHeight;*/
+    border-bottom: 1px solid #666;
+    background-color: #ffffff;
+    padding-left: 0;
+}
 
-      $color: #c3d5e6; // Color for the disabled files
+.product p {
+    margin: 0;
+}
 
-      // Inactive tab styles
-      > li {
-        $raduis: 28px 145px; // Radius to make the tabs look like trapezoid
+.product button {
+    border: none;
+    background-color: inherit;
+}
 
-        // Apply the radius
-        @include border-top-left-radius($raduis);
-        @include border-top-right-radius($raduis);
+.product-add {
+    display: flex;
+    align-items: center;
+    height: $productHeight;
+    /*border: 1px solid #666;*/
+    background-color: #ffffff;
+    padding-left: 0;
+}
 
-        margin: 5px -14px 0;
-        padding: 0 30px 0 25px;
-        height: 170px;
-        background: $color;
-        position: relative;
-        width: 200px;
-        max-width: 200px;
-        min-width: 20px;
-        border:1px solid #aaa;
+.product-add button {
+    color: white;
+    margin-left: 10px;
+    border: none;
+    background-color: inherit;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    background: #222 url('../../assets/images/plus.png') no-repeat;
+    background-position: center;
+    background-size: 17px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    z-index: 1;
+}
 
-        @include box-shadow(0 4px 6px rgba(0,0,0,.5));
+.product-thumb {
+    padding-left: 0;
+}
 
-        &:first-child {
-          margin-left: 0;
-        }
+.product-image {
+    width: 100%;
+    height: 50px;
+}
 
-        &:last-of-type {
-          margin-right: 0;
-        }
+.default-product {
+    color: #c1c1c1;
+    font-size: .8em;
+}
 
-        > a {
-          display: block;
-          max-width:100%;
-          text-decoration: none;
-          color: #222;
-          padding: 3px 7px;
+//wraps save button
+.product-collapse {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+}
 
-          span {
-            overflow: hidden;
-            white-space: nowrap;
-            display: block;
-          }
-
-          &:focus,
-          &:hover {
-            background-color: transparent;
-            border-color: transparent;
-          }
-
-          // The remove button styles
-          .glyphicon-remove {
-            color: #777;
-            display: inline-block;
-            padding:3px;
-            font-size: 10px;
-            position:absolute;
-            z-index: 10;
-            top:7px;
-            right: -10px;
-            @include border-radius(50%);
-
-            &:hover {
-              background: #d39ea3;
-              color: white;
-              @include box-shadow(inset 0 1px 1px rgba(0,0,0,.25));
-              @include text-shadow(0 1px 1px rgba(0,0,0,.25));
-            }
-          }
-        }
-
-        // Active tab style
-        &.active {
-          z-index: 2;
-          @include background-image(linear-gradient(white, #f7f7f7 30px));
-
-          > a {
-            background-color: transparent;
-            border-color: transparent;
-            border-bottom-color: transparent;
-
-            &:focus,
-            &:hover {
-              background-color: transparent;
-              border-color: transparent;
-              border-bottom-color: transparent;
-            }
-          }
-        }
-      }
-
-      // The open new tab button
-      .btn {
-        float: left;
-        height: 20px;
-        width: 35px;
-        min-width: 35px;
-        max-width: 35px;
-        margin: 10px 0 0 0;
-        border-color: #71a0c9;
-        outline: none;
-
-        @include transform(skew(30deg));
-
-        &.btn-default {
-          background: $color;
-
-          &:hover {
-            background: #d2deeb;
-          }
-
-          &:active {
-            background: #9cb5cc;
-          }
-        }
-      }
-    }
-  }
-
-  // Styling the tab containter
-  .tab-pane {
-    padding: 60px 40px;
-    text-align: center;
-
-    &.active {
-      border-top:1px solid #ddd;
-    }
-  }
-}*/
+.product-collapse button {
+    margin: auto;
+}

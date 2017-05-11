@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- tell angular this is shoppableVideo -->
+<html lang="en" ng-app="shoppableVideo">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shoppable Video Application</title>
+    <!-- include the Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- include our compiled CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<!-- this will be the only controller AppCtrl -->
+
+<body ng-controller="AppCtrl">
+    <header>
+
+        <div class="container-fluid">
+
+            <div class="row context-menu">
+                <div class="col-sm-4">
+                    <input class="video-title" ng-model="videoTitle" type="text" name="" value="" placeholder="Smart Video Title">
+                </div>
+                <div class="col-sm-4">
+                    <ul class="main-nav">
+                        <li><a href="smartvideo.html" class="active">Product timeline</a></li>
+                        <li><a href="">Appearance</a></li>
+                        <li><a href="">Publish</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div class="option-menu">
+                        <div class="options">
+                            <span class="lineball"></span>
+                            <span class="lineball second"></span>
+                            <span class="lineball third"></span>
+                        </div>
+                        <ul>
+                            <li><a href="#">Change video source</a></li>
+                            <li><a href="#">Remove Smart video</a></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn pink" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+    <div class="body-wrap container-fluid">
+        <!--Left column-->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12 column-header">
+                    <h2>Preview</h2>
+                </div>
+            </div>
+
+            <!-- Video code goes here! -->
+            <p>Video here</p>
+
+            <!--Library with products-->
+            <div id="myModal" class="col-sm-12" ng-show="showLibrary">
+
+              <!-- Modal content-->
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <h2 class="modal-title">Library</h2>
+                  </div>
+                  <hr>
+
+                  <div class="modal-body">
+
+                      <div id="modal-input">
+                        <input type="text" class="search" placeholder="Search" ng-model="searchItem">
+                        <select id="categories" ng-model="showCategory" >
+                          <option value="" selected>All categories</option>
+                          <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+
+                        </select>
+                      </div>
+
+                      <ul class="items grid">
+                        <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
+                          <div class="item">
+                            <div class="item-thumb">
+                              <a href="#">
+                                <img ng-src="{{product.image}}"/>
+                              </a>
+                            </div>
+                            <div class="item-txt">
+                              <a href="#">
+                                <h6>{{product.title}}</h6>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn pink close-library" ng-click="showLibrary = !showLibrary">Close</button>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+
+        <!--Right column-->
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12 column-header">
+                    <h2>Products</h2>
+                    <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
+                </div>
+            </div>
+
+
+
+            <div class="container-fluid">
+                <div class="card-container">
+                    <div ng-repeat="productCard in productCards">
+
+                        <div class="col-sm-12 product-card">
+
+                            <div class="col-sm-3 product-card-thumb">
+                                <input class="product-card-title" ng-model="productCard.title" type="text" name="" value="" placeholder="{{productCard.title}}">
+                                <img class="product-card-image" src="{{productCard.imageURL}}" alt="product image" style="background-color: aquamarine">
+                            </div>
+
+                            <div class="col-sm-8">
+                                <p>Timeline goes here</p>
+                                {{isCollapsed}}
+                            </div>
+
+                            <div class="col-sm-1 product-card-toggle">
+                                <button type="button" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
+                            </div>
+                        </div>
+                        <div uib-collapse="!isCollapsed">
+                            <div class="well well-lg">
+                                <p>Title: </p>
+                                <p>Link: </p>
+                                <p>Special offer: </p>
+                                <p>Button Text: </p>
+                                <p>Target Group: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Static bar for add product card-->
+                <div class="product-card-add">
+                    <button type="button" class="glyphicon glyphicon-plus" ng-click="addProductCard()"></button>
+                    <span class="add-timeline">
+                    <img src="../assets/images/add-timeline.png">
+                    <span class="hover-help">Add timeline segment</span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- include the JavaScript dependencies: jQuery, AngularJS, AngularUI Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- include our JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
