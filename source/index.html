@@ -60,7 +60,7 @@
             </div>
 
             <!-- Video code-->
-
+        <div class="video-container">
             <video id = "video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
@@ -84,7 +84,18 @@
                  <button id="mute" ng-click="toggleMute()" > <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
             </div>
 
+            <div class="col-sm-12 video-product-bar">
 
+            <ul>
+                <li class="video-product-bar-item" ng-repeat="productCard in productCards">
+                    <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
+
+                </li>
+            </ul>
+        </div>
+
+
+        </div>
 
             <!--Library with products-->
             <div id="myModal" class="col-sm-12" ng-show="showLibrary">
@@ -113,12 +124,12 @@
                           <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                             <div class="item-thumb">
                               <a href="#">
-                                <img ng-src="{{product.image}}"/>
+                                <img ng-src="{{product.imageURL}}"/>
                               </a>
                             </div>
                             <div class="item-txt">
                               <a href="#">
-                                <h6>{{product.title}}</h6>
+                                <h6 ng-bind="product.title"></h6>
                               </a>
                             </div>
                           </div>
@@ -131,7 +142,6 @@
                     </div>
                   </div>
             </div>
-
         </div>
 
         <!--Right column-->
@@ -144,7 +154,7 @@
             </div>
 
             <div class="container-fluid">
-                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions">
+                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" ng-class="{'last' : $last && productCards.length > 3}">
                         <div class="product-card">
                             <div class="col-sm-3 product-card-thumb">
