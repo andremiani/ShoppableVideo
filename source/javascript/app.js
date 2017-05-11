@@ -22,9 +22,16 @@ app
         //Collaspse variable for the products, true if collapsed
         $scope.isProductCollapsed = false;
 
-        //Tells ui-sortable what and how to sort
-        $scope.sortableOptions = {
+        //Tells ui-sortable what and how to sort products
+        $scope.sortableProductOptions = {
             handle: '.product',
+            // items: ' .panel:not(.panel-heading)'
+            axis: 'y'
+        };
+
+        //Tells ui-sortable what and how to sort product cards
+        $scope.sortableCardOptions = {
+            handle: '.product-card',
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
@@ -115,6 +122,58 @@ app
         return {
             restrict: 'A',
             scope: true,
+            controller: function ($scope, $element, $attrs) {
+            $scope.onDrag = function (e, ui) {
+              $scope.markerValue = ui.value;
+              // or set it on the model
+              // DataModel.model = ui.value;
+              // add to angular digest cycle
+              $scope.$digest();
+            };
+        },
+            link: function(scope, element, attrs) {
+
+                var options = {
+                    containment: ".product-timeline",
+                    axis: "x",
+                    start: function(event, ui) {
+                        posLeftArray = [];
+                        if ($(this).hasClass("group")) {
+                            $(".group").each(function(i) {
+
+                                thiscssleft = $(this).css('left');
+                                if (thiscssleft == 'auto') thiscssleft = 0; // For IE
+
+                                //posLeftArray[i] = parseInt(thiscssleft);
+                                posLeftArray[i] = parseInt(markerValue);
+
+                            });
+                        }
+                        beginleft = $(this).offset().left;
+                    },
+                    drag: function(event, ui) {
+                        var leftdiff = $(this).offset().left - beginleft;
+
+                        if ($(this).hasClass("group")) {
+                            $(".group").each(function(i) {
+                                $(this).css('left', posLeftArray[i] + leftdiff);
+                            });
+                        }
+                    }
+                };
+
+                // set up slider on load
+                angular.element(document).ready(function() {
+                    scope.$marker = $(element).draggable(options);
+                });
+            }
+        };
+
+    })
+    .directive('addTimeline', function() {
+        return {
+            restrict: 'A',
+            scope: true,
             /*controller: function ($scope, $element, $attrs) {
             $scope.onSlide = function (e, ui) {
               $scope.model = ui.value;
@@ -129,43 +188,16 @@ app
                 var options = {
                     containment: ".product-timeline",
                     axis: "x",
-                    start: function(event, ui) {
-                        posTopArray = [];
-                        posLeftArray = [];
-                        if ($(this).hasClass("group")) {
-                            $(".group").each(function(i) {
-                                thiscsstop = $(this).css('top');
-                                if (thiscsstop == 'auto') thiscsstop = 0; // For IE
-
-                                thiscssleft = $(this).css('left');
-                                if (thiscssleft == 'auto') thiscssleft = 0; // For IE
-
-                                posTopArray[i] = parseInt(thiscsstop);
-                                posLeftArray[i] = parseInt(thiscssleft);
-                            });
-                        }
-
-                        begintop = $(this).offset().top;
-                        beginleft = $(this).offset().left;
-                    },
                     drag: function(event, ui) {
-                        var topdiff = $(this).offset().top - begintop;
-                        var leftdiff = $(this).offset().left - beginleft;
-
-                        if ($(this).hasClass("group")) {
-                            $(".group").each(function(i) {
-                                $(this).css('top', posTopArray[i] + topdiff);
-                                $(this).css('left', posLeftArray[i] + leftdiff);
-                            });
-                        }
+                        $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                        $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                     }
                 };
 
                 // set up slider on load
                 angular.element(document).ready(function() {
-                    scope.$marker = $(element).draggable(options);
+                    scope.$slider = $(element).draggable(options);
                 });
             }
         };
-
     });
