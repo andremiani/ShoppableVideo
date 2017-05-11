@@ -58,8 +58,32 @@
                 </div>
             </div>
 
-            <!-- Video code goes here! -->
-            <p>Video here</p>
+            <!-- Video code-->
+
+            <video id = "video" controls>
+                <source src="../assets/videos/Croissants.mp4" type="video/mp4">
+            </video>
+            <script>
+                // Grab a handle to the video
+                var video = document.getElementById("video");
+                // Turn off the default controls
+                video.controls = false;
+            </script>
+            <div id="controls">
+                <div id="play">
+                 <button id="playpause"  ng-click="togglePlayPause()" > <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
+                 </div>
+                 <div id="progressBar">
+                     <div id="progress">
+                       <div class="button-holder"></div>
+                       <div class="progress-button"> </div>
+                     </div>
+                 </div>
+                 <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
+                 <button id="mute" ng-click="toggleMute()" > <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
+            </div>
+
+
 
         </div>
 
