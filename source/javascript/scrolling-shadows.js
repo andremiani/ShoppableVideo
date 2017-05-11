@@ -42,7 +42,7 @@
             shadowTop.fadeOut(200);
           }
           // Added OR syntax to make shadow invisible initially
-          if (elem.scrollTop() + height >= elem[0].scrollHeight || elem[0].scrollHeight < ($(window).height()* 0.70)) {
+          if (elem.scrollTop() + height >= elem[0].scrollHeight || elem[0].scrollHeight < (height * 0.65)) {
             shadowBottom.fadeOut(200);
         } else {
             shadowBottom.fadeIn(200);
