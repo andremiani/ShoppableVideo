@@ -86,7 +86,7 @@
 
                       <ul class="items grid">
                         <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
-                          <div class="item">
+                          <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                             <div class="item-thumb">
                               <a href="#">
                                 <img ng-src="{{product.image}}"/>

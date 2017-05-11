@@ -298,10 +298,10 @@ button:focus {
   padding: 5px;
 }
 
+/*
 .items .item .item-thumb {
-  padding: 15px 5px 0px 5px;
-}
-
+    padding: 15px 5px 0px 5px;
+}*/
 .items .item .item-thumb img {
   max-width: 100%;
 }
@@ -320,7 +320,6 @@ button:focus {
 }
 
 .items .item .item-txt {
-  margin: 0px 5px;
   background: #9F3359;
 }
 
@@ -332,6 +331,19 @@ button:focus {
   font-weight: 500;
 }
 
+.item {
+  margin: 5px;
+  border: solid 2px transparent;
+}
+
+.selectedItem {
+  border: solid 2px yellow;
+}
+
+/*
+.notSelectedItem{
+  border: solid 1px transparent;
+}*/
 .modal-footer {
   border-top: 0;
   margin: 5px 40px;

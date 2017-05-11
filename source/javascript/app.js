@@ -29,7 +29,6 @@ app
             axis: 'y'
         };
 
-
         // Array to store the products in the library
         $scope.libraryProducts = [
           {
@@ -60,7 +59,7 @@ app
             category: "Eatables"
           },
           {
-            title: 'Ägg Frigående',
+            title: 'Ägg Fri.',
             image: '../assets/images/Ägg - Frigående.png',
             link: "",
             offer: "",
@@ -195,7 +194,7 @@ app
             category: "Tools"
           },
           {
-            title: 'Pensel m. kniv',
+            title: 'Multipensel',
             image: '../assets/images/pensel-med-kniv.png',
             link: "",
             offer: "",
@@ -230,7 +229,6 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
-
 
         // Add productCard to the end of the array
         var addProductCard = function() {
