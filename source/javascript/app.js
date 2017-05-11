@@ -273,28 +273,93 @@ app
             addProductCard();
         }*/
 
-    }]);
+    }])
+    .directive('slider', function() {
+        return {
+            restrict: 'A',
+            scope: true,
+            /*controller: function ($scope, $element, $attrs) {
+            $scope.onSlide = function (e, ui) {
+              $scope.model = ui.value;
+              // or set it on the model
+              // DataModel.model = ui.value;
+              // add to angular digest cycle
+              $scope.$digest();
+            };
+        },*/
+            link: function(scope, element, attrs) {
 
-//scrolling shadow fail
-    $('.card-container').css('position', 'relative');
-    var $contentShadow = $("<div class='card-container-shadow'></div>)");
+                var options = {
+                    containment: ".product-timeline",
+                    axis: "x",
+                    drag: function(event, ui) {
+                        $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                        $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                    }
+                };
 
-    if ($('#card-container').height() == '65vh') {
-    $('.card-container').append($contentShadow);
+                // set up slider on load
+                angular.element(document).ready(function() {
+                    scope.$slider = $(element).draggable(options);
+                });
+            }
+        };
+    })
+    .directive('marker', function() {
+        return {
+            restrict: 'A',
+            scope: true,
+            /*controller: function ($scope, $element, $attrs) {
+            $scope.onSlide = function (e, ui) {
+              $scope.model = ui.value;
+              // or set it on the model
+              // DataModel.model = ui.value;
+              // add to angular digest cycle
+              $scope.$digest();
+            };
+        },*/
+            link: function(scope, element, attrs) {
 
-    // flexbox 却是 .container on scroll 事件
-    $('.card-container').on('scroll', function(e){
-      if (e.target.scrollTop === 0){
-        $contentShadow.removeClass('top').addClass('bottom');
-      }
-      else
-      if (e.target.offsetHeight + e.target.scrollTop == e.target.scrollHeight){
-        $contentShadow.addClass('top').removeClass('bottom');
-      }
-      else{
-        $contentShadow.removeClass('top bottom');
-      }
+                var options = {
+                    containment: ".product-timeline",
+                    axis: "x",
+                    start: function(event, ui) {
+                        posTopArray = [];
+                        posLeftArray = [];
+                        if ($(this).hasClass("group")) {
+                            $(".group").each(function(i) {
+                                thiscsstop = $(this).css('top');
+                                if (thiscsstop == 'auto') thiscsstop = 0; // For IE
 
-      // console.log(e);
-  }); };
-    $('.card-container').scroll();
+                                thiscssleft = $(this).css('left');
+                                if (thiscssleft == 'auto') thiscssleft = 0; // For IE
+
+                                posTopArray[i] = parseInt(thiscsstop);
+                                posLeftArray[i] = parseInt(thiscssleft);
+                            });
+                        }
+
+                        begintop = $(this).offset().top;
+                        beginleft = $(this).offset().left;
+                    },
+                    drag: function(event, ui) {
+                        var topdiff = $(this).offset().top - begintop;
+                        var leftdiff = $(this).offset().left - beginleft;
+
+                        if ($(this).hasClass("group")) {
+                            $(".group").each(function(i) {
+                                $(this).css('top', posTopArray[i] + topdiff);
+                                $(this).css('left', posLeftArray[i] + leftdiff);
+                            });
+                        }
+                    }
+                };
+
+                // set up slider on load
+                angular.element(document).ready(function() {
+                    scope.$marker = $(element).draggable(options);
+                });
+            }
+        };
+
+    });

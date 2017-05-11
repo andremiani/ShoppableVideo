@@ -88,7 +88,6 @@ $(document).ready(function() {
         });
     });
 
-
     $(".marker").draggable({
         containment: ".timeline",
         axis: "x"
@@ -146,7 +145,6 @@ $(document).ready(function() {
             $('.current').text(convertSecondsToTime(newTime));
         }
     });
-
     var totalDuration = 151;
 });
 

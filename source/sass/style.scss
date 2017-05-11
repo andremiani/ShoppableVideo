@@ -89,6 +89,7 @@ header .context-menu .header-index a.active {
 
 header .context-menu .video-title {
     color: #ffffff;
+    font-size: 1.1em;
     background-color: #9f3359;
     display: inline-block;
     padding: 10px 40px 10px 10px;
@@ -361,12 +362,13 @@ button:focus {
 
 .column-header h3 {
     display: inline-block;
-    border-bottom: 2px solid #f79f3a;
-    margin-bottom: 40px;
+    /*border-bottom: 2px solid #f79f3a;*/
+    margin-bottom: 30px;
 }
 $c: #888;
 
 .card-container {
+
     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
@@ -376,28 +378,25 @@ $c: #888;
     background-color: white;
     background-size: 100% 5em, 100% 5em, 100% 1em, 100% 1em;
     background-attachment: local, local, scroll, scroll;
-    overflow: scroll;
+    overflow-y: auto;
     max-height: 65vh;
+    /*height: 65vh;*/
+    transition: box-shadow .2s ease;
+
 }
 
-.card-container-shadow {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    box-shadow: inset 0 -8px 8px -8px #222, inset 0 10px 8px -8px #222;
+.shadow-top {
+  height: 20px;
+  position: absolute;
+  background-image: radial-gradient(farthest-side at 50% 0%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  display: none;
 }
 
-.card-container-shadow.top {
-    box-shadow: inset 0 10px 8px -8px #222;
-}
-
-.card-container-shadow.bottom {
-    box-shadow: inset 0 -8px 8px -8px #222;
+.shadow-bottom {
+  height: 20px;
+  position: absolute;
+  background-image: radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  display: none;
 }
 
 .product-card {
@@ -417,6 +416,7 @@ $c: #888;
 }
 
 .product-card-title {
+    font-size: .8em;
     width: 100%;
     padding-left: 0;
 }
@@ -425,6 +425,37 @@ $c: #888;
     width: 100%;
     height: 100px;
 }
+
+
+.marker {
+    top:-45px;
+    left:0;
+    position: absolute;
+	z-index: 10;
+    height: 90px;
+    width: 2px;
+    background: #999;
+    margin: 10px 0 10px 0;
+    cursor: grab;
+    /*transform: translateY(-50%);*/
+    .time {
+			position: absolute;
+			top: 0;
+			left: 10px;
+			white-space: nowrap;
+			background: #1a1a1a;
+			text-align: center;
+			color: #999;
+			padding: 5px 10px;
+			border-radius: 30px;
+			font-size: 12px;
+			transform: translateY(-50%);
+			.current {
+				color: #fff;
+			}
+		}
+}
+
 /* Time line from SM */
 .timeline {
     flex-grow: 2;
@@ -615,7 +646,7 @@ span {
 }
 
 .timeline-btns {
-    width: 150px;
+    /*width: 150px;*/
 
     span {
         display: inline-block;
@@ -718,7 +749,7 @@ span {
     height: 40px;
     width: 40px;
     padding: 10px;
-    background: #ef4c7f url('../../assets/images/plus.png') no-repeat;
+    background: #222 url('../../assets/images/plus.png') no-repeat;
     background-position: center;
     background-size: 17px;
     border-radius: 50%;
@@ -734,6 +765,12 @@ span {
     width: 100%;
     height: 50px;
 }
+
+.default-product {
+    color: #c1c1c1;
+    font-size: .8em;
+}
+
 //wraps save button
 .product-collapse {
     display: flex;
@@ -745,151 +782,3 @@ span {
 .product-collapse button {
     margin: auto;
 }
-/*
-// The main tab container
-.tab-container {
-  background: #8dc8fb; // Make the background blue
-  margin: 0;
-  padding: 0;
-  max-height: 40px;
-
-  ul {
-    &.nav-tabs {
-      margin: 0;
-      list-style-type: none;
-      line-height: 40px;
-      max-height: 40px;
-      overflow: hidden;
-      display: inline-block;
-      @include display-flex; // This is the magic that will dynamically expand/shrink the width tabs
-      padding-right: 20px;
-      border-bottom: 5px solid #f7f7f7;
-
-      $color: #c3d5e6; // Color for the disabled files
-
-      // Inactive tab styles
-      > li {
-        $raduis: 28px 145px; // Radius to make the tabs look like trapezoid
-
-        // Apply the radius
-        @include border-top-left-radius($raduis);
-        @include border-top-right-radius($raduis);
-
-        margin: 5px -14px 0;
-        padding: 0 30px 0 25px;
-        height: 170px;
-        background: $color;
-        position: relative;
-        width: 200px;
-        max-width: 200px;
-        min-width: 20px;
-        border:1px solid #aaa;
-
-        @include box-shadow(0 4px 6px rgba(0,0,0,.5));
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-of-type {
-          margin-right: 0;
-        }
-
-        > a {
-          display: block;
-          max-width:100%;
-          text-decoration: none;
-          color: #222;
-          padding: 3px 7px;
-
-          span {
-            overflow: hidden;
-            white-space: nowrap;
-            display: block;
-          }
-
-          &:focus,
-          &:hover {
-            background-color: transparent;
-            border-color: transparent;
-          }
-
-          // The remove button styles
-          .glyphicon-remove {
-            color: #777;
-            display: inline-block;
-            padding:3px;
-            font-size: 10px;
-            position:absolute;
-            z-index: 10;
-            top:7px;
-            right: -10px;
-            @include border-radius(50%);
-
-            &:hover {
-              background: #d39ea3;
-              color: white;
-              @include box-shadow(inset 0 1px 1px rgba(0,0,0,.25));
-              @include text-shadow(0 1px 1px rgba(0,0,0,.25));
-            }
-          }
-        }
-
-        // Active tab style
-        &.active {
-          z-index: 2;
-          @include background-image(linear-gradient(white, #f7f7f7 30px));
-
-          > a {
-            background-color: transparent;
-            border-color: transparent;
-            border-bottom-color: transparent;
-
-            &:focus,
-            &:hover {
-              background-color: transparent;
-              border-color: transparent;
-              border-bottom-color: transparent;
-            }
-          }
-        }
-      }
-
-      // The open new tab button
-      .btn {
-        float: left;
-        height: 20px;
-        width: 35px;
-        min-width: 35px;
-        max-width: 35px;
-        margin: 10px 0 0 0;
-        border-color: #71a0c9;
-        outline: none;
-
-        @include transform(skew(30deg));
-
-        &.btn-default {
-          background: $color;
-
-          &:hover {
-            background: #d2deeb;
-          }
-
-          &:active {
-            background: #9cb5cc;
-          }
-        }
-      }
-    }
-  }
-
-  // Styling the tab containter
-  .tab-pane {
-    padding: 60px 40px;
-    text-align: center;
-
-    &.active {
-      border-top:1px solid #ddd;
-    }
-  }
-}*/

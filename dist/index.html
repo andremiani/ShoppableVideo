@@ -127,10 +127,10 @@
                                 <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: #FFB86F">
                             </div>
-                            <div class="col-sm-8">
                                 <div class="timeline">
                                     <div class="product-timeline">
-                                        <div class="product-bar ui-widget-content">
+                                        <div class="marker group" marker></div>
+                                        <div class="product-bar ui-widget-content" slider>
                                             <span class="seg-start">00:00:00</span>
                                             <span class="seg-end">00:00:15</span>
                                             <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
@@ -138,7 +138,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <div class="timeline-block timeline-btns">
                                 <button type="button" class="glyphicon glyphicon-plus add-timeline" ng-click=""></button>
                                 <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProductCard($event, $index)"></button>
@@ -155,7 +154,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <span>{{product.productTitle}}</span>
-                                            <span ng-if="$index == 0">(Default)</span>
+                                            <span class="default-product" ng-if="$index == 0">(Default)</span>
                                         </div>
                                         <div class="col-sm-2 product-card-toggle">
                                             <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProduct($parent.$index, $event, $index)"></button>
