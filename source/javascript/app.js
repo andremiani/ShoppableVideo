@@ -4,14 +4,33 @@ var app = angular.module('shoppableVideo', ['ngAnimate', 'ngSanitize', 'ui.boots
 app
     .controller('AppCtrl', ['$scope', function($scope) {
 
+
         // Card counter, used for card naming
         var cardCounter = 1;
 
         // Product counter, used for product naming
         var productCounter = "";
 
+
         // Variable for the video title
         $scope.videoTitle = "";
+
+
+        $scope.playPauseSrc = "../assets/images/play.png";
+        $scope.muteSrc = "../assets/images/mute.png";
+
+
+        //Play and pause
+        $scope.togglePlayPause = function() {
+          //  var playpause = document.getElementById("playpause");
+            if (video.paused || video.ended) {
+                video.play();
+                $scope.playPauseSrc = "../assets/images/pause.png";
+            } else {
+                video.pause();
+                $scope.playPauseSrc = "../assets/images/play.png";
+            }
+        };
 
         // Array to store the productCards
         $scope.productCards = [];
@@ -215,7 +234,7 @@ app
         ];
 
         // Array that store all the categories that are used in the dropdown-list
-        $scope.categories = []
+        $scope.categories = [];
         angular.forEach($scope.libraryProducts, function(value, category){
             if($scope.categories.indexOf(value.category) == -1)
             {
@@ -229,6 +248,8 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
+
+
 
         // Add productCard to the end of the array
         var addProductCard = function() {
@@ -259,6 +280,7 @@ app
             event.preventDefault();
             event.stopPropagation();
             $scope.productCards.splice(index, 1);
+
             cardCounter--;
         };
 
@@ -271,6 +293,42 @@ app
 
         // Initialize the scope functions
         $scope.addProductCard = addProductCard;
+
+        //Video controller
+        //Volume
+        function setVolume() {
+        var volume = document.getElementById("volume");
+        video.volume = volume.value;
+        }
+        //Mute
+        function toggleMute() {
+        video.muted = !video.muted;
+        }
+        //Progressbar
+        video.addEventListener('timeupdate', updateProgress, false);
+
+        function updateProgress() {
+        var progress = document.getElementById("progress");
+        var value = 0;
+        if (video.currentTime > 0) {
+        value = Math.floor((100 / video.duration) * video.currentTime);
+        }
+        progress.style.width = value + "%";
+        }
+
+
+        var seekBar = document.getElementById("progress");
+
+
+        // Update the seek bar as the video plays
+        video.addEventListener("timeupdate", function() {
+        // Calculate the slider value
+        var value = (100 / video.duration) * video.currentTime;
+
+        // Update the slider value
+        seekBar.value = value;
+        });
+
         $scope.addProduct = addProduct;
         $scope.removeProductCard = removeProductCard;
         $scope.removeProduct = removeProduct;
@@ -280,8 +338,8 @@ app
             addProductCard();
         }*/
 
-    }])
-    .directive('slider', function() {
+        }])
+        .directive('slider', function() {
         return {
             restrict: 'A',
             scope: true,
@@ -311,8 +369,8 @@ app
                 });
             }
         };
-    })
-    .directive('marker', function() {
+        })
+        .directive('marker', function() {
         return {
             restrict: 'A',
             scope: true,
@@ -363,8 +421,8 @@ app
             }
         };
 
-    })
-    .directive('addTimeline', function() {
+        })
+        .directive('addTimeline', function() {
         return {
             restrict: 'A',
             scope: true,
@@ -394,4 +452,4 @@ app
                 });
             }
         };
-    });
+        });

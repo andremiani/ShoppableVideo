@@ -45,6 +45,7 @@ jspm_packages
 
 # DS_store
 .DS_store
+.DS_Store?
 
 # Sass cache
 .sass-cache
