@@ -1,53 +1,852 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #ffffff no-repeat;
+  background-size: 100%;
+  background-position: top center;
+  color: #999999;
+  font-weight: 300;
+  font-size: 18px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.body-wrap {
+  margin-top: 80px;
+}
+
+textarea, input, select {
+  outline: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+header .main-nav {
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header .main-nav li {
+  margin: 15px;
+  display: inline-block;
+}
+
+header .main-nav li a {
+  padding: 5px;
+  color: #cecece;
+  transition: color 0.2s;
+}
+
+header .main-nav li a:hover {
+  color: #fff;
+  border-bottom: 2px solid #ef4c7f;
+  text-decoration: none;
+}
+
+header .main-nav li a.active {
+  color: #fff;
+  border-bottom: 2px solid #f79f3a;
+}
+
+header .context-menu {
+  position: relative;
+  background: #9f3359;
+  padding: 10px;
+}
+
+header .context-menu .header-index {
+  color: #ccc;
+  position: absolute;
+  transform: translatex(-50%);
+  left: 50%;
+  top: 15px;
+  margin: 0;
+}
+
+header .context-menu .header-index a {
+  color: #ccc;
+  margin: 0 10px;
+}
+
+header .context-menu .header-index a.active {
+  color: #fff;
+}
+
+header .context-menu .video-title {
+  color: #ffffff;
+  background-color: #9f3359;
+  display: inline-block;
+  padding: 10px 40px 10px 10px;
+  margin: 0;
+  position: relative;
+  transition: background 0.2s;
+  border-radius: 5px;
+  border-style: none;
+}
+
+header .context-menu .video-title:hover {
+  background-color: #ef4c7f;
+  cursor: pointer;
+}
+
+header .context-menu .video-title:hover:after {
+  opacity: 1;
+}
+
+header .context-menu .video-title:after {
+  content: "";
+  opacity: 0.2;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  background-image: url("../../assets/images/edit.png");
+  background-repeat: no-repeat;
+  background-size: 22px;
+}
+
+header .context-menu .option-menu {
+  float: right;
+}
+
+header .context-menu .option-menu > ul {
+  background: #1a1a1a;
+  right: 0;
+}
+
+.btn {
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  padding: 8px 24px;
+  border-radius: 30px;
+}
+
+.btn.pink {
+  background: #ef4c7f;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.option-menu {
+  position: relative;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.option-menu .options {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transition: all 0.2s;
+  transform: rotate(90deg);
+}
+
+.option-menu .options .lineball {
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s;
+}
+
+.option-menu .options .lineball.second {
+  top: 25%;
+}
+
+.option-menu .options .lineball.third {
+  top: 75%;
+}
+
+.option-menu:hover .options {
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+
+.option-menu:hover .options .lineball {
+  width: 12px;
+  height: 2px;
+  border-radius: 0;
+}
+
+.option-menu:hover ul {
+  display: block;
+}
+
+.option-menu ul {
+  top: 40px;
+  display: none;
+  position: absolute;
+  background: #9f3359;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.option-menu ul li a {
+  display: inline-block;
+  padding: 5px;
+  color: #fff;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+#myModal {
+  top: -140px;
+}
+
+.modal-content {
+  background: black;
+  height: auto;
+  padding: 5px 0;
+  border-radius: 5px;
+  height: 83vh;
+}
+
 /*
-Error: Invalid CSS after "...rflow-y: scroll": expected "{", was ";"
-        on line 376 of /Users/Anna/Documents/ID/DBT/ShoppableVideo/source/sass/style.scss
+.modal-content ::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 80px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent transparent #000000;
+  border-style: solid;
+  border-width: 30px;
 
-371: }
-372: $c: #888;
-373: 
-374: .card-container {
-375: <<<<<<< HEAD
-376:     overflow-y: scroll;
-377:     height: 50vh;
-378:     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
-379:     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
-380:     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
-381:     linear-gradient(bottom, darken($c, 20%), rgba(255, 255, 255, 0)) );
-
-Backtrace:
-/Users/Anna/Documents/ID/DBT/ShoppableVideo/source/sass/style.scss:376
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:665:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:685:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:674:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:666:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:658:in `ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:41:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/engine.rb:281:in `render'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:494:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/sass_compiler.rb:40:in `compile!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/update_project.rb:49:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:44:in `call'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
-/usr/local/bin/compass:23:in `load'
-/usr/local/bin/compass:23:in `<main>'
+}
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...rflow-y: scroll\": expected \"{\", was \";\"\A         on line 376 of /Users/Anna/Documents/ID/DBT/ShoppableVideo/source/sass/style.scss\A \A 371: }\A 372: $c: #888;\A 373: \A 374: .card-container {\A 375: <<<<<<< HEAD\A 376:     overflow-y: scroll;\A 377:     height: 50vh;\A 378:     @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),\A 379:     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),\A 380:     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),\A 381:     linear-gradient(bottom, darken($c, 20%), rgba(255, 255, 255, 0)) );"; }
+.modal-content .modal-header {
+  width: 100%;
+  border-bottom: 0;
+  text-align: center;
+}
+
+/*.modal-title{
+  margin-bottom: 15px;
+}*/
+.modal-content hr {
+  width: 10vw;
+  margin: 0 auto;
+}
+
+.modal-content .modal-body {
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.modal-content .modal-input {
+  width: 100%;
+  height: 30px;
+}
+
+.modal-content .modal-body .search, select {
+  width: 50%;
+  margin: 15px 15px;
+  background: none;
+  border: none;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  transition: all 0.2s;
+  color: white;
+  background: url(../../assets/images/search.png) no-repeat;
+  background-size: 14px;
+  background-position: right center;
+}
+
+.modal-content textarea, input, select {
+  outline: none;
+}
+
+.modal-content select {
+  background: url(../../assets/images/dropdown.png) no-repeat;
+  background-position: right center;
+  background-size: 10px;
+  padding: 5px;
+  width: 25%;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  color: white;
+}
+
+.items {
+  overflow-y: scroll;
+  height: 50vh;
+  display: block;
+  list-style: none;
+  padding: 5px;
+}
+
+.items .item .item-thumb {
+  padding: 15px 5px 0px 5px;
+}
+
+.items .item .item-thumb img {
+  max-width: 100%;
+}
+
+.modal-content .modal-body .item.selected {
+  box-shadow: 0 0 0px 10px #ef4c7f;
+}
+
+.items.grid > li {
+  display: inline-block;
+  max-width: 20%;
+}
+
+.items.grid a {
+  text-decoration: none;
+}
+
+.items .item .item-txt {
+  margin: 0px 5px;
+  background: #9F3359;
+}
+
+.items.grid .item .item-txt h6 {
+  margin: 0 5px;
+  padding: 5px 0;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.modal-footer {
+  border-top: 0;
+  margin: 5px 40px;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.column-header {
+  text-align: center;
+}
+
+.column-header h3 {
+  display: inline-block;
+  border-bottom: 2px solid #f79f3a;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU1NTU1NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU1NTU1NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #555555), color-stop(100%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #555555), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -moz-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0)), -moz-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0)), -moz-linear-gradient(top, #555555, rgba(255, 255, 255, 0)), -moz-linear-gradient(bottom, #555555, rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0)), -webkit-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0)), -webkit-linear-gradient(top, #555555, rgba(255, 255, 255, 0)), -webkit-linear-gradient(bottom, #555555, rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(to bottom, #555555, rgba(255, 255, 255, 0)), linear-gradient(to top, #555555, rgba(255, 255, 255, 0));
+  background-position: 0 0, 0 100%, 0 0, 0 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 5em, 100% 5em, 100% 1em, 100% 1em;
+  background-attachment: local, local, scroll, scroll;
+  overflow: scroll;
+  max-height: 65vh;
+}
+
+.card-container-shadow {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  box-shadow: inset 0 -8px 8px -8px #222, inset 0 10px 8px -8px #222;
+}
+
+.card-container-shadow.top {
+  box-shadow: inset 0 10px 8px -8px #222;
+}
+
+.card-container-shadow.bottom {
+  box-shadow: inset 0 -8px 8px -8px #222;
+}
+
+.product-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /*height: $productCardHeight;*/
+  border-bottom: 1px solid #666;
+  background-color: #ffffff;
+  padding-left: 0;
+}
+
+.product-card-thumb {
+  /*display: flex;
+  align-items: center;*/
+  padding-left: 0;
+}
+
+.product-card-title {
+  width: 100%;
+  padding-left: 0;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100px;
+}
+
+/* Time line from SM */
+.timeline {
+  flex-grow: 2;
+  position: relative;
+}
+.timeline p {
+  position: absolute;
+  top: -30px;
+  color: #999;
+}
+.timeline .product-timeline {
+  width: 100%;
+  height: 20px;
+  border-bottom: 1px solid #333;
+  border-top: 1px solid #333;
+}
+.timeline .product-timeline .product-bar {
+  position: absolute;
+  width: 10%;
+  height: 20px;
+  background: #ef4c7f url("../../assets/images/drag.png") no-repeat;
+  background-position: center;
+  background-size: 6px;
+  border-radius: 5px;
+  transition: border 0.2s;
+}
+.timeline .product-timeline .product-bar.ui-widget-content {
+  border: 2px solid #ef4c7f;
+}
+.timeline .product-timeline .product-bar:hover {
+  cursor: pointer;
+  background-color: #ee648f;
+  border: 2px solid #ef4c7f;
+}
+.timeline .product-timeline .product-bar:hover .seg-end,
+.timeline .product-timeline .product-bar:hover .seg-start {
+  opacity: 1;
+}
+.timeline .product-timeline .product-bar.edit-resize {
+  border: 2px solid #fed04f;
+}
+.timeline .product-timeline .product-bar.edit-resize .seg-end,
+.timeline .product-timeline .product-bar.edit-resize .seg-start {
+  opacity: 1;
+}
+.timeline .product-timeline .product-bar.edit-resize .del-seg {
+  display: block;
+}
+.timeline .product-timeline .product-bar.edit-resize:after, .timeline .product-timeline .product-bar.edit-resize:before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  height: 100%;
+  width: 8px;
+  background: #fed04f url("../../assets/images/drag.png") no-repeat;
+  background-position: center;
+  background-size: 6px;
+}
+.timeline .product-timeline .product-bar.edit-resize:after {
+  right: 0;
+}
+.timeline .product-timeline .product-bar.edit-resize:before {
+  left: 0;
+}
+.timeline .product-timeline .product-bar .seg-end,
+.timeline .product-timeline .product-bar .seg-start {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  white-space: nowrap;
+  background: #1a1a1a;
+  text-align: center;
+  color: #999;
+  padding: 5px 10px;
+  border-radius: 30px;
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+.timeline .product-timeline .product-bar .seg-start {
+  top: 20px;
+  left: 0;
+}
+.timeline .product-timeline .product-bar .seg-end {
+  bottom: 20px;
+  left: 100%;
+}
+.timeline .product-timeline .product-bar .del-seg {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-left: 10px;
+  transform: translateY(-50%);
+}
+.timeline .product-timeline .product-bar .del-seg a {
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #9f3359 url("../../assets/images/cross.png") no-repeat;
+  background-size: 10px;
+  background-position: center;
+}
+.timeline .product-timeline .product-bar .del-seg a:hover {
+  background-color: #ef4c7f;
+}
+
+/* END time line from SM */
+.product-card-toggle {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #666;
+  height: 100%;
+}
+
+.product-card-toggle button {
+  border: none;
+  background-color: inherit;
+}
+
+a .hover-help,
+span .hover-help {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  background: #1a1a1a;
+  bottom: -40px;
+  text-align: center;
+  color: #999;
+  padding: 5px 10px;
+  border-radius: 30px;
+  font-size: 12px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  left: 50%;
+  transition: opacity 0.2s;
+}
+a:hover .hover-help,
+span:hover .hover-help {
+  opacity: 1;
+}
+
+.timeline-block {
+  padding: 10px;
+  font-size: 12px;
+}
+.timeline-block p {
+  color: #999;
+}
+.timeline-block .delete {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 26px;
+  text-indent: -999px;
+  background: url("../../assets/images/trash.png") no-repeat;
+  background-size: 50%;
+  opacity: 0.8;
+}
+.timeline-block .delete:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.timeline-btns {
+  width: 150px;
+}
+.timeline-btns span {
+  display: inline-block;
+  position: relative;
+  padding: 5px;
+}
+.timeline-btns span img {
+  width: 30px;
+}
+.timeline-btns .edit-timeline.active img {
+  opacity: 0.5;
+}
+
+.product-card-add {
+  display: flex;
+  align-items: center;
+  /*height: 65px;*/
+  /*border-bottom: 1px solid #666;*/
+  background-color: #ffffff;
+  padding-left: 0;
+}
+
+.product-card-add button {
+  color: white;
+  margin-left: auto;
+  margin-top: 20px;
+  border: none;
+  background-color: inherit;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  padding: 10px;
+  background: #ef4c7f url("../../assets/images/plus.png") no-repeat;
+  background-position: center;
+  background-size: 17px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.last {
+  margin-bottom: 250px;
+}
+
+.product-card-well {
+  padding-top: 0;
+  clear: both;
+}
+
+.well {
+  margin-bottom: 10px;
+}
+
+/*
+//Try to limit the glitch on productCard collapse
+.collapse.in {
+    height: auto !important;
+}
+*/
+.product {
+  display: flex;
+  align-items: center;
+  /*height: $productHeight;*/
+  border-bottom: 1px solid #666;
+  background-color: #ffffff;
+  padding-left: 0;
+}
+
+.product p {
+  margin: 0;
+}
+
+.product button {
+  border: none;
+  background-color: inherit;
+}
+
+.product-add {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  /*border: 1px solid #666;*/
+  background-color: #ffffff;
+  padding-left: 0;
+}
+
+.product-add button {
+  color: white;
+  margin-left: 10px;
+  border: none;
+  background-color: inherit;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  background: #ef4c7f url("../../assets/images/plus.png") no-repeat;
+  background-position: center;
+  background-size: 17px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.product-thumb {
+  padding-left: 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 50px;
+}
+
+.product-collapse {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+}
+
+.product-collapse button {
+  margin: auto;
+}
+
+/*
+// The main tab container
+.tab-container {
+  background: #8dc8fb; // Make the background blue
+  margin: 0;
+  padding: 0;
+  max-height: 40px;
+
+  ul {
+    &.nav-tabs {
+      margin: 0;
+      list-style-type: none;
+      line-height: 40px;
+      max-height: 40px;
+      overflow: hidden;
+      display: inline-block;
+      @include display-flex; // This is the magic that will dynamically expand/shrink the width tabs
+      padding-right: 20px;
+      border-bottom: 5px solid #f7f7f7;
+
+      $color: #c3d5e6; // Color for the disabled files
+
+      // Inactive tab styles
+      > li {
+        $raduis: 28px 145px; // Radius to make the tabs look like trapezoid
+
+        // Apply the radius
+        @include border-top-left-radius($raduis);
+        @include border-top-right-radius($raduis);
+
+        margin: 5px -14px 0;
+        padding: 0 30px 0 25px;
+        height: 170px;
+        background: $color;
+        position: relative;
+        width: 200px;
+        max-width: 200px;
+        min-width: 20px;
+        border:1px solid #aaa;
+
+        @include box-shadow(0 4px 6px rgba(0,0,0,.5));
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        > a {
+          display: block;
+          max-width:100%;
+          text-decoration: none;
+          color: #222;
+          padding: 3px 7px;
+
+          span {
+            overflow: hidden;
+            white-space: nowrap;
+            display: block;
+          }
+
+          &:focus,
+          &:hover {
+            background-color: transparent;
+            border-color: transparent;
+          }
+
+          // The remove button styles
+          .glyphicon-remove {
+            color: #777;
+            display: inline-block;
+            padding:3px;
+            font-size: 10px;
+            position:absolute;
+            z-index: 10;
+            top:7px;
+            right: -10px;
+            @include border-radius(50%);
+
+            &:hover {
+              background: #d39ea3;
+              color: white;
+              @include box-shadow(inset 0 1px 1px rgba(0,0,0,.25));
+              @include text-shadow(0 1px 1px rgba(0,0,0,.25));
+            }
+          }
+        }
+
+        // Active tab style
+        &.active {
+          z-index: 2;
+          @include background-image(linear-gradient(white, #f7f7f7 30px));
+
+          > a {
+            background-color: transparent;
+            border-color: transparent;
+            border-bottom-color: transparent;
+
+            &:focus,
+            &:hover {
+              background-color: transparent;
+              border-color: transparent;
+              border-bottom-color: transparent;
+            }
+          }
+        }
+      }
+
+      // The open new tab button
+      .btn {
+        float: left;
+        height: 20px;
+        width: 35px;
+        min-width: 35px;
+        max-width: 35px;
+        margin: 10px 0 0 0;
+        border-color: #71a0c9;
+        outline: none;
+
+        @include transform(skew(30deg));
+
+        &.btn-default {
+          background: $color;
+
+          &:hover {
+            background: #d2deeb;
+          }
+
+          &:active {
+            background: #9cb5cc;
+          }
+        }
+      }
+    }
+  }
+
+  // Styling the tab containter
+  .tab-pane {
+    padding: 60px 40px;
+    text-align: center;
+
+    &.active {
+      border-top:1px solid #ddd;
+    }
+  }
+}*/
