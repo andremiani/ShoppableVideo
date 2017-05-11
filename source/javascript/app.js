@@ -294,40 +294,41 @@ app
         // Initialize the scope functions
         $scope.addProductCard = addProductCard;
 
-        //Video controller
-        //Volume
-        function setVolume() {
-        var volume = document.getElementById("volume");
-        video.volume = volume.value;
-        }
-        //Mute
-        function toggleMute() {
-        video.muted = !video.muted;
-        }
-        //Progressbar
-        video.addEventListener('timeupdate', updateProgress, false);
+//Video controller
+//Volume
+function setVolume() {
+    var volume = document.getElementById("volume");
+    video.volume = volume.value;
+}
+//Mute
+function toggleMute() {
+    video.muted = !video.muted;
+}
+//Progressbar
+video.addEventListener('timeupdate', updateProgress, false);
 
-        function updateProgress() {
-        var progress = document.getElementById("progress");
-        var value = 0;
-        if (video.currentTime > 0) {
+function updateProgress() {
+    var progress = document.getElementById("progress");
+    var value = 0;
+    if (video.currentTime > 0) {
         value = Math.floor((100 / video.duration) * video.currentTime);
-        }
-        progress.style.width = value + "%";
-        }
+    }
+    progress.style.width = value + "%";
+}
 
 
-        var seekBar = document.getElementById("progress");
+var seekBar = document.getElementById("progress");
 
 
-        // Update the seek bar as the video plays
-        video.addEventListener("timeupdate", function() {
-        // Calculate the slider value
-        var value = (100 / video.duration) * video.currentTime;
+// Update the seek bar as the video plays
+video.addEventListener("timeupdate", function() {
+  // Calculate the slider value
+  var value = (100 / video.duration) * video.currentTime;
 
-        // Update the slider value
-        seekBar.value = value;
-        });
+  // Update the slider value
+  seekBar.value = value;
+});
+
 
         $scope.addProduct = addProduct;
         $scope.removeProductCard = removeProductCard;
@@ -338,8 +339,8 @@ app
             addProductCard();
         }*/
 
-        }])
-        .directive('slider', function() {
+    }])
+    .directive('slider', function() {
         return {
             restrict: 'A',
             scope: true,
@@ -452,4 +453,5 @@ app
                 });
             }
         };
-        });
+
+    });
