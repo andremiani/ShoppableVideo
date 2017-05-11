@@ -169,3 +169,66 @@ function positionToTime(position) {
 
     return convertSecondsToTime(newTime);
 }
+
+function addTimeline() {
+    var currentPos = parseInt($('.marker').css('left'));
+    var totalWidth = parseInt($('.timeline').css('width'));
+    var newPos = currentPos / totalWidth * 100;
+
+    var $div = $("<div>", {
+        "class": "product-bar ui-widget-content"
+    });
+    var $segStart = $("<span>", {
+        "class": "seg-start"
+    }).text('hh:mm:ss');
+    var $segEnd = $("<span>", {
+        "class": "seg-end"
+    }).text('hh:mm:ss');
+    var $delSeg = $("<span>", {
+        "class": "del-seg"
+    }).html('<a href="#"><span class="hover-help">Delete segment</span></a></span>');
+    $div.append($segStart, $segEnd, $delSeg);
+
+
+    $div.css('left', newPos + '%');
+    $div.css('position', 'absolute');
+    $div.resizable({
+        maxHeight: 20,
+        minHeight: 20,
+        handles: 'e, w'
+    });
+    $div.draggable({
+        containment: ".product-timeline",
+        axis: "x",
+        drag: function(event, ui) {
+            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+        }
+    });
+    $div.resizable("disable");
+
+
+    $(this).parent().parent().find(".product-timeline").append($div);
+    $div.find('.seg-start').text(positionToTime($div.css('left')));
+    $div.find('.seg-end ').text(positionToTime(parseInt($div.css('left')) + parseInt($div.css('width'))));
+
+    $div.click(function() {
+        if ($(this).hasClass("edit-resize")) {
+            $(".product-bar").removeClass("edit-resize");
+            $(".product-bar").resizable("disable");
+
+            $(this).removeClass("edit-resize");
+            $(this).resizable("disable");
+        } else {
+            $(".product-bar").removeClass("edit-resize");
+            $(".product-bar").resizable("disable");
+
+            $(this).addClass("edit-resize");
+            $(this).resizable("enable");
+        }
+    });
+
+    $delSeg.click(function() {
+        $(this).parent().remove();
+    });
+    }

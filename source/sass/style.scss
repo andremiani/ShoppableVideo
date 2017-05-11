@@ -697,9 +697,11 @@ span {
     transition: all 0.2s;
     z-index: 1;
 }
+
 //Adds padding to the last product card for better workability
+// (Conflicts with ui-draggable)
 .last {
-    margin-bottom: 250px;
+    /*margin-bottom: 250px;*/
 }
 
 .product-card-well {
