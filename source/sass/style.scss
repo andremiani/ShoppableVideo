@@ -219,6 +219,7 @@ button:focus {
 
 //Styling for product library
 #myModal{
+  z-index: 999999;
   top: -430px;
 }
 
@@ -306,10 +307,10 @@ button:focus {
     list-style: none;
     padding: 5px;
 }
-
+/*
 .items .item .item-thumb {
     padding: 15px 5px 0px 5px;
-}
+}*/
 
 .items .item .item-thumb img {
     max-width: 100%;
@@ -324,16 +325,11 @@ button:focus {
     max-width: 20%;
 }
 
-.items.grid > li a:active{
-
-}
-
 .items.grid a{
   text-decoration: none;
 }
 
 .items .item .item-txt{
-  margin: 0px 5px;
     background: #9F3359;
 }
 
@@ -345,6 +341,19 @@ button:focus {
     font-weight: 500;
 
 }
+
+.item{
+  margin: 5px;
+  border: solid 2px transparent;
+}
+
+.selectedItem{
+  border: solid 2px yellow;
+}
+/*
+.notSelectedItem{
+  border: solid 1px transparent;
+}*/
 
 .modal-footer{
   border-top: 0;
@@ -359,23 +368,29 @@ button:focus {
 
 //Styling for video
 #video{
+    flex: 0 1 100%;
   width: 600px;
   height: 340px;
-  padding-left: 15px;
+  /*padding-left: 15px;*/
 }
 
 //Styling for the progressbar of the video
 #controls{
-  padding-left: 15px;
+  /*padding-left: 15px;*/
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  width: 585px;
+  width: 605px;
   height: 40px;
   -moz-box-sizing: border-box;
-  float: left;
-  position: absolute;
-  margin-left: 15px;
-  bottom: 10px;
+  /*float: left;*/
+  position: relative;
+
+
+    display:flex;
+    align-items: center;
+    margin: 0 auto;
+  /*margin-left: 15px;*/
+  /*bottom: 8px;*/
   z-index: 2;
   opacity: 1;
   box-shadow: 0 0 2px rgba(0,0,0,0.3);
@@ -390,28 +405,37 @@ button:focus {
 }
 
 #playpause{
-  margin-top: 5px;
-  float:left;
+  /*margin-top: 5px;*/
+  /*float:left;*/
   width: 40px;
-  margin-right: 15px;
+  /*margin-right: 15px;*/
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
 }
+
+#play {
+    text-align: center;
+    flex: 1;
+}
+
 #mute:focus{
   outline: 0;
 }
 #mute{
-  margin-top: 5px;
+    flex: .5;
+  /*margin-top: 5px;
   float:left;
-  width: 40px;
-  margin-right: 15px;
+  width: 40px;*/
+  /*margin-right: 15px;*/
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
 }
 #progressBar {
-   margin-top: 13px;
+    flex: 6;
+    display: flex;
+   /*margin-top: 13px;*/
    border:1px solid #aaa;
    color:#fff;
    width:295px;
@@ -449,7 +473,8 @@ button:focus {
   text-decoration: overline;
 }
 #volume{
-  margin-top: 17px;
+    flex:2;
+  /*margin-top: 17px;*/
   width: 20%;
   float: left;
   margin-right: 5px;
@@ -524,20 +549,6 @@ input[type="range"]::-ms-fill-upper {
 }
 
 
-
-
-
-
-
-
-#mute{
-  margin-top: 5px;
-  float: left;
-  margin-left: 20px;
-
-}
-
-
 .column-header {
     text-align: center;
 }
@@ -547,6 +558,41 @@ input[type="range"]::-ms-fill-upper {
     /*border-bottom: 2px solid #f79f3a;*/
     margin-bottom: 30px;
 }
+
+.video-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.video-product-bar {
+    overflow-x: auto;
+    background-color: #c1c1c1;
+    margin-top: 20px;
+    margin: 20px 35px 0 35px;    
+    height: 140px;
+
+
+
+    &ul {
+        display: inline;
+        list-style-type: none;
+        height: 140px;
+        width: 140px;
+        margin: 0 auto;
+    }
+}
+
+
+.video-product-bar-item {
+    white-space: nowrap;
+    display: inline;
+}
+
+
+// Right column styling
+
 $c: #888;
 
 .card-container {
