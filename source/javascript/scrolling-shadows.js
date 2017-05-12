@@ -18,8 +18,10 @@
       function calcPosition() {
         width = elem.outerWidth();
         height = elem.outerHeight();
+        /*height = elem.css('max-height').replace('vh','');*/
         offset = elem.position();
 
+        /*alert(height);*/
         // update
         shadowTop.css({
           width: width + "px",
@@ -42,7 +44,7 @@
             shadowTop.fadeOut(200);
           }
           // Added OR syntax to make shadow invisible initially
-          if (elem.scrollTop() + height >= elem[0].scrollHeight || elem[0].scrollHeight < ($(window).height()* 0.70)) {
+          if (elem.scrollTop() + height >= elem[0].scrollHeight || elem[0].scrollHeight < (height * 0.65)) {
             shadowBottom.fadeOut(200);
         } else {
             shadowBottom.fadeIn(200);

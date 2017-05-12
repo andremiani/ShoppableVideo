@@ -219,7 +219,9 @@ button:focus {
 
 //Styling for product library
 #myModal{
-  top: -430px;
+  z-index: 999999;
+  /*top: -430px;*/
+  position: absolute;
 }
 
 .modal-content{
@@ -366,23 +368,30 @@ button:focus {
 
 //Styling for video
 #video{
+    flex: 0 1 100%;
   width: 600px;
   height: 340px;
-  padding-left: 15px;
+  /*padding-left: 15px;*/
 }
 
 //Styling for the progressbar of the video
 #controls{
-  padding-left: 15px;
+  /*padding-left: 15px;*/
+  top: -40px;
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  width: 585px;
+  width: 605px;
   height: 40px;
   -moz-box-sizing: border-box;
-  float: left;
-  position: absolute;
-  margin-left: 15px;
-  bottom: 10px;
+  /*float: left;*/
+  position: relative;
+
+
+    display:flex;
+    align-items: center;
+    margin: 0 auto;
+  /*margin-left: 15px;*/
+  /*bottom: 8px;*/
   z-index: 2;
   opacity: 1;
   box-shadow: 0 0 2px rgba(0,0,0,0.3);
@@ -397,28 +406,37 @@ button:focus {
 }
 
 #playpause{
-  margin-top: 5px;
-  float:left;
+  /*margin-top: 5px;*/
+  /*float:left;*/
   width: 40px;
-  margin-right: 15px;
+  /*margin-right: 15px;*/
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
 }
+
+#play {
+    text-align: center;
+    flex: 1;
+}
+
 #mute:focus{
   outline: 0;
 }
 #mute{
-  margin-top: 5px;
+    flex: .5;
+  /*margin-top: 5px;
   float:left;
-  width: 40px;
-  margin-right: 15px;
+  width: 40px;*/
+  /*margin-right: 15px;*/
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
 }
 #progressBar {
-   margin-top: 13px;
+    flex: 6;
+    display: flex;
+   /*margin-top: 13px;*/
    border:1px solid #aaa;
    color:#fff;
    width:295px;
@@ -456,7 +474,8 @@ button:focus {
   text-decoration: overline;
 }
 #volume{
-  margin-top: 17px;
+    flex:2;
+  /*margin-top: 17px;*/
   width: 20%;
   float: left;
   margin-right: 5px;
@@ -531,20 +550,6 @@ input[type="range"]::-ms-fill-upper {
 }
 
 
-
-
-
-
-
-
-#mute{
-  margin-top: 5px;
-  float: left;
-  margin-left: 20px;
-
-}
-
-
 .column-header {
     text-align: center;
 }
@@ -554,11 +559,46 @@ input[type="range"]::-ms-fill-upper {
     /*border-bottom: 2px solid #f79f3a;*/
     margin-bottom: 30px;
 }
+
+.video-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.video-product-bar {
+    overflow-x: auto;
+    background-color: #c1c1c1;
+    top:-20px;
+    margin: 0 35px 0 35px;
+    height: 140px;
+
+
+
+    &ul {
+        display: inline;
+        list-style-type: none;
+        height: 140px;
+        width: 140px;
+        margin: 0 auto;
+    }
+}
+
+
+.video-product-bar-item {
+    white-space: nowrap;
+    display: inline;
+}
+
+
+// Right column styling
+
 $c: #888;
 
 .card-container {
 
-    @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
+    /*@include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
     linear-gradient(bottom, darken($c, 20%), rgba(255, 255, 255, 0)) );
@@ -566,7 +606,7 @@ $c: #888;
     background-repeat: no-repeat;
     background-color: white;
     background-size: 100% 5em, 100% 5em, 100% 1em, 100% 1em;
-    background-attachment: local, local, scroll, scroll;
+    background-attachment: local, local, scroll, scroll;*/
     overflow-y: auto;
     max-height: 65vh;
     /*height: 65vh;*/
