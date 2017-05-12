@@ -15,8 +15,6 @@ app
         // Variable for the video title
         $scope.videoTitle = "";
 
-        $scope.world = "hello world";
-
         $scope.playPauseSrc = "../assets/images/play.png";
         $scope.muteSrc = "../assets/images/mute.png";
 

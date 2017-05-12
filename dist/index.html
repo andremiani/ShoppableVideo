@@ -74,16 +74,16 @@
                   </div>
 
                   <ul class="items grid">
-                    <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
-                      <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                    <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
+                      <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item)" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                         <div class="item-thumb">
                           <a href="#">
-                            <img ng-src="{{product.imageURL}}"/>
+                            <img ng-src="{{item.imageURL}}"/>
                           </a>
                         </div>
                         <div class="item-txt">
                           <a href="#">
-                            <h6 ng-bind="product.productTitle"></h6>
+                            <h6 ng-bind="item.productTitle"></h6>
                           </a>
                         </div>
                       </div>
@@ -148,7 +148,7 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
-                    <h4>Products</h4>
+                    <h4>Products</h4><span ng-bind="selectedCard"></span>
                 </div>
             </div>
 
@@ -212,7 +212,7 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" ng-click="showLibrary = true; addProduct($index)"></button>
+                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="showLibrary = true; addProductCard()"></button>
+                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard(productCards.$last)"></button>
                 </div>
             </div>
         </div>
