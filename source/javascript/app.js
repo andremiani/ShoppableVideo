@@ -59,6 +59,15 @@ app
             axis: 'y'
         };
 
+        //Variable to toggle the active product card
+        $scope.selectedCard = 0;
+
+        //Function to toggle the active product card
+        $scope.selectCard = function(index) {
+            $scope.selectedCard = index;
+        };
+
+
         /*$scope.showLibrary = false;
 
         $scope.showLibrary = function() {
@@ -278,20 +287,20 @@ app
                 products: []
             });
             cardCounter++;
-            $scope.productCards[$scope.productCards.length - 1].active = true;
+            //$scope.productCards[$scope.productCards.length - 1].selected = true;
         };
 
         //Add product to a product card
-        var addProduct = function(index) {
+        var addProduct = function(index, item) {
             productCounter = $scope.productCards[index].products.length + 1;
             $scope.productCards[index].products.push({
-                productTitle: 'Product ' + productCounter,
-                link: 'https://www...',
-                specialOffer: '20%',
-                buttonText: 'Buy now baby',
-                targetGroup: 'Rich people',
-                imageURL: '../assets/images/placeholder.png',
-                category: ""
+                productTitle: item.productTitle,
+                link: item.link,
+                specialOffer: item.specialOffer,
+                buttonText: item.buttonText,
+                targetGroup: item.targetGroup,
+                imageURL: item.imageURL,
+                category: item.category
             });
         };
 

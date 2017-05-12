@@ -2,6 +2,11 @@
 $productCardHeight: 130px;
 $productHeight: 50px;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #ffffff no-repeat;
