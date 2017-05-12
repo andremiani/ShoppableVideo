@@ -2,6 +2,11 @@
 $productCardHeight: 130px;
 $productHeight: 50px;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #ffffff no-repeat;
@@ -370,8 +375,8 @@ button:focus {
 //Styling for video
 #video{
     flex: 0 1 100%;
-  width: 600px;
-  height: 340px;
+    width: 100%    !important;
+    height: auto   !important;
   /*padding-left: 15px;*/
 }
 
@@ -381,7 +386,7 @@ button:focus {
   top: -40px;
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  width: 605px;
+  width: 100%;
   height: 40px;
   -moz-box-sizing: border-box;
   /*float: left;*/
@@ -565,8 +570,6 @@ input[type="range"]::-ms-fill-upper {
     overflow-x: auto;
     background-color: #F6F6F6;
     top:-20px;
-    padding: 0px 0px;
-    margin: 0 35px 0 35px;
     height: 140px;
 
 
