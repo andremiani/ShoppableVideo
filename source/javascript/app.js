@@ -284,7 +284,7 @@ app
                 products: []
             });
             cardCounter++;
-            //$scope.productCards[$scope.productCards.length - 1].selected = true;
+            $scope.selectedCard = $scope.productCards.length - 1;
         };
 
         //Add product to a product card
