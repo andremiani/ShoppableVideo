@@ -68,9 +68,9 @@ app
         };
 
 
-        /*$scope.showLibrary = false;
+        $scope.showLibrary = "";
 
-        $scope.showLibrary = function() {
+        /*$scope.showLibrary = function() {
             $scope.showLibrary = true;
         };
 

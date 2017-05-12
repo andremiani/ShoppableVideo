@@ -149,7 +149,7 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
-                    <h3>Products</h3><span ng-bind="selectedCard">Selected card:</span>
+                    <h3>Products</h3><span ng-bind="selectedCard"></span>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" ng-click="showLibrary = true; selectCard($index)"></button>
+                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard()"></button>
+                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard(productCards.$last)"></button>
                 </div>
             </div>
         </div>
