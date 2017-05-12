@@ -84,12 +84,20 @@
                 </div>
 
                 <div class="col-sm-12 video-product-bar">
-
+                    <div id="product-bar-navigation-left">
+                        <div><img id="left-arrow" src="../assets/images/arrow-left.png" alt="Left arrow" style="width:20px;height:20px;"></div>
+                    </div>
+                    <div id="products-container">
                     <ul>
+
                         <li class="video-product-bar-item" ng-repeat="productCard in productCards">
                             <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
                         </li>
                     </ul>
+                    </div>
+                    <div id="product-bar-navigation-right">
+                        <div><img src="../assets/images/arrow-right.png" alt="Right arrow" style="width:20px;height:20px;"></div>
+                    </div>
                 </div>
 
 

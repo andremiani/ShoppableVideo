@@ -563,8 +563,9 @@ input[type="range"]::-ms-fill-upper {
 
 .video-product-bar {
     overflow-x: auto;
-    background-color: #c1c1c1;
+    background-color: #F6F6F6;
     top:-20px;
+    padding: 0px 0px;
     margin: 0 35px 0 35px;
     height: 140px;
 
@@ -578,6 +579,31 @@ input[type="range"]::-ms-fill-upper {
         margin: 0 auto;
     }
 }
+#products-container{}
+#product-bar-navigation-left{
+    height: 140px;
+    width: 40px;
+    background-color: #E2E2E2;
+
+}
+#product-bar-navigation-right{
+    height: 140px;
+    width: 40px;
+    background-color: #E2E2E2;
+    float:left;
+
+}
+#left-arrow{
+   position: absolute;
+   top: 0; bottom:0; left: 0; right:95%;
+   margin: auto;
+}
+#right-arrow{
+   position: absolute;
+   top: 0; bottom:0; left: 95%; right:0;
+   margin: auto;
+}
+
 
 
 .video-product-bar-item {
