@@ -26,7 +26,7 @@ app
                 video.mute = !video.mute;
                 $scope.muteSrc = "../assets/images/speaker.png";
             } else {
-                video.mute = video.mute;
+                video.mute = !video.mute;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };

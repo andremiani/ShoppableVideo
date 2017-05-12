@@ -212,7 +212,7 @@ button:focus {
 
 #myModal {
   z-index: 999999;
-  top: -430px;
+  top: -600px;
 }
 
 .modal-content {
@@ -453,14 +453,12 @@ button:focus {
 }
 
 #progress-button {
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  border-radius: 30px;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -20px;
-  text-decoration: overline;
+  border: 1px solid #fac071;
+  height: 8px;
+  width: 8px;
+  cursor: ew-resize;
+  background: #fac071;
+  box-shadow: -80px 0 0 80px #f69784;
 }
 
 #volume {
