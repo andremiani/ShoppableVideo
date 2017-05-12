@@ -378,6 +378,7 @@ button:focus {
 //Styling for the progressbar of the video
 #controls{
   /*padding-left: 15px;*/
+  top: -40px;
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   width: 605px;
@@ -570,8 +571,8 @@ input[type="range"]::-ms-fill-upper {
 .video-product-bar {
     overflow-x: auto;
     background-color: #c1c1c1;
-    margin-top: 20px;
-    margin: 20px 35px 0 35px;
+    top:-20px;
+    margin: 0 35px 0 35px;
     height: 140px;
 
 

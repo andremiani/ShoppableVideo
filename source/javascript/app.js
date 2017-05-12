@@ -19,6 +19,17 @@ app
         $scope.playPauseSrc = "../assets/images/play.png";
         $scope.muteSrc = "../assets/images/mute.png";
 
+        //Play and pause
+        $scope.toggleMute = function() {
+          //  var playpause = document.getElementById("playpause");
+            if (!video.mute) {
+                video.mute = !video.mute;
+                $scope.muteSrc = "../assets/images/speaker.png";
+            } else {
+                video.mute = video.mute;
+                $scope.muteSrc = "../assets/images/mute.png";
+            }
+        };
 
         //Play and pause
         $scope.togglePlayPause = function() {
