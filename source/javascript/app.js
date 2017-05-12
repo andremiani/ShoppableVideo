@@ -59,6 +59,16 @@ app
             axis: 'y'
         };
 
+        /*$scope.showLibrary = false;
+
+        $scope.showLibrary = function() {
+            $scope.showLibrary = true;
+        };
+
+        $scope.hideLibrary = function() {
+            $scope.showLibrary = false;
+        };*/
+
         // Array to store the products in the library
         $scope.libraryProducts = [{
                 productTitle: 'Smördeg',
@@ -406,8 +416,8 @@ app
                                 thiscssleft = $(this).css('left');
                                 if (thiscssleft == 'auto') thiscssleft = 0; // For IE
 
-                                //posLeftArray[i] = parseInt(thiscssleft);
-                                posLeftArray[i] = parseInt(markerValue);
+                                posLeftArray[i] = parseInt(thiscssleft);
+                                //posLeftArray[i] = parseInt(markerValue);
 
                             });
                         }

@@ -51,6 +51,53 @@
 
 
     <div class="body-wrap container-fluid">
+
+
+        <!--Library with products-->
+        <div id="myModal" class="col-sm-6" ng-show="showLibrary">
+
+          <!-- Modal content-->
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h2 class="modal-title">Library</h2>
+              </div>
+              <hr>
+
+              <div class="modal-body">
+
+                  <div id="modal-input">
+                    <input type="text" class="search" placeholder="Search" ng-model="searchItem">
+                    <select id="categories" ng-model="showCategory" >
+                      <option value="" selected>All categories</option>
+                      <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+
+                    </select>
+                  </div>
+
+                  <ul class="items grid">
+                    <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
+                      <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                        <div class="item-thumb">
+                          <a href="#">
+                            <img ng-src="{{product.imageURL}}"/>
+                          </a>
+                        </div>
+                        <div class="item-txt">
+                          <a href="#">
+                            <h6 ng-bind="product.productTitle"></h6>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn pink close-library" ng-click="showLibrary=false">Close</button>
+                </div>
+              </div>
+        </div>
         <!--Left column-->
         <div class="col-sm-6">
             <div class="row">
@@ -58,7 +105,6 @@
                     <h3>Preview</h3>
                 </div>
             </div>
-
             <!-- Video code-->
             <div class="video-container">
                 <video id="video" controls>
@@ -94,6 +140,7 @@
                 </div>
 
 
+<<<<<<< HEAD
             </div>
 
             <!--Library with products-->
@@ -141,13 +188,16 @@
                     </div>
                 </div>
             </div>
+=======
+        </div>
+>>>>>>> 82eb62db033f7a81fd8074135dd68ca00768534e
         </div>
 
         <!--Right column-->
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <button type="button" class="btn pink" ng-click="showLibrary=true">Library</button>
+                    <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
                     <h3>Products</h3>
                 </div>
             </div>
@@ -212,7 +262,7 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" ng-click="addProduct($index)"></button>
+                                    <button type="button" ng-click="showLibrary = true; addProduct($index)"></button>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +270,7 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="addProductCard()"></button>
+                    <button type="button" ng-click="showLibrary = true; addProductCard()"></button>
                 </div>
             </div>
         </div>

@@ -220,7 +220,8 @@ button:focus {
 //Styling for product library
 #myModal{
   z-index: 999999;
-  top: -600px;
+  /*top: -430px;*/
+  position: absolute;
 }
 
 .modal-content{
@@ -526,11 +527,6 @@ button:focus {
       background: #f69784;
       box-shadow: -80px 0 0 80px #f69784;
     }
-
-
-
-
-
 }
 /** FF*/
 input[type="range"]::-moz-range-progress {
@@ -568,8 +564,8 @@ input[type="range"]::-ms-fill-upper {
 .video-product-bar {
     overflow-x: auto;
     background-color: #c1c1c1;
-    margin-top: 20px;
-    margin: 20px 35px 0 35px;
+    top:-20px;
+    margin: 0 35px 0 35px;
     height: 140px;
 
 
@@ -596,7 +592,7 @@ $c: #888;
 
 .card-container {
 
-    @include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
+    /*@include background-image( linear-gradient(top, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(bottom, #fff, rgba(255, 255, 255, 0)),
     linear-gradient(top, darken($c, 20%), rgba(255, 255, 255, 0)),
     linear-gradient(bottom, darken($c, 20%), rgba(255, 255, 255, 0)) );
@@ -604,7 +600,7 @@ $c: #888;
     background-repeat: no-repeat;
     background-color: white;
     background-size: 100% 5em, 100% 5em, 100% 1em, 100% 1em;
-    background-attachment: local, local, scroll, scroll;
+    background-attachment: local, local, scroll, scroll;*/
     overflow-y: auto;
     max-height: 65vh;
     /*height: 65vh;*/

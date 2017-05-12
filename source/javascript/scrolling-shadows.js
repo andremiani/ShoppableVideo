@@ -18,8 +18,10 @@
       function calcPosition() {
         width = elem.outerWidth();
         height = elem.outerHeight();
+        /*height = elem.css('max-height').replace('vh','');*/
         offset = elem.position();
 
+        /*alert(height);*/
         // update
         shadowTop.css({
           width: width + "px",
