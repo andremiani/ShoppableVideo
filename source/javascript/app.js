@@ -86,7 +86,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Eko',
@@ -95,7 +95,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Lyx',
@@ -104,7 +104,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg Fri.',
@@ -113,7 +113,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg',
@@ -122,7 +122,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg Eko',
@@ -131,7 +131,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Kniv Japansk',

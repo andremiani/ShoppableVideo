@@ -42,7 +42,7 @@
                             <li><a href="#">Remove Shoppable Video</a></li>
                         </ul>
                     </div>
-                    <a href="#" class="btn pink" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
+                    <a href="#" class="btn yellow btn-sm" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
                 </div>
             </div>
         </div>
@@ -50,8 +50,7 @@
     </header>
 
 
-    <div class="body-wrap container-fluid" ng-cloak>
-
+    <div class="body-wrap container-fluid">
 
         <!--Library with products-->
         <div id="myModal" class="col-sm-6" ng-show="showLibrary">
@@ -60,9 +59,8 @@
             <div class="modal-content">
 
               <div class="modal-header">
-                <h2 class="modal-title">Library</h2>
+                <h4 class="modal-title">Library</h4>
               </div>
-              <hr>
 
               <div class="modal-body">
 
@@ -76,16 +74,16 @@
                   </div>
 
                   <ul class="items grid">
-                    <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                      <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item)" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                    <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
+                      <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                         <div class="item-thumb">
                           <a href="#">
-                            <img ng-src="{{item.imageURL}}"/>
+                            <img ng-src="{{product.imageURL}}"/>
                           </a>
                         </div>
                         <div class="item-txt">
                           <a href="#">
-                            <h6 ng-bind="item.productTitle"></h6>
+                            <h6 ng-bind="product.productTitle"></h6>
                           </a>
                         </div>
                       </div>
@@ -94,15 +92,16 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn pink close-library" ng-click="showLibrary=false">Close</button>
+                  <button type="button" class="btn yellow close-library" ng-click="showLibrary=false">Close</button>
                 </div>
               </div>
         </div>
+
         <!--Left column-->
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <h3>Preview</h3>
+                    <h4>Preview</h4>
                 </div>
             </div>
             <!-- Video code-->
@@ -133,7 +132,7 @@
             <div class="col-sm-12 video-product-bar">
 
             <ul>
-                <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
+                <li class="video-product-bar-item" ng-repeat="productCard in productCards">
                     <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
 
                 </li>
@@ -149,13 +148,13 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
-                    <h3>Products</h3><span ng-bind="selectedCard"></span>
+                    <h4>Products</h4>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
-                    <div ng-repeat="productCard in productCards track by $index" ng-class="{'last' : $last && productCards.length > 3}">
+                    <div ng-repeat="productCard in productCards" ng-class="{'last' : $last && productCards.length > 3}">
                         <div class="product-card">
                             <div class="col-sm-3 product-card-thumb">
                                 <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
@@ -181,7 +180,7 @@
                         <div uib-collapse="!isCollapsed">
                             <div class="well well-sm product-card-well" ui-sortable="sortableProductOptions" ng-model="productCard.products">
 
-                                <div ng-repeat="product in productCard.products track by $index">
+                                <div ng-repeat="product in productCard.products">
                                     <div class="product">
                                         <div class="col-sm-2 product-thumb">
                                             <img class="product-image" ng-src="{{product.imageURL}}" alt="product image" style="background-color: #FFB86F">
@@ -213,7 +212,7 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
+                                    <button type="button" ng-click="showLibrary = true; addProduct($index)"></button>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +220,7 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard(productCards.$last)"></button>
+                    <button type="button" ng-click="showLibrary = true; addProductCard()"></button>
                 </div>
             </div>
         </div>
