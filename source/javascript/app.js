@@ -268,8 +268,6 @@ app
             axis: 'y'
         };
 
-
-
         // Add productCard to the end of the array
         var addProductCard = function() {
             $scope.productCards.push({
@@ -359,6 +357,20 @@ app
         }*/
 
     }])
+    .directive('popoverhtml', function ($compile) {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, el, attrs) {
+                  $(el).popover({
+                      trigger: 'click',
+                      html: true,
+                      content: attrs.popoverHtml,
+                      placement: attrs.popoverPlacement
+                  });
+              }
+          };
+    })
     .directive('slider', function() {
         return {
             restrict: 'A',
