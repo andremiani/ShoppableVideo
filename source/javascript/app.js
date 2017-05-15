@@ -4,7 +4,6 @@ var app = angular.module('shoppableVideo', ['ngAnimate', 'ngSanitize', 'ui.boots
 app
     .controller('AppCtrl', ['$scope', function($scope) {
 
-
         // Card counter, used for card naming
         var cardCounter = 1;
 
@@ -14,7 +13,6 @@ app
 
         // Variable for the video title
         $scope.videoTitle = "";
-
 
         $scope.playPauseSrc = "../assets/images/play.png";
         $scope.muteSrc = "../assets/images/mute.png";
@@ -85,7 +83,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Eko',
@@ -94,7 +92,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Lyx',
@@ -103,7 +101,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg Fri.',
@@ -112,7 +110,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg',
@@ -121,7 +119,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Ägg Eko',
@@ -130,7 +128,7 @@ app
                 specialOffer: "",
                 buttonText: "",
                 targetGroup: "",
-                category: "Edibles"
+                category: "Eatables"
             },
             {
                 productTitle: 'Kniv Japansk',
@@ -276,8 +274,6 @@ app
             axis: 'y'
         };
 
-
-
         // Add productCard to the end of the array
         var addProductCard = function() {
             $scope.productCards.push({
@@ -286,7 +282,7 @@ app
                 products: []
             });
             cardCounter++;
-            //$scope.productCards[$scope.productCards.length - 1].selected = true;
+            $scope.selectedCard = $scope.productCards.length - 1;
         };
 
         //Add product to a product card
@@ -367,6 +363,20 @@ app
         }*/
 
     }])
+    .directive('popoverhtml', function ($compile) {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, el, attrs) {
+                  $(el).popover({
+                      trigger: 'click',
+                      html: true,
+                      content: attrs.popoverHtml,
+                      placement: attrs.popoverPlacement
+                  });
+              }
+          };
+    })
     .directive('slider', function() {
         return {
             restrict: 'A',

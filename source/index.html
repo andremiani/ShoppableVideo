@@ -42,7 +42,7 @@
                             <li><a href="#">Remove Shoppable Video</a></li>
                         </ul>
                     </div>
-                    <a href="#" class="btn pink" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
+                    <a href="#" class="btn yellow btn-sm" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
                 </div>
             </div>
         </div>
@@ -50,8 +50,7 @@
     </header>
 
 
-    <div class="body-wrap container-fluid" ng-cloak>
-
+    <div class="body-wrap container-fluid">
 
         <!--Library with products-->
         <div id="myModal" class="col-sm-6" ng-show="showLibrary">
@@ -60,9 +59,8 @@
             <div class="modal-content">
 
               <div class="modal-header">
-                <h2 class="modal-title">Library</h2>
+                <h4 class="modal-title">Library</h4>
               </div>
-              <hr>
 
               <div class="modal-body">
 
@@ -94,15 +92,16 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn pink close-library" ng-click="showLibrary=false">Close</button>
+                  <button type="button" class="btn yellow close-library" ng-click="showLibrary=false">Close</button>
                 </div>
               </div>
         </div>
+
         <!--Left column-->
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <h3>Preview</h3>
+                    <h4>Preview</h4>
                 </div>
             </div>
             <!-- Video code-->
@@ -147,7 +146,6 @@
                 <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
           </div>
 
-
         </div>
 
 
@@ -159,14 +157,14 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
-                    <h3>Products</h3><span ng-bind="selectedCard"></span>
+                    <h4>Products</h4>
                 </div>
             </div>
 
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
-                    <div ng-repeat="productCard in productCards track by $index" ng-class="{'last' : $last && productCards.length > 3}">
-                        <div class="product-card">
+                    <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
+                        <div class="product-card" ng-class="{'product-card-hightlight': $index === selectedCard}">
                             <div class="col-sm-3 product-card-thumb">
                                 <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: #FFB86F">
@@ -191,7 +189,7 @@
                         <div uib-collapse="!isCollapsed">
                             <div class="well well-sm product-card-well" ui-sortable="sortableProductOptions" ng-model="productCard.products">
 
-                                <div ng-repeat="product in productCard.products track by $index">
+                                <div ng-repeat="product in productCard.products">
                                     <div class="product">
                                         <div class="col-sm-2 product-thumb">
                                             <img class="product-image" ng-src="{{product.imageURL}}" alt="product image" style="background-color: #FFB86F">
@@ -201,7 +199,7 @@
                                             <span class="default-product" ng-if="$index == 0">(Default)</span>
                                         </div>
                                         <div class="col-sm-2 product-card-toggle">
-                                            <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProduct($parent.$index, $event, $index)"></button>
+                                            <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProduct(productCardIndex, $event, $index)"></button>
                                             <button type="button" ng-class="{'glyphicon glyphicon-chevron-down': isProductCollapsed, 'glyphicon glyphicon-chevron-right': !isProductCollapsed }" ng-click="isProductCollapsed = !isProductCollapsed"></button>
                                         </div>
                                     </div>
@@ -231,12 +229,11 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard(productCards.$last)"></button>
+                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- include the JavaScript dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
