@@ -26,7 +26,7 @@ app
                 video.mute = !video.mute;
                 $scope.muteSrc = "../assets/images/speaker.png";
             } else {
-                video.mute = !video.mute;
+                video.mute = video.mute;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };
@@ -68,12 +68,11 @@ app
         };
 
 
-        /*$scope.showLibrary = false;
+        $scope.showLibrary = "";
 
-        $scope.showLibrary = function() {
+        /*$scope.showLibrary = function() {
             $scope.showLibrary = true;
         };
-
         $scope.hideLibrary = function() {
             $scope.showLibrary = false;
         };*/

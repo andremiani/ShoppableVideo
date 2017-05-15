@@ -248,7 +248,6 @@ button:focus {
   border-color: transparent transparent transparent #000000;
   border-style: solid;
   border-width: 30px;
-
 }
 */
 
@@ -369,7 +368,6 @@ button:focus {
   bottom: 0;
   right: 0;
 }
-
 //END styling product library
 
 //Styling for video
@@ -383,7 +381,7 @@ button:focus {
 //Styling for the progressbar of the video
 #controls{
   /*padding-left: 15px;*/
-  top: -40px;
+  top: -45px;
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   width: 100%;
@@ -393,9 +391,9 @@ button:focus {
   position: relative;
 
 
-  display:flex;
-  align-items: center;
-  margin: 0 auto;
+    display:flex;
+    align-items: center;
+    margin: 0 auto;
   /*margin-left: 15px;*/
   /*bottom: 8px;*/
   z-index: 2;
@@ -470,12 +468,14 @@ button:focus {
 }
 
 #progress-button {
-  border: 1px solid #fac071;
-  height: 8px;
-  width: 8px;
-  cursor: ew-resize;
-  background: #fac071;
-  box-shadow: -80px 0 0 80px #f69784;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  border-radius: 30px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -20px;
+  text-decoration: overline;
 }
 #volume{
     flex:2;
@@ -532,6 +532,11 @@ button:focus {
       background: #f69784;
       box-shadow: -80px 0 0 80px #f69784;
     }
+
+
+
+
+
 }
 /** FF*/
 input[type="range"]::-moz-range-progress {
@@ -560,19 +565,17 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .video-container {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 
 .video-product-bar {
-    overflow-x: auto;
+
     background-color: #F6F6F6;
     top:-20px;
-    height: 140px;
-
-
+    height: 150px;
+    padding: 0px 0px;
 
     &ul {
         display: inline;
@@ -580,33 +583,52 @@ input[type="range"]::-ms-fill-upper {
         height: 140px;
         width: 140px;
         margin: 0 auto;
+
     }
 }
-#products-container{}
-#product-bar-navigation-left{
-    height: 140px;
-    width: 40px;
-    background-color: #E2E2E2;
+
+#productCardsShowing{
+  width: 25%;
+}
+.video-product-bar-left{
+  width: 5%;
+  height: 140px;
+  background: #E2E2E2;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+
+
+
 
 }
-#product-bar-navigation-right{
-    height: 140px;
-    width: 40px;
-    background-color: #E2E2E2;
-    float:left;
+.video-product-bar-right{
+  width: 5%;
+  height: 140px;
+  background: #E2E2E2;
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.arrows {
+    position: absolute;
+    top: 0; bottom:0;
+    margin: auto;
+    width: 4%;
+    padding-left: 1%;
 
 }
-#left-arrow{
-   position: absolute;
-   top: 0; bottom:0; left: 0; right:95%;
-   margin: auto;
-}
-#right-arrow{
-   position: absolute;
-   top: 0; bottom:0; left: 95%; right:0;
-   margin: auto;
-}
 
+.video-product-bar-content{
+  width: 87%;
+  height: 140px;
+  background: #F6F6F6;
+  display: inline-block;
+  overflow-x: auto;
+  margin-top: 5px;
+  overflow-y: hidden;
+
+}
 
 
 .video-product-bar-item {

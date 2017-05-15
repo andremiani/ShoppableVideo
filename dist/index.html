@@ -50,9 +50,6 @@
     </header>
 
 
-<<<<<<< HEAD
-    <div class="body-wrap container-fluid">
-=======
     <div class="body-wrap container-fluid" ng-cloak>
 
 
@@ -101,7 +98,6 @@
                 </div>
               </div>
         </div>
->>>>>>> 0378624fae73d97ea2b81006e28a0a069e37b2ff
         <!--Left column-->
         <div class="col-sm-6">
             <div class="row">
@@ -109,115 +105,61 @@
                     <h3>Preview</h3>
                 </div>
             </div>
-
             <!-- Video code-->
-            <div class="video-container">
-                <video id="video" controls>
+        <div class="video-container">
+            <video id = "video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
-                <script>
-                    // Turn off the default controls
-                    var video = document.getElementById("video");
-                    video.controls = false;
-                </script>
-                <div id="controls">
-                    <div id="play">
-                        <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
-                    </div>
-                    <div id="progressBar">
-                        <div id="progress">
-                            <div class="button-holder"></div>
-                            <div class="progress-button"> </div>
-                        </div>
-                    </div>
-                    <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
-                    <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
-                </div>
-
-                <div class="col-sm-12 video-product-bar">
-                    <div id="product-bar-navigation-left">
-                        <div><img id="left-arrow" src="../assets/images/arrow-left.png" alt="Left arrow" style="width:20px;height:20px;"></div>
-                    </div>
-                    <div id="products-container">
-                    <ul>
-
-                        <li class="video-product-bar-item" ng-repeat="productCard in productCards">
-                            <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
-                        </li>
-                    </ul>
-                    </div>
-                    <div id="product-bar-navigation-right">
-                        <div><img src="../assets/images/arrow-right.png" alt="Right arrow" style="width:20px;height:20px;"></div>
-                    </div>
-                </div>
-
-
+            <script>
+                // Grab a handle to the video
+                var video = document.getElementById("video");
+                // Turn off the default controls
+                video.controls = false;
+            </script>
+            <div id="controls">
+                <div id="play">
+                 <button id="playpause"  ng-click="togglePlayPause()" > <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
+                 </div>
+                 <div id="progressBar">
+                     <div id="progress">
+                       <div class="button-holder"></div>
+                       <div class="progress-button"> </div>
+                     </div>
+                 </div>
+                 <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
+                 <button id="mute" ng-click="toggleMute()" > <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
             </div>
 
-            <!--Library with products-->
-            <div id="myModal" class="col-sm-12" ng-show="showLibrary">
+            <div class="col-sm-12 video-product-bar">
 
-<<<<<<< HEAD
-                <!-- Modal content-->
-                <div class="modal-content">
-=======
-            <ul>
-                <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
-                    <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
->>>>>>> 0378624fae73d97ea2b81006e28a0a069e37b2ff
-
-                    <div class="modal-header">
-                        <h2 class="modal-title">Library</h2>
-                    </div>
-                    <hr>
-
-                    <div class="modal-body">
-
-                        <div id="modal-input">
-                            <input type="text" class="search" placeholder="Search" ng-model="searchItem">
-                            <select id="categories" ng-model="showCategory">
-                          <option value="" selected>All categories</option>
-                          <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
-
-                        </select>
-                        </div>
-
-                        <ul class="items grid">
-                            <li ng-repeat="product in libraryProducts | filter:searchItem | filter:showCategory">
-                                <div class="item" ng-click="selected = !selected" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
-                                    <div class="item-thumb">
-                                        <a href="#">
-                                            <img ng-src="{{product.imageURL}}" />
-                                        </a>
-                                    </div>
-                                    <div class="item-txt">
-                                        <a href="#">
-                                            <h6 ng-bind="product.title"></h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn pink close-library" ng-click="showLibrary=false">Close</button>
-                    </div>
-                </div>
+            <div class="video-product-bar-left">
+                <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
             </div>
+            <div class="video-product-bar-content">
+            <ul class="video-bar-showing-product">
+            <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
+              <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
+
+            </li><!--
+            --></ul>
+            </div>
+          <div class="video-product-bar-right">
+                <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
+          </div>
+
+
+        </div>
+
+
+        </div>
         </div>
 
         <!--Right column-->
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-<<<<<<< HEAD
-                    <button type="button" class="btn pink" ng-click="showLibrary=true">Library</button>
-                    <h3>Products</h3>
-=======
                     <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
-                    <h3>Products</h3><span ng-bind="selectedCard">Selected card:</span>
->>>>>>> 0378624fae73d97ea2b81006e28a0a069e37b2ff
+                    <h3>Products</h3><span ng-bind="selectedCard"></span>
                 </div>
             </div>
 
@@ -229,17 +171,17 @@
                                 <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: #FFB86F">
                             </div>
-                            <div class="timeline">
-                                <div class="product-timeline">
-                                    <div class="marker group" marker></div>
-                                    <div class="product-bar ui-widget-content" slider>
-                                        <span class="seg-start">00:00:00</span>
-                                        <span class="seg-end">00:00:15</span>
-                                        <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
-                                        </span>
+                                <div class="timeline">
+                                    <div class="product-timeline">
+                                        <div class="marker group" marker></div>
+                                        <div class="product-bar ui-widget-content" slider>
+                                            <span class="seg-start">00:00:00</span>
+                                            <span class="seg-end">00:00:15</span>
+                                            <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <div class="timeline-block timeline-btns">
                                 <button type="button" class="glyphicon glyphicon-plus add-timeline" ng-click="addTimeline($this)"></button>
                                 <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProductCard($event, $index)"></button>
@@ -281,11 +223,7 @@
                                 </div>
 
                                 <div class="product-add">
-<<<<<<< HEAD
-                                    <button type="button" ng-click="addProduct($index)"></button>
-=======
-                                    <button type="button" ng-click="showLibrary = true; selectCard($index)"></button>
->>>>>>> 0378624fae73d97ea2b81006e28a0a069e37b2ff
+                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
                                 </div>
                             </div>
                         </div>
@@ -293,11 +231,7 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-<<<<<<< HEAD
-                    <button type="button" ng-click="addProductCard()"></button>
-=======
-                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard()"></button>
->>>>>>> 0378624fae73d97ea2b81006e28a0a069e37b2ff
+                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard(); selectCard(productCards.$last)"></button>
                 </div>
             </div>
         </div>
