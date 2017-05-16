@@ -136,8 +136,18 @@
             </div>
             <div class="video-product-bar-content">
             <ul class="video-bar-showing-product">
+
             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
-              <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
+
+
+              <div class="container">
+              <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" >
+              <div class="overlay">
+                 <div class="ProductText"> <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5> <hr> <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5></div>
+              </div>
+              </div>
+
+
 
             </li><!--
             --></ul>
