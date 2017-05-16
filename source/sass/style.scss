@@ -452,21 +452,7 @@ button:focus {
    z-index: 999;
    width: 0;
 }
-#button-holder {
-  position: relative;
-  margin-left: 50px;
-}
 
-#progress-button {
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  border-radius: 30px;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: -20px;
-  text-decoration: overline;
-}
 #volume{
     flex:2;
   /*margin-top: 17px;*/
@@ -522,11 +508,6 @@ button:focus {
       background: #f69784;
       box-shadow: -80px 0 0 80px #f69784;
     }
-
-
-
-
-
 }
 /** FF*/
 input[type="range"]::-moz-range-progress {
@@ -542,7 +523,6 @@ input[type="range"]::-ms-fill-lower {
 input[type="range"]::-ms-fill-upper {
   background-color: white;
 }
-
 
 .column-header {
     text-align: center;

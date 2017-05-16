@@ -339,18 +339,6 @@ app
         }
 
 
-        var seekBar = document.getElementById("progress");
-
-
-        // Update the seek bar as the video plays
-        video.addEventListener("timeupdate", function() {
-            // Calculate the slider value
-            var value = (100 / video.duration) * video.currentTime;
-
-            // Update the slider value
-            seekBar.value = value;
-        });
-
         // Initialize the scope functions
         $scope.addProductCard = addProductCard;
         $scope.addProduct = addProduct;
