@@ -120,7 +120,7 @@
                  <button id="playpause"  ng-click="togglePlayPause()" > <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
                  </div>
                  <div id="progressBar">
-                     <div id="progress">                
+                     <div id="progress">
                      </div>
                  </div>
                  <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
@@ -137,8 +137,7 @@
 
             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
 
-
-              <div class="container">
+              <div class="container" ng-if="productCard.products.length > 0">
               <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" >
               <div class="overlay">
                  <div class="ProductText"> <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5> <hr> <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5></div>
@@ -174,9 +173,12 @@
                         <div class="product-card" ng-class="{'product-card-hightlight': $index === selectedCard}">
                             <div class="product-card-thumb">
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
-                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" src="../assets/images/insertpicture.png" >
+                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png" >
+                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png" >
                             </div>
                                 <div class="timeline">
+                                  <div id="progress">
+                                  </div>
                                     <div class="product-timeline">
                                         <div class="marker group" marker></div>
                                         <div class="product-bar ui-widget-content" slider>
@@ -236,7 +238,7 @@
                                                 </tr>
                                                 <tr>
                                                   <th></th>
-                                                  <td style="padding: 2px 5px;"><input type="checkbox" id="default"/><label for="y" style="font-weight:normal;">Set as default product</label></td>
+                                                  <td style="padding: 2px 5px;"><input type="checkbox" id="default"/><label style="font-weight:normal;">Set as default product</label></td>
 
 
                                                 </tr>
@@ -244,7 +246,7 @@
 
                                             </div>
                                             <div class="col-sm-3" style="padding: 0 20px 0 0;">
-                                                <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                                <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image">
                                                 <button type="button" class="btn pink">Save</button>
                                             </div>
 

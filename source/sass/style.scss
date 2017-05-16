@@ -238,7 +238,7 @@ button:focus {
 #myModal{
   z-index: 999999;
   position: absolute;
-  padding: 0;
+  padding: 0px -15px;
   bottom: 0;
   top: 50px;
 }
@@ -562,10 +562,13 @@ input[type="range"]::-ms-fill-upper {
 
 #productCardsShowing{
   width: 100%;
+  max-height: 137px;
+  max-width: 137px;
   }
 
   .container{
     width: 25%;
+    max-height: 140px;
     position: relative;
     white-space: nowrap;
     display: inline-block;
@@ -653,6 +656,8 @@ input[type="range"]::-ms-fill-upper {
   margin-top: 5px;
   margin-bottom: 5px;
   overflow-y: hidden;
+  position: absolute;
+  z-index: 0;
 
 }
 .video-product-bar-content::-webkit-scrollbar {
@@ -1077,7 +1082,9 @@ span {
     height: $productHeight;
     border: 1px solid #e4e4e4;
     background-color: #f4f4f4;
-
+}
+.ui-sortable-handle{
+  cursor: pointer;
 }
 
 .product span{
@@ -1196,37 +1203,6 @@ span {
   width: 10px;
   margin: 5px 5px 0 0;
 }
-/*
-input[type=checkbox]{
-  -webkit-appearance: none;
-background-color: #fafafa;
-border: 1px solid #cacece;
-box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-padding: 5px;
-border-radius: 3px;
-display: inline-block;
-position: relative;
-}
-
-input[type=checkbox]:checked:active {
-	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-input[type=checkbox]:checked {
-	background-color: #e9ecee;
-	border: 1px solid #adb8c0;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
-	color: #99a1a7;
-}
-
-input[type=checkbox]:checked:after {
-	content: '\2714';
-	font-size: 8px;
-	position: absolute;
-	top: 0px;
-	left: 3px;
-	color: #99a1a7;
-}*/
 
 .product-collapse button {
     float: right;
