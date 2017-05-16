@@ -131,12 +131,31 @@
 
             <div class="col-sm-12 video-product-bar">
 
-            <ul>
-                <li class="video-product-bar-item" ng-repeat="productCard in productCards">
-                    <img ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
+            <div class="video-product-bar-left">
+                <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
+            </div>
+            <div class="video-product-bar-content">
+            <ul class="video-bar-showing-product">
 
-                </li>
-            </ul>
+            <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
+
+
+              <div class="container">
+              <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" >
+              <div class="overlay">
+                 <div class="ProductText"> <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5> <hr> <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5></div>
+              </div>
+              </div>
+
+
+
+            </li><!--
+            --></ul>
+            </div>
+          <div class="video-product-bar-right">
+                <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
+          </div>
+
         </div>
 
 
@@ -249,7 +268,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- include the JavaScript dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -4,7 +4,6 @@ var app = angular.module('shoppableVideo', ['ngAnimate', 'ngSanitize', 'ui.boots
 app
     .controller('AppCtrl', ['$scope', function($scope) {
 
-
         // Card counter, used for card naming
         var cardCounter = 1;
 
@@ -72,7 +71,6 @@ app
         /*$scope.showLibrary = function() {
             $scope.showLibrary = true;
         };
-
         $scope.hideLibrary = function() {
             $scope.showLibrary = false;
         };*/
@@ -83,7 +81,7 @@ app
                 imageURL: '../assets/images/Smordeg-01.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -92,7 +90,7 @@ app
                 imageURL: '../assets/images/Smordeg2-01.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -101,7 +99,7 @@ app
                 imageURL: '../assets/images/Smordeg3.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -110,7 +108,7 @@ app
                 imageURL: '../assets/images/Ägg - Frigående.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -119,7 +117,7 @@ app
                 imageURL: '../assets/images/Ägg-Vanlig.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -128,7 +126,7 @@ app
                 imageURL: '../assets/images/Ägg-eko.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Eatables"
             },
@@ -137,7 +135,7 @@ app
                 imageURL: '../assets/images/Kniv-Avancerad.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -146,7 +144,7 @@ app
                 imageURL: '../assets/images/Kniv-Barn.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -155,7 +153,7 @@ app
                 imageURL: '../assets/images/Kniv-Större-01.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -164,7 +162,7 @@ app
                 imageURL: '../assets/images/Förkläde-läder-01.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Others"
             },
@@ -173,7 +171,7 @@ app
                 imageURL: '../assets/images/Förkläde-Tyg.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Others"
             },
@@ -182,7 +180,7 @@ app
                 imageURL: '../assets/images/Äggklocka.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Others"
             },
@@ -191,7 +189,7 @@ app
                 imageURL: '../assets/images/pensel-silicon.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -200,7 +198,7 @@ app
                 imageURL: '../assets/images/kavel-rund.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -209,7 +207,7 @@ app
                 imageURL: '../assets/images/kavel-barn.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -218,7 +216,7 @@ app
                 imageURL: '../assets/images/Kavel.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -227,7 +225,7 @@ app
                 imageURL: '../assets/images/stekpanna-gjutjärn.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -236,7 +234,7 @@ app
                 imageURL: '../assets/images/Stekpanna.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -245,7 +243,7 @@ app
                 imageURL: '../assets/images/pensel-med-kniv.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             },
@@ -254,7 +252,7 @@ app
                 imageURL: '../assets/images/pensel-trä.png',
                 link: "",
                 specialOffer: "",
-                buttonText: "",
+                buttonText: "Buy now",
                 targetGroup: "",
                 category: "Tools"
             }

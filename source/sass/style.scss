@@ -375,7 +375,7 @@ input[type=text]:focus{
 //Styling for the progressbar of the video
 #controls{
   /*padding-left: 15px;*/
-  top: -40px;
+  top: -45px;
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   width: 100%;
@@ -565,12 +565,11 @@ input[type="range"]::-ms-fill-upper {
 
 
 .video-product-bar {
-    overflow-x: auto;
-    background-color: #c1c1c1;
+
+    background-color: #F6F6F6;
     top:-20px;
-    height: 140px;
-
-
+    height: 150px;
+    padding: 0px 0px;
 
     &ul {
         display: inline;
@@ -581,10 +580,109 @@ input[type="range"]::-ms-fill-upper {
     }
 }
 
+#productCardsShowing{
+  width: 100%;
+  }
+
+  .container{
+    width: 25%;
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0px 0px;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+  }
+  .container:hover .overlay {
+    height: 50%;
+  }
+
+  .ProductText{
+    white-space: nowrap;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  .ProductText .productTitle{
+    margin-top: 0px;
+    -webkit-animation: 4s linear;
+  }
+  .ProductText .buttonText{
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  hr{
+    height:1px;
+    padding: 0px;
+    margin: 0px;
+
+    transition: all .3s ease-in-out;
+}
+
+.video-product-bar-left{
+  width: 5%;
+  height: 150px;
+  background: #F6F6F6;
+  display: inline-block;
+
+}
+.video-product-bar-right{
+  width: 5%;
+  height: 150px;
+  background:#F6F6F6;
+  float: right;
+
+}
+.video-product-bar-left:hover {
+  background:#E2E2E2;
+}
+.video-product-bar-right:hover {
+  background: #E2E2E2;
+}
+
+.arrows {
+    position: absolute;
+    top: 0; bottom:0;
+    margin: auto;
+    width: 4%;
+    padding-left: 1%;
+}
+
+.video-product-bar-content{
+  width: 89%;
+  height: 140px;
+  background: #F6F6F6;
+  display: inline-block;
+  overflow-x: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow-y: hidden;
+
+}
+.video-product-bar-content::-webkit-scrollbar {
+    display: none;
+}
 
 .video-product-bar-item {
     white-space: nowrap;
     display: inline;
+
 }
 
 
@@ -993,7 +1091,6 @@ span {
     height: auto !important;
 }
 */
-
 .product {
     display: flex;
     align-items: center;
