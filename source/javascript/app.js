@@ -79,185 +79,189 @@ app
         $scope.libraryProducts = [{
                 productTitle: 'Smördeg',
                 imageURL: '../assets/images/Smordeg-01.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Budget #Familj #Barn",
                 category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Eko',
                 imageURL: '../assets/images/Smordeg2-01.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Eko #Klimatsmart #Närodlat",
                 category: "Eatables"
             },
             {
                 productTitle: 'Smördeg Lyx',
                 imageURL: '../assets/images/Smordeg3.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Finsmakare #Kvalitet",
                 category: "Eatables"
             },
             {
                 productTitle: 'Ägg Fri.',
                 imageURL: '../assets/images/Ägg - Frigående.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Djurvän",
                 category: "Eatables"
             },
             {
                 productTitle: 'Ägg',
                 imageURL: '../assets/images/Ägg-Vanlig.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Familj #Budget",
                 category: "Eatables"
             },
             {
                 productTitle: 'Ägg Eko',
                 imageURL: '../assets/images/Ägg-eko.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Eko #Klimatsmart #Närodlat",
                 category: "Eatables"
             },
             {
                 productTitle: 'Kniv Japansk',
                 imageURL: '../assets/images/Kniv-Avancerad.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Kvalitet",
                 category: "Tools"
             },
             {
                 productTitle: 'Kniv Barn',
                 imageURL: '../assets/images/Kniv-Barn.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Familj #Barn",
                 category: "Tools"
             },
             {
                 productTitle: 'Kniv Stor',
                 imageURL: '../assets/images/Kniv-Större-01.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Matlagare",
                 category: "Tools"
             },
             {
                 productTitle: 'Förkläde Brun',
                 imageURL: '../assets/images/Förkläde-läder-01.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Trend #Modern",
                 category: "Others"
             },
             {
                 productTitle: 'Förkläde Tyg',
                 imageURL: '../assets/images/Förkläde-Tyg.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Klassisk",
                 category: "Others"
             },
             {
                 productTitle: 'Äggklocka',
                 imageURL: '../assets/images/Äggklocka.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Traditionell",
                 category: "Others"
             },
             {
                 productTitle: 'Pensel Silikon',
                 imageURL: '../assets/images/pensel-silicon.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Modern",
                 category: "Tools"
             },
             {
                 productTitle: 'Kavel rund',
                 imageURL: '../assets/images/kavel-rund.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Modern",
                 category: "Tools"
             },
             {
                 productTitle: 'Kavel Barn',
                 imageURL: '../assets/images/kavel-barn.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Familj #Barn",
                 category: "Tools"
             },
             {
                 productTitle: 'Kavel',
                 imageURL: '../assets/images/Kavel.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Traditionell",
                 category: "Tools"
             },
             {
                 productTitle: 'Gjutjärn',
                 imageURL: '../assets/images/stekpanna-gjutjärn.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Familj #Traditionell",
                 category: "Tools"
             },
             {
                 productTitle: 'Stekpanna',
                 imageURL: '../assets/images/Stekpanna.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Modern #Familj",
                 category: "Tools"
             },
             {
                 productTitle: 'Multipensel',
                 imageURL: '../assets/images/pensel-med-kniv.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Familj #Multi",
                 category: "Tools"
             },
             {
                 productTitle: 'Pensel Trä',
                 imageURL: '../assets/images/pensel-trä.png',
-                link: "",
-                specialOffer: "",
+                link: "http:www...",
+                specialOffer: "20% Sale",
                 buttonText: "Buy now",
-                targetGroup: "",
+                targetGroup: "#Traditionell #Miljövänlig",
                 category: "Tools"
             }
 
         ];
+
+        $scope.updateProduct=function(product, title){
+          product.productTitle = title;
+        }
 
         // Array that store all the categories that are used in the dropdown-list
         $scope.categories = [];
