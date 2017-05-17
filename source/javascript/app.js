@@ -69,6 +69,11 @@ app
 
         $scope.showLibrary = "";
 
+        $scope.setTriangleHeight = function(index){
+            var pos = $scope.productCards[index].position.top + $scope.productCards[index].height;
+            alert(pos);
+        };
+
         /*$scope.showLibrary = function() {
             $scope.showLibrary = true;
         };
@@ -368,16 +373,19 @@ app
         }*/
 
     }])
-    .directive('popoverhtml', function ($compile) {
+    .directive('popover', function ($compile) {
       return {
               restrict: 'A',
               scope: true,
-              link: function (scope, el, attrs) {
-                  $(el).popover({
-                      trigger: 'click',
-                      html: true,
-                      content: attrs.popoverHtml,
-                      placement: attrs.popoverPlacement
+              link: function (scope, elem, attrs) {
+                  $(elem).on('isOpen', function () {
+                      var positionTop = parseInt($('.product-card').position().top + 30);
+                      var positionLeft = parseInt($(this).position().left + $(this).width - 20);
+                      var x = pos2 - position + 5;
+                      /*if (popoverheight < x)
+                      x = popoverheight;*/
+                      $('.product-card-hightlight').css('top', positionTop + 'px');
+
                   });
               }
           };
