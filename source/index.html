@@ -75,7 +75,7 @@
 
                     <ul class="items grid">
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                            <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item)" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                            <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item) " ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                                 <div class="item-thumb">
                                     <a href="#">
                                         <img ng-src="{{item.imageURL}}" />
@@ -98,7 +98,7 @@
         </div>
 
         <!--Left column-->
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="padding-left: 30px;">
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <h4>Preview</h4>
@@ -173,6 +173,7 @@
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
+
                         <div class="product-card" ng-class="{'product-card-hightlight': $index === selectedCard}">
                             <div class="product-card-thumb">
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
@@ -200,7 +201,7 @@
                             <div class="product-card-well col-sm-12" ui-sortable="sortableProductOptions" ng-model="productCard.products">
 
                                 <div ng-repeat="product in productCard.products">
-                                    <div class="product">
+                                    <div class="product" ng-click="isProductCollapsed = !isProductCollapsed">
                                         <div class="product-thumb">
                                             <img class="product-image" ng-src="{{product.imageURL}}" alt="product image">
                                         </div>
@@ -210,7 +211,7 @@
                                         </div>
                                         <div class="product-toggle">
                                             <button type="button" class="delete-product" ng-click="removeProduct(productCardIndex, $event, $index)"><img src="../assets/images/bin.png"></button>
-                                            <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }" ng-click="isProductCollapsed = !isProductCollapsed"></button>
+                                            <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }" ></button>
                                         </div>
                                     </div>
                                     <div uib-collapse="!isProductCollapsed">
@@ -224,19 +225,19 @@
                                                         </tr>
                                                         <tr>
                                                             <th>Link</th>
-                                                            <td><input type="text" value="{{product.link}}"></td>
+                                                            <td><input type="text" ng-model="product.link"></td>
                                                         </tr>
                                                         <tr>
                                                             <th>Special offer</th>
-                                                            <td><input type="text" value="{{product.specialOffer}}"></td>
+                                                            <td><input type="text" ng-model="product.specialOffer"></td>
                                                         </tr>
                                                         <tr>
                                                             <th>Button Text</th>
-                                                            <td><input type="text" value="{{product.buttonText}}"></td>
+                                                            <td><input type="text" ng-model="product.buttonText"></td>
                                                         </tr>
                                                         <tr>
                                                             <th>Target Group</th>
-                                                            <td><input type="text" value="{{product.targetGroup}}"></td>
+                                                            <td><input type="text" ng-model="product.targetGroup"></td>
                                                         </tr>
                                                         <!--<tr>
                                                   <th></th>

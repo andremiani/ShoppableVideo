@@ -56,7 +56,7 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
-        
+
 
         //Variable to toggle the active product card
         $scope.selectedCard = 0;
@@ -260,9 +260,6 @@ app
 
         ];
 
-        $scope.updateProduct=function(product, title){
-          product.productTitle = title;
-        }
 
         // Array that store all the categories that are used in the dropdown-list
         $scope.categories = [];
@@ -279,6 +276,20 @@ app
             axis: 'y'
         };
 
+        /*
+        $scope.setCollapsed = function(index){
+          for (var i = 0; i < $scope.productCards[index].products.length; i++) {
+            if(i == ($scope.productCards[index].products.length-1)){
+
+              sProductCollapsed=true;
+            }
+            else{
+
+              isProductCollapsed=false;
+            }
+          }
+        };
+*/
         // Add productCard to the end of the array
         var addProductCard = function() {
             $scope.productCards.push({
@@ -300,7 +311,8 @@ app
                 buttonText: item.buttonText,
                 targetGroup: item.targetGroup,
                 imageURL: item.imageURL,
-                category: item.category
+                category: item.category,
+
             });
         };
 
