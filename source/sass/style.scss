@@ -22,6 +22,7 @@ body {
 
 .body-wrap {
     margin-top: 50px;
+    padding: 0;
 }
 
 textarea, input, select {
@@ -156,8 +157,6 @@ header .context-menu .option-menu > ul {
   background: #FFB25B;
 }
 
-
-
 button:focus {
   outline: none !important;
 }
@@ -241,12 +240,14 @@ button:focus {
   padding: 0px -15px;
   bottom: 0;
   top: 50px;
+  padding:0;
 }
 
 .modal-content{
   background: #F4f4f4;
   height: auto;
   height: 100%;
+  border-radius: 0;
 }
 
 .modal-content .modal-header {
@@ -728,19 +729,6 @@ $c: #888;
     height: 0;
     -webkit-filter: drop-shadow(4px 0px 2px #AAA);
     z-index: 999999;
-}
-
-.product-card-hightlight:after {
-    /*position: absolute;
-	left: -20px;
-	top: 40%;
-	border-left: 20px solid #f4f4f4;
-	border-top: 20px solid transparent;
-	border-bottom: 20px solid transparent;
-    width: 0;
-    height: 0;
-    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
-    z-index: 999999;*/
 }
 
 .product-card-thumb {
