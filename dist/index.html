@@ -55,46 +55,46 @@
         <!--Library with products-->
         <div id="myModal" class="col-sm-6" ng-show="showLibrary">
 
-          <!-- Modal content-->
+            <!-- Modal content-->
             <div class="modal-content">
 
-              <div class="modal-header">
-                <h4 class="modal-title">Library</h4>
-              </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Library</h4>
+                </div>
 
-              <div class="modal-body">
+                <div class="modal-body">
 
-                  <div id="modal-input">
-                    <input type="text" class="search" placeholder="Search" ng-model="searchItem">
-                    <select id="categories" ng-model="showCategory" >
+                    <div id="modal-input">
+                        <input type="text" class="search" placeholder="Search" ng-model="searchItem">
+                        <select id="categories" ng-model="showCategory">
                       <option value="" selected>All categories</option>
                       <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
 
                     </select>
-                  </div>
+                    </div>
 
-                  <ul class="items grid">
-                    <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                      <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item)" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
-                        <div class="item-thumb">
-                          <a href="#">
-                            <img ng-src="{{item.imageURL}}"/>
-                          </a>
-                        </div>
-                        <div class="item-txt">
-                          <a href="#">
-                            <h6 ng-bind="item.productTitle"></h6>
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                    <ul class="items grid">
+                        <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
+                            <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item)" ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                                <div class="item-thumb">
+                                    <a href="#">
+                                        <img ng-src="{{item.imageURL}}" />
+                                    </a>
+                                </div>
+                                <div class="item-txt">
+                                    <a href="#">
+                                        <h6 ng-bind="item.productTitle"></h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn yellow close-library" ng-click="showLibrary=false">Close</button>
+                    <button type="button" class="btn yellow close-library" ng-click="showLibrary=false">Close</button>
                 </div>
-              </div>
+            </div>
         </div>
 
         <!--Left column-->
@@ -105,58 +105,68 @@
                 </div>
             </div>
             <!-- Video code-->
-        <div class="video-container">
-            <video id = "video" controls>
+            <div class="video-container">
+                <video id="video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
-            <script>
-                // Grab a handle to the video
-                var video = document.getElementById("video");
-                // Turn off the default controls
-                video.controls = false;
-            </script>
-            <div id="controls">
-                <div id="play">
-                 <button id="playpause"  ng-click="togglePlayPause()" > <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
-                 </div>
-                 <div id="progressBar">
-                     <div id="progress">
-                       <div class="button-holder"></div>
-                       <div class="progress-button"> </div>
-                     </div>
-                 </div>
-                 <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
-                 <button id="mute" ng-click="toggleMute()" > <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
+                <script>
+                    // Grab a handle to the video
+                    var video = document.getElementById("video");
+                    // Turn off the default controls
+                    video.controls = false;
+                </script>
+                <div id="controls">
+                    <div id="play">
+                        <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
+                    </div>
+                    <div id="progressBar">
+                        <div id="progress">
+                        </div>
+                    </div>
+                    <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
+                    <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
+                </div>
+
+                <div class="col-sm-12 video-product-bar">
+
+                    <div class="video-product-bar-left">
+                        <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
+                    </div>
+                    <div class="video-product-bar-content">
+                        <ul class="video-bar-showing-product">
+
+
+
+                            <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
+
+                                <div class="container" ng-if="productCard.products.length > 0">
+                                    <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="">
+                                    <div class="overlay">
+                                        <div class="ProductText">
+                                            <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5>
+                                            <hr>
+                                            <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--
+            -->
+                        </ul>
+                    </div>
+                    <div class="video-product-bar-right">
+                        <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
+                    </div>
+
+                </div>
+
+
             </div>
-
-            <div class="col-sm-12 video-product-bar">
-
-            <div class="video-product-bar-left">
-                <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
-            </div>
-            <div class="video-product-bar-content">
-            <ul class="video-bar-showing-product">
-            <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
-              <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="" style="background-color: #ECBEB4">
-
-            </li><!--
-            --></ul>
-            </div>
-          <div class="video-product-bar-right">
-                <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
-          </div>
-
-        </div>
-
-
-        </div>
         </div>
 
         <!--Right column-->
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <button type="button" class="btn pink" ng-click="showLibrary = !showLibrary">Library</button>
                     <h4>Products</h4>
                 </div>
             </div>
@@ -164,61 +174,85 @@
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
-                        <div class="product-card" >
+                        <div class="product-card">
+                            <div class="product-card-thumb">
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
 
-                            <div class="col-sm-3 product-card-thumb" >
-                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary === true}"></div>
-                                <input class="product-card-title" ng-model="productCard.cardTitle" type="text" name="" value="" placeholder="{{productCard.cardTitle}}">
-                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" alt="product image" style="background-color: #FFB86F">
+                                <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
+                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
+                                <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
                             </div>
-
-                                <div class="timeline">
-                                    <div class="product-timeline">
-                                        <div class="marker group" marker></div>
-                                        <div class="product-bar ui-widget-content" slider>
-                                            <span class="seg-start">00:00:00</span>
-                                            <span class="seg-end">00:00:15</span>
-                                            <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
-                                            </span>
-                                        </div>
+                            <div class="timeline">
+                                <div class="product-timeline" ng-class="{'disable-timeline': showLibrary}">
+                                    <div class="marker group" marker></div>
+                                    <div class="product-bar ui-widget-content" slider>
+                                        <span class="seg-start">00:00:00</span>
+                                        <span class="seg-end">00:00:15</span>
+                                        <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
+                                        </span>
                                     </div>
                                 </div>
+                            </div>
                             <div class="timeline-block timeline-btns">
-                                <button type="button" class="glyphicon glyphicon-plus add-timeline" ng-click="addTimeline($this)"></button>
-                                <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProductCard($event, $index)"></button>
-                                <button type="button" ng-class="{'glyphicon glyphicon-chevron-down': isCollapsed, 'glyphicon glyphicon-chevron-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
+                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" ng-click="addTimeline($this)"></button>
+                                <button type="button" class="delete-product" ng-click="removeProductCard($event, $index)"><img src="../assets/images/bin.png"></button>
+                                <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
                             </div>
                         </div>
                         <div uib-collapse="!isCollapsed">
-                            <div class="well well-sm product-card-well" ui-sortable="sortableProductOptions" ng-model="productCard.products">
+                            <div class="product-card-well col-sm-12" ui-sortable="sortableProductOptions" ng-model="productCard.products">
 
                                 <div ng-repeat="product in productCard.products">
                                     <div class="product">
-                                        <div class="col-sm-2 product-thumb">
-                                            <img class="product-image" ng-src="{{product.imageURL}}" alt="product image" style="background-color: #FFB86F">
+                                        <div class="product-thumb">
+                                            <img class="product-image" ng-src="{{product.imageURL}}" alt="product image">
                                         </div>
-                                        <div class="col-sm-8">
+                                        <div class="product-title">
                                             <span ng-bind="product.productTitle"></span>
                                             <span class="default-product" ng-if="$index == 0">(Default)</span>
                                         </div>
-                                        <div class="col-sm-2 product-card-toggle">
-                                            <button type="button" class="glyphicon glyphicon-trash" ng-click="removeProduct(productCardIndex, $event, $index)"></button>
-                                            <button type="button" ng-class="{'glyphicon glyphicon-chevron-down': isProductCollapsed, 'glyphicon glyphicon-chevron-right': !isProductCollapsed }" ng-click="isProductCollapsed = !isProductCollapsed"></button>
+                                        <div class="product-toggle">
+                                            <button type="button" class="delete-product" ng-click="removeProduct(productCardIndex, $event, $index)"><img src="../assets/images/bin.png"></button>
+                                            <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }" ng-click="isProductCollapsed = !isProductCollapsed"></button>
                                         </div>
                                     </div>
                                     <div uib-collapse="!isProductCollapsed">
-                                        <div class="well well-sm product-collapse">
-                                            <div class="col-sm-6">
-                                                <p>Title: <span ng-bind="product.productTitle"></span></p>
-                                                <p>Link: <span ng-bind="product.link"></span></p>
-                                                <p>Special offer: <span ng-bind="product.specialOffer"></span></p>
-                                                <p>Button Text: <span ng-bind="product.buttonText"></span></p>
-                                                <p>Target Group: <span ng-bind="product.targetGroup"></span></p>
+                                        <div class="col-sm-12 product-collapse">
+                                            <div class="col-sm-9">
+                                                <form>
+                                                    <table class="col-sm-12">
+                                                        <tr>
+                                                            <th class="col-sm-3">Title</th>
+                                                            <td><input class="col-sm-12" type="text" ng-model="product.productTitle"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Link</th>
+                                                            <td><input type="text" value="{{product.link}}"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Special offer</th>
+                                                            <td><input type="text" value="{{product.specialOffer}}"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Button Text</th>
+                                                            <td><input type="text" value="{{product.buttonText}}"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Target Group</th>
+                                                            <td><input type="text" value="{{product.targetGroup}}"></td>
+                                                        </tr>
+                                                        <!--<tr>
+                                                  <th></th>
+                                                  <td style="padding: 5px;"><input type="checkbox" id="default"/><label for="y" style="font-weight:normal;">Set as default product</label></td>
+                                                </tr>-->
+                                                    </table>
+
                                             </div>
-                                            <div class="col-sm-6">
-                                                <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image" style="background-color: aquamarine">
+                                            <div class="col-sm-3" style="padding: 0 20px 0 0;">
+                                                <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image">
+                                                <button type="button" class="btn pink">Save</button>
                                             </div>
-                                            <button type="button" class="">Save</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +266,8 @@
                 </div>
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
-                    <button type="button" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
+                    <h5 class="col-sm-11" ng-show="hoverAddButton">Add product card</h5>
+                    <button type="button" class="col-sm-12" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
                 </div>
             </div>
         </div>
