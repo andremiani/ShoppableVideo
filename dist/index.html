@@ -136,6 +136,7 @@
                         <ul class="video-bar-showing-product">
 
 
+
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
 
                                 <div class="container" ng-if="productCard.products.length > 0">
@@ -173,8 +174,10 @@
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
-                        <div class="product-card" ng-class="{'product-card-hightlight': $index === selectedCard}">
+                        <div class="product-card">
                             <div class="product-card-thumb">
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
+
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
