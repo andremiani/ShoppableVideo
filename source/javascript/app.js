@@ -56,7 +56,6 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
-        
 
         //Variable to toggle the active product card
         $scope.selectedCard = 0;

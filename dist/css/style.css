@@ -548,8 +548,6 @@ input[type="range"]::-ms-fill-upper {
 
 #productCardsShowing {
   width: 100%;
-  max-height: 137px;
-  max-width: 137px;
 }
 
 .container {
