@@ -14,7 +14,7 @@
 </head>
 <!-- this will be the only controller AppCtrl -->
 
-<body ng-controller="AppCtrl">
+<body ng-controller="AppCtrl" ng-cloak>
     <header>
 
         <div class="container-fluid">
@@ -75,7 +75,7 @@
 
                     <ul class="items grid">
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                            <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item) " ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                            <div class="item" ng-click="addProduct(selectedCard, item)" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
                                 <div class="item-thumb">
                                     <a href="#">
                                         <img ng-src="{{item.imageURL}}" />
@@ -167,7 +167,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <h4>Products</h4>
+                    <h4>Products</h4><p>{{markerValue}}</p>
                 </div>
             </div>
 
@@ -177,7 +177,6 @@
                         <div class="product-card">
                             <div class="product-card-thumb">
                                 <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
-
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
@@ -194,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="timeline-block timeline-btns">
-                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" ng-click="addTimeline($this)"></button>
+                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" add-timeslot></button>
                                 <button type="button" class="delete-product" ng-click="removeProductCard($event, $index)"><img src="../assets/images/bin.png"></button>
                                 <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
                             </div>
@@ -250,7 +249,7 @@
                                             </div>
                                             <div class="col-sm-3" style="padding: 0 20px 0 0;">
                                                 <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image">
-                                                <button type="button" class="btn pink">Save</button>
+                                                <button type="button" class="btn pink" ng-click="saveProductInfo($index)">Save</button>
                                             </div>
                                             </form>
                                         </div>

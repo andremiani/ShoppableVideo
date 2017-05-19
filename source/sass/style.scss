@@ -352,10 +352,6 @@ input[type=text]:focus{
 .selectedItem{
   border: solid 2px yellow;
 }
-/*
-.notSelectedItem{
-  border: solid 1px transparent;
-}*/
 
 .modal-footer{
   border-top: 0;
@@ -364,6 +360,10 @@ input[type=text]:focus{
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.close-library {
+    margin-bottom: 20px;
 }
 //END styling product library
 
@@ -725,7 +725,7 @@ $c: #888;
     position: absolute;
     left: -3px;
     /*top: 40%;*/
-    margin-top:30px;
+    margin-top: 30px;
     border-left: 20px solid #f4f4f4;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
@@ -807,8 +807,8 @@ $c: #888;
         border: 1px solid #EBEBEB;
         border-radius: 5px;
         -moz-box-shadow:    inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
-       -webkit-box-shadow: inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
-       box-shadow:         inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
+        -webkit-box-shadow: inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
+        box-shadow:         inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
 
 
         .product-bar {
