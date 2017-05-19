@@ -330,6 +330,11 @@ app
             });
             cardCounter++;
             $scope.selectedCard = $scope.productCards.length - 1;
+
+/*
+            $scope.productCards.reverse();
+            $scope.productCards[0].scrollIntoView({block: "end"});
+*/
         };
 
         //Add product to a product card

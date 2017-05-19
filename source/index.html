@@ -16,12 +16,10 @@
 
 <body ng-controller="AppCtrl" ng-cloak>
     <header>
-
         <div class="container-fluid">
-
             <div class="row context-menu">
                 <div class="col-sm-4">
-                    <input class="video-title" ng-model="videoTitle" type="text" name="" value="" placeholder="Shoppable Video Title">
+                    <input class="video-title" ng-model="videoTitle" name="" value="" placeholder="Shoppable Video Title">
                 </div>
                 <div class="col-sm-4">
                     <ul class="main-nav">
@@ -46,9 +44,7 @@
                 </div>
             </div>
         </div>
-
     </header>
-
 
     <div class="body-wrap container-fluid">
 
@@ -135,8 +131,6 @@
                     <div class="video-product-bar-content">
                         <ul class="video-bar-showing-product">
 
-
-
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
 
                                 <div class="container" ng-if="productCard.products.length > 0">
@@ -156,10 +150,7 @@
                     <div class="video-product-bar-right">
                         <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
                     </div>
-
                 </div>
-
-
             </div>
         </div>
 
@@ -171,8 +162,8 @@
                 </div>
             </div>
 
-            <div class="container-fluid">
-                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
+            <div class="container-fluid" >
+                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards" scroll-glue force-glue>
                     <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
                         <div class="product-card">
                             <div class="product-card-thumb">
@@ -245,11 +236,11 @@
                                                   <td style="padding: 5px;"><input type="checkbox" id="default"/><label for="y" style="font-weight:normal;">Set as default product</label></td>
                                                 </tr>-->
                                                     </table>
-
                                             </div>
                                             <div class="col-sm-3" style="padding: 0 20px 0 0;">
                                                 <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image">
-                                                <button type="button" class="btn pink" ng-click="saveProductInfo($index)">Save</button>
+
+                                                <button type="button" class="btn pink" style="font-size: 12px;">Upload image</button>
                                             </div>
                                             </form>
                                         </div>
@@ -257,7 +248,8 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
+                                    <button type="button" ng-mouseover="hoverAddProduct=true" ng-mouseleave="hoverAddProduct=false" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
+                                    <h5 class="col-sm-11" ng-show="hoverAddProduct">Add products</h5>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +258,7 @@
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
                     <h5 class="col-sm-11" ng-show="hoverAddButton">Add product card</h5>
-                    <button type="button" class="col-sm-12" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
+                    <button type="button" class="col-sm-12 add-button" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
                 </div>
             </div>
         </div>
@@ -280,6 +272,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
+    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
 
 
     <!-- include our JavaScript -->
