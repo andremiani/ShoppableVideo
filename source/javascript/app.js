@@ -69,7 +69,6 @@ app
             $scope.selectedCard = index;
         };
 
-
         $scope.showLibrary = "";
 
         $scope.setTriangleHeight = function(index) {
@@ -84,8 +83,21 @@ app
             $scope.showLibrary = false;
         };*/
 
+
+        $scope.isProductAdded = function(item ,selectedCardIndex) {
+            //return $scope.productCards[selectedCardIndex].products.indexOf(item.Id) != -1;
+            //return $.inArray(item.Id, $scope.productCards[selectedCardIndex].products[0]) >= 0;
+                if ($scope.productCards.indexOf(item.Id) == -1){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+        };
+
         // Array to store the products in the library
         $scope.libraryProducts = [{
+                Id: '1',
                 productTitle: 'Smördeg',
                 imageURL: '../assets/images/Smordeg-01.png',
                 link: "http:www...",
@@ -95,6 +107,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '2',
                 productTitle: 'Smördeg Eko',
                 imageURL: '../assets/images/Smordeg2-01.png',
                 link: "http:www...",
@@ -104,6 +117,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '3',
                 productTitle: 'Smördeg Lyx',
                 imageURL: '../assets/images/Smordeg3.png',
                 link: "http:www...",
@@ -113,6 +127,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '4',
                 productTitle: 'Ägg Fri.',
                 imageURL: '../assets/images/Ägg - Frigående.png',
                 link: "http:www...",
@@ -122,6 +137,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '5',
                 productTitle: 'Ägg',
                 imageURL: '../assets/images/Ägg-Vanlig.png',
                 link: "http:www...",
@@ -131,6 +147,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '6',
                 productTitle: 'Ägg Eko',
                 imageURL: '../assets/images/Ägg-eko.png',
                 link: "http:www...",
@@ -140,6 +157,7 @@ app
                 category: "Eatables"
             },
             {
+                Id: '7',
                 productTitle: 'Kniv Japansk',
                 imageURL: '../assets/images/Kniv-Avancerad.png',
                 link: "http:www...",
@@ -149,6 +167,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '8',
                 productTitle: 'Kniv Barn',
                 imageURL: '../assets/images/Kniv-Barn.png',
                 link: "http:www...",
@@ -158,6 +177,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '9',
                 productTitle: 'Kniv Stor',
                 imageURL: '../assets/images/Kniv-Större-01.png',
                 link: "http:www...",
@@ -167,6 +187,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '10',
                 productTitle: 'Förkläde Brun',
                 imageURL: '../assets/images/Förkläde-läder-01.png',
                 link: "http:www...",
@@ -176,6 +197,7 @@ app
                 category: "Others"
             },
             {
+                Id: '11',
                 productTitle: 'Förkläde Tyg',
                 imageURL: '../assets/images/Förkläde-Tyg.png',
                 link: "http:www...",
@@ -185,6 +207,7 @@ app
                 category: "Others"
             },
             {
+                Id: '12',
                 productTitle: 'Äggklocka',
                 imageURL: '../assets/images/Äggklocka.png',
                 link: "http:www...",
@@ -194,6 +217,7 @@ app
                 category: "Others"
             },
             {
+                Id: '13',
                 productTitle: 'Pensel Silikon',
                 imageURL: '../assets/images/pensel-silicon.png',
                 link: "http:www...",
@@ -203,6 +227,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '14',
                 productTitle: 'Kavel rund',
                 imageURL: '../assets/images/kavel-rund.png',
                 link: "http:www...",
@@ -212,6 +237,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '15',
                 productTitle: 'Kavel Barn',
                 imageURL: '../assets/images/kavel-barn.png',
                 link: "http:www...",
@@ -221,6 +247,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '16',
                 productTitle: 'Kavel',
                 imageURL: '../assets/images/Kavel.png',
                 link: "http:www...",
@@ -230,6 +257,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '17',
                 productTitle: 'Gjutjärn',
                 imageURL: '../assets/images/stekpanna-gjutjärn.png',
                 link: "http:www...",
@@ -239,6 +267,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '18',
                 productTitle: 'Stekpanna',
                 imageURL: '../assets/images/Stekpanna.png',
                 link: "http:www...",
@@ -248,6 +277,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '19',
                 productTitle: 'Multipensel',
                 imageURL: '../assets/images/pensel-med-kniv.png',
                 link: "http:www...",
@@ -257,6 +287,7 @@ app
                 category: "Tools"
             },
             {
+                Id: '20',
                 productTitle: 'Pensel Trä',
                 imageURL: '../assets/images/pensel-trä.png',
                 link: "http:www...",
@@ -317,6 +348,7 @@ app
         var addProduct = function(index, item) {
             productCounter = $scope.productCards[index].products.length + 1;
             $scope.productCards[index].products.push({
+                Id: item.Id,
                 productTitle: item.productTitle,
                 link: item.link,
                 specialOffer: item.specialOffer,
@@ -379,6 +411,7 @@ app
 
     }])
 
+
     .filter('toMinSec', function() {
         return function(input) {
             var minutes = parseInt(input / 60, 10);
@@ -391,24 +424,23 @@ app
         }
     })
 
-    .directive('popover', function($compile) {
-        return {
-            restrict: 'A',
-            scope: true,
-            link: function(scope, elem, attrs) {
-                $(elem).on('isOpen', function() {
-                    var positionTop = parseInt($('.product-card').position().top + 30);
-                    var positionLeft = parseInt($(this).position().left + $(this).width - 20);
-                    var x = pos2 - position + 5;
-                    /*if (popoverheight < x)
-                    x = popoverheight;*/
-                    $('.product-card-hightlight').css('top', positionTop + 'px');
+    /*.directive('popover', function ($compile) {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, elem, attrs) {
+                  $(elem).on('isOpen', function () {
+                      var positionTop = parseInt($('.product-card').position().top + 30);
+                      var positionLeft = parseInt($(this).position().left + $(this).width - 20);
 
-                });
-            }
-        };
-    })
+                      $('.product-card-hightlight').css('top', positionTop + 'px');
 
+                  });
+              }
+          };
+    })*/
+
+    //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders
     .directive('slider', function() {
         return {
             restrict: 'A',
@@ -424,23 +456,47 @@ app
         },*/
             link: function(scope, element, attrs) {
 
-                var options = {
-                    containment: ".product-timeline",
-                    axis: "x",
-                    drag: function(event, ui) {
-                        $(this).find('.seg-start').text(positionToTime($(this).css('left')));
-                        $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
-                    }
-                };
 
                 // set up slider on load
                 angular.element(document).ready(function() {
-                    scope.$slider = $(element).draggable(options);
+
+                    $(".product-bar").resizable({
+                        maxHeight: 20,
+                        minHeight: 20,
+                        handles: 'e, w'
+                    });
+                    $(".product-bar").draggable({
+                        containment: ".product-timeline",
+                        axis: "x",
+                        drag: function(event, ui) {
+                            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                        }
+                    });
+                    $(".product-bar").resizable("disable");
+                    $(".product-bar").click(function() {
+                        if ($(this).hasClass("edit-resize")) {
+                            $(".product-bar").removeClass("edit-resize");
+                            $(".product-bar").resizable("disable");
+
+                            $(this).removeClass("edit-resize");
+                            $(this).resizable("disable");
+                        } else {
+                            $(".product-bar").removeClass("edit-resize");
+                            $(".product-bar").resizable("disable");
+
+                            $(this).addClass("edit-resize");
+                            $(this).resizable("enable");
+                        }
+                    });
+
+                    $('.del-seg').click(function() {
+                        $(this).parent().remove();
+                    });
                 });
             }
         };
     })
-
 
     .directive('someVideo', function($window, $timeout) {
         return {
@@ -481,6 +537,8 @@ app
         }
     })
 
+    //Directive for the time marker draggable
+
     .directive('marker', function() {
         return {
             restrict: 'A',
@@ -496,6 +554,10 @@ app
             },
             link: function(scope, element, attrs) {
 
+                var currentPos = parseInt($('.marker').css('left'));
+                var totalWidth = parseInt($('.timeline').css('width'));
+                var newPos = currentPos / totalWidth * 100;
+
                 var options = {
                     containment: ".product-timeline",
                     axis: "x",
@@ -504,6 +566,7 @@ app
                         if ($(this).hasClass("group")) {
                             $(".group").each(function(i) {
 
+                                //thiscssleft = $(this).css('left', newPos);
                                 thiscssleft = $(this).css('left');
                                 if (thiscssleft == 'auto') thiscssleft = 0; // For IE
 
@@ -525,7 +588,7 @@ app
                     }
                 };
 
-                // set up slider on load
+                // set up marker on load
                 angular.element(document).ready(function() {
                     scope.$marker = $(element).draggable(options);
                 });
@@ -533,7 +596,8 @@ app
         };
 
     })
-    .directive('addTimeline', function() {
+    //Directive to append a new timeslot when user uses the add timeslot button
+    .directive('addTimeslot', function() {
         return {
             restrict: 'A',
             scope: true,
@@ -548,20 +612,97 @@ app
         },*/
             link: function(scope, element, attrs) {
 
-                var options = {
+                // set up slider on add-timeslot-click
+                var addBtn = document.getElementsByClassName('add-timeslot');
+                angular.element(addBtn).click(function() {
+
+                    //$(elem).click(function() {
+                    //$('.add-timeslot').click(function() {
+
+                var currentPos = parseInt($('.marker').css('left'));
+                var totalWidth = parseInt($('.timeline').css('width'));
+                var newPos = currentPos / totalWidth * 100;
+
+                var $div = $("<div>", {
+                    "class": "product-bar ui-widget-content"
+                });
+                var $segStart = $("<span>", {
+                    "class": "seg-start"
+                }).text('hh:mm:ss');
+                var $segEnd = $("<span>", {
+                    "class": "seg-end"
+                }).text('hh:mm:ss');
+                var $delSeg = $("<span>", {
+                    "class": "del-seg"
+                }).html('<a href="#"><span class="hover-help">Delete segment</span></a></span>');
+                $div.append($segStart, $segEnd, $delSeg);
+
+
+                $div.css('left', newPos + '%');
+                $div.css('position', 'absolute');
+                $div.resizable({
+                    maxHeight: 20,
+                    minHeight: 20,
+                    handles: 'e, w'
+                });
+                $div.draggable({
                     containment: ".product-timeline",
                     axis: "x",
                     drag: function(event, ui) {
                         $(this).find('.seg-start').text(positionToTime($(this).css('left')));
                         $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                     }
-                };
+                });
+                $div.resizable("disable");
 
-                // set up slider on load
-                angular.element(document).ready(function() {
-                    scope.$slider = $(element).draggable(options);
+                    element.parent().parent().find('.product-timeline').append($div)
+                    $div.find('.seg-start').text(positionToTime($div.css('left')));
+                    $div.find('.seg-end ').text(positionToTime(parseInt($div.css('left')) + parseInt($div.css('width'))));
+
+                    $div.click(function() {
+
+                        if ($(this).hasClass("edit-resize")) {
+                            $(".product-bar").removeClass("edit-resize");
+                            $(".product-bar").resizable("disable");
+
+                            $(this).removeClass("edit-resize");
+                            $(this).resizable("disable");
+                        } else {
+                            $(".product-bar").removeClass("edit-resize");
+                            $(".product-bar").resizable("disable");
+
+                            $(this).addClass("edit-resize");
+                            $(this).resizable("enable");
+                        }
+                    });
+
+                    $delSeg.click(function() {
+                        $(this).parent().remove();
+                    });
                 });
             }
         };
 
     });
+
+    function convertSecondsToTime(sec) {
+        totalSec = Math.round(sec);
+        var hours = parseInt(totalSec / 3600) % 24;
+        var minutes = parseInt(totalSec / 60) % 60;
+        var seconds = totalSec % 60;
+
+        var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+        return result;
+    }
+
+    function positionToTime(position) {
+        var totalDuration = 61;
+
+        var totalWidth = parseInt($('.timeline').css('width'));
+
+        var currentPos = parseInt(position);
+        var percentage = currentPos / totalWidth;
+        var newTime = totalDuration * percentage;
+
+        return convertSecondsToTime(newTime);
+    }

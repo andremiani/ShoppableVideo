@@ -368,6 +368,10 @@ input[type=text]:focus {
   right: 0;
 }
 
+.close-library {
+  margin-bottom: 20px;
+}
+
 #video {
   flex: 0 1 100%;
   width: 100%    !important;
@@ -1035,6 +1039,7 @@ span:hover .hover-help {
   border-radius: 50%;
   transition: all 0.2s;
   z-index: 1;
+
 }
 
 .product-card-add button:hover {
