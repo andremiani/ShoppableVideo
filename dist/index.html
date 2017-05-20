@@ -97,12 +97,12 @@
         <div class="col-sm-6" style="padding-left: 30px;">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <h4>Preview</h4>
+                  <h4>Preview</h4>
                 </div>
             </div>
             <!-- Video code-->
             <div class="video-container">
-                <video id="video" controls>
+                <video some-video video-current-time="currentTime" id="video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
                 <script>
@@ -115,9 +115,13 @@
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
                     </div>
-                    <div id="progressBar">
-                        <div id="progress">
-                        </div>
+                    <div>
+                      <div id="progressBar">
+                          <div id="progress">
+                          </div>
+                      </div>
+                      <p style="font-size: 10px; color: white; margin: 0;">{{currentTime | toMinSec}} / 1:01</p>
+
                     </div>
                     <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
                     <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>

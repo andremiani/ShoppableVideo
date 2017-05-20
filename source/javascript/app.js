@@ -19,7 +19,7 @@ app
 
         //Play and pause
         $scope.toggleMute = function() {
-          //  var playpause = document.getElementById("playpause");
+            //  var playpause = document.getElementById("playpause");
             if (!video.mute) {
                 video.mute = !video.mute;
                 $scope.muteSrc = "../assets/images/speaker.png";
@@ -40,6 +40,9 @@ app
                 $scope.playPauseSrc = "../assets/images/play.png";
             }
         };
+
+        $scope.currentTime = 0;
+        $scope.duration = 0;
 
         // Array to store the productCards
         $scope.productCards = [];
@@ -69,7 +72,7 @@ app
 
         $scope.showLibrary = "";
 
-        $scope.setTriangleHeight = function(index){
+        $scope.setTriangleHeight = function(index) {
             var pos = $scope.productCards[index].position.top + $scope.productCards[index].height;
             alert(pos);
         };
@@ -265,7 +268,6 @@ app
 
         ];
 
-
         // Array that store all the categories that are used in the dropdown-list
         $scope.categories = [];
         angular.forEach($scope.libraryProducts, function(value, category) {
@@ -305,10 +307,10 @@ app
             cardCounter++;
             $scope.selectedCard = $scope.productCards.length - 1;
 
-/*
-            $scope.productCards.reverse();
-            $scope.productCards[0].scrollIntoView({block: "end"});
-*/
+            /*
+                        $scope.productCards.reverse();
+                        $scope.productCards[0].scrollIntoView({block: "end"});
+            */
         };
 
         //Add product to a product card
@@ -342,7 +344,6 @@ app
             $scope.productCards[productCardIndex].products.splice(index, 1);
         };
 
-
         //Video controller
         //Volume
         function setVolume() {
@@ -365,7 +366,6 @@ app
             progress.style.width = value + "%";
         }
 
-
         // Initialize the scope functions
         $scope.addProductCard = addProductCard;
         $scope.addProduct = addProduct;
@@ -378,23 +378,37 @@ app
         }*/
 
     }])
-    .directive('popover', function ($compile) {
-      return {
-              restrict: 'A',
-              scope: true,
-              link: function (scope, elem, attrs) {
-                  $(elem).on('isOpen', function () {
-                      var positionTop = parseInt($('.product-card').position().top + 30);
-                      var positionLeft = parseInt($(this).position().left + $(this).width - 20);
-                      var x = pos2 - position + 5;
-                      /*if (popoverheight < x)
-                      x = popoverheight;*/
-                      $('.product-card-hightlight').css('top', positionTop + 'px');
 
-                  });
-              }
-          };
+    .filter('toMinSec', function() {
+        return function(input) {
+            var minutes = parseInt(input / 60, 10);
+            var seconds = Math.floor(input % 60);
+            if (seconds < 10) {
+                return minutes + ':0' + seconds;
+            } else {
+                return minutes + ':' + seconds;
+            }
+        }
     })
+
+    .directive('popover', function($compile) {
+        return {
+            restrict: 'A',
+            scope: true,
+            link: function(scope, elem, attrs) {
+                $(elem).on('isOpen', function() {
+                    var positionTop = parseInt($('.product-card').position().top + 30);
+                    var positionLeft = parseInt($(this).position().left + $(this).width - 20);
+                    var x = pos2 - position + 5;
+                    /*if (popoverheight < x)
+                    x = popoverheight;*/
+                    $('.product-card-hightlight').css('top', positionTop + 'px');
+
+                });
+            }
+        };
+    })
+
     .directive('slider', function() {
         return {
             restrict: 'A',
@@ -426,6 +440,47 @@ app
             }
         };
     })
+
+
+    .directive('someVideo', function($window, $timeout) {
+        return {
+            scope: {
+                videoCurrentTime: "=videoCurrentTime"
+            },
+            controller: function($scope, $element) {
+
+                $scope.onTimeUpdate = function() {
+                    var currTime = $element[0].currentTime;
+                    if (currTime - $scope.videoCurrentTime > 2 || $scope.videoCurrentTime - currTime > 2) {
+
+                        $element[0].currentTime = $scope.videoCurrentTime;
+                    }
+
+
+                    $scope.$apply(function() {
+                        $scope.videoCurrentTime = $element[0].currentTime;
+                    });
+                }
+            },
+            link: function(scope, elm) {
+                // Use this $watch to restart the video if it has ended
+                scope.$watch('videoCurrentTime', function(newVal) {
+
+                    if (elm[0].ended) {
+                        // Do a second check because the last 'timeupdate'
+                        // after the video stops causes a hiccup.
+                        if (elm[0].currentTime !== newVal) {
+                            elm[0].currentTime = newVal;
+                            elm[0].play();
+                        }
+                    }
+                });
+                // Otherwise keep any model syncing here.
+                elm.bind('timeupdate', scope.onTimeUpdate);
+            }
+        }
+    })
+
     .directive('marker', function() {
         return {
             restrict: 'A',
