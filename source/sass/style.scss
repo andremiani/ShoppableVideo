@@ -376,7 +376,7 @@ input[type=text]:focus{
 }
 
 .close-library {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 //END styling product library
 
@@ -828,6 +828,7 @@ $c: #888;
             position: absolute;
             width: 10%;
             height: 15px;
+            color: #F27892 !important;
             background: #F27892 url('../../assets/images/drag.png') no-repeat;
             background-position: center;
             background-size: 6px;
@@ -843,8 +844,8 @@ $c: #888;
 
             &:hover {
                 cursor: pointer;
-                background-color: #ee648f;
-                border: 1px solid #ef4c7f;
+                background-color: #F26A87;
+                border: 1px solid #F26A87;
 
                 .seg-end,
                 .seg-start {
@@ -853,7 +854,7 @@ $c: #888;
             }
 
             &.edit-resize {
-                border: 2px solid #fed04f;
+                border: 2px solid #FFB25B;
 
                 .seg-end,
                 .seg-start {
@@ -872,7 +873,7 @@ $c: #888;
                     top: 0;
                     height: 100%;
                     width: 8px;
-                    background: #fed04f url('../../assets/images/drag.png') no-repeat;
+                    background: #FFB25B url('../../assets/images/drag.png') no-repeat;
                     background-position: center;
                     background-size: 6px;
                 }
@@ -895,10 +896,11 @@ $c: #888;
                 background: #444444;
                 text-align: center;
                 color: #999;
-                padding: 5px 10px;
+                padding: 2px 5px;
                 border-radius: 30px;
-                font-size: 12px;
+                font-size: 10px;
                 transform: translateX(-50%);
+                z-index: 100;
             }
 
             .seg-start {
@@ -921,8 +923,8 @@ $c: #888;
 
                 a {
                     display: block;
-                    height: 20px;
-                    width: 20px;
+                    height: 18px;
+                    width: 18px;
                     border-radius: 50%;
                     background: #9f3359 url('../../assets/images/cross.png') no-repeat;
                     background-size: 10px;
