@@ -15,16 +15,18 @@ app
         $scope.videoTitle = "";
 
         $scope.playPauseSrc = "../assets/images/play.png";
-        $scope.muteSrc = "../assets/images/mute.png";
+        $scope.muteSrc = "../assets/images/speaker.png";
 
         //Play and pause
         $scope.toggleMute = function() {
-          //  var playpause = document.getElementById("playpause");
-            if (!video.mute) {
-                video.mute = !video.mute;
+          var vid = document.getElementById("video");
+
+            if (vid.muted) {
+                vid.muted=false;
                 $scope.muteSrc = "../assets/images/speaker.png";
-            } else {
-                video.mute = video.mute;
+            }
+            else {
+                vid.muted=true;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };
@@ -40,6 +42,7 @@ app
                 $scope.playPauseSrc = "../assets/images/play.png";
             }
         };
+    
 
         // Array to store the productCards
         $scope.productCards = [];
@@ -338,14 +341,15 @@ app
 
         //Video controller
         //Volume
-        function setVolume() {
-            var volume = document.getElementById("volume");
-            video.volume = volume.value;
+
+        var setVolume = function() {
+          var mediaClip = document.getElementById("video");
+          mediaClip.volume = document.getElementById("volume").value;
+
         }
+
         //Mute
-        function toggleMute() {
-            video.muted = !video.muted;
-        }
+
         //Progressbar
         video.addEventListener('timeupdate', updateProgress, false);
 
@@ -360,6 +364,7 @@ app
 
 
         // Initialize the scope functions
+        $scope.setVolume = setVolume;
         $scope.addProductCard = addProductCard;
         $scope.addProduct = addProduct;
         $scope.removeProductCard = removeProductCard;
@@ -371,23 +376,23 @@ app
         }*/
 
     }])
-    .directive('popover', function ($compile) {
-      return {
-              restrict: 'A',
-              scope: true,
-              link: function (scope, elem, attrs) {
-                  $(elem).on('isOpen', function () {
-                      var positionTop = parseInt($('.product-card').position().top + 30);
-                      var positionLeft = parseInt($(this).position().left + $(this).width - 20);
-                      var x = pos2 - position + 5;
-                      /*if (popoverheight < x)
-                      x = popoverheight;*/
-                      $('.product-card-hightlight').css('top', positionTop + 'px');
 
-                  });
-              }
-          };
-    })
+    .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll){
+
+  function linkFn(scope, element, attrs){
+      $location.hash(attrs.scrollToLast);
+      $anchorScroll();
+  }
+
+  return {
+    restrict: 'AE',
+    scope: {
+
+    },
+    link: linkFn
+  };
+}])
+
     .directive('slider', function() {
         return {
             restrict: 'A',

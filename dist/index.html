@@ -73,7 +73,7 @@
                     </select>
                     </div>
 
-                    <ul class="items grid">
+                    <ul class="items grid" >
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
                             <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item) " ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
                                 <div class="item-thumb">
@@ -109,12 +109,6 @@
                 <video id="video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
-                <script>
-                    // Grab a handle to the video
-                    var video = document.getElementById("video");
-                    // Turn off the default controls
-                    video.controls = false;
-                </script>
                 <div id="controls">
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
@@ -123,14 +117,15 @@
                         <div id="progress">
                         </div>
                     </div>
-                    <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
+
+                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='1'/>
                     <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
                 </div>
 
                 <div class="col-sm-12 video-product-bar">
 
                     <div class="video-product-bar-left">
-                        <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
+                        <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left" ng-click"scrollLeft()">
                     </div>
                     <div class="video-product-bar-content">
                         <ul class="video-bar-showing-product">
@@ -173,10 +168,17 @@
 
             <div class="container-fluid">
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
-                    <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
+                    <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
                             <div class="product-card-thumb">
-                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index<=2}"></div>
+                                <!--Hard coded highlight-arrow on productcard (4-8) when library is open-->
+                                <div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
+                                <div ng-class="{'product-card-hightlight-5': $index === selectedCard && showLibrary && $index ===4}"></div>
+                                <div ng-class="{'product-card-hightlight-6': $index === selectedCard && showLibrary && $index ===5}"></div>
+                                <div ng-class="{'product-card-hightlight-7': $index === selectedCard && showLibrary && $index ===6}"></div>
+                                <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>
+
 
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
@@ -281,6 +283,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
+    <script> var video = document.getElementById("video"); video.controls = false;</script>
 
 
     <!-- include our JavaScript -->

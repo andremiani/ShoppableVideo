@@ -690,7 +690,6 @@ $c: #888;
     max-height: 70vh;
     /*height: 65vh;*/
     transition: box-shadow .2s ease;
-
 }
 
 .shadow-top {
@@ -722,6 +721,73 @@ $c: #888;
     left: -3px;
     /*top: 40%;*/
     margin-top:30px;
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+
+//Hard coded highlight-arrow on productcard (4-8) when library is open
+.product-card-hightlight-4 {
+    position: absolute;
+    left: -3px;
+    margin-top: -90px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-5 {
+    position: absolute;
+    left: -3px;
+    margin-top: -250px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-6 {
+    position: absolute;
+    left: -3px;
+    margin-top: -410px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-7 {
+    position: absolute;
+    left: -3px;
+    margin-top: -570px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-8 {
+    position: absolute;
+    left: -3px;
+    margin-top: -730px;
+    /*top: 40%;*/
     border-left: 20px solid #f4f4f4;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
