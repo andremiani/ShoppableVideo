@@ -14,14 +14,12 @@
 </head>
 <!-- this will be the only controller AppCtrl -->
 
-<body ng-controller="AppCtrl">
+<body ng-controller="AppCtrl" ng-cloak>
     <header>
-
         <div class="container-fluid">
-
             <div class="row context-menu">
                 <div class="col-sm-4">
-                    <input class="video-title" ng-model="videoTitle" type="text" name="" value="" placeholder="Shoppable Video Title">
+                    <input class="video-title" ng-model="videoTitle" name="" value="" placeholder="Shoppable Video Title">
                 </div>
                 <div class="col-sm-4">
                     <ul class="main-nav">
@@ -46,9 +44,7 @@
                 </div>
             </div>
         </div>
-
     </header>
-
 
     <div class="body-wrap container-fluid">
 
@@ -75,7 +71,7 @@
 
                     <ul class="items grid" >
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                            <div class="item" ng-click="selected = !selected; addProduct(selectedCard, item) " ng-class="{'selectedItem':selected, 'notSelectedItem':!selected}">
+                            <div class="item" ng-click="addProduct(selectedCard, item)" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
                                 <div class="item-thumb">
                                     <a href="#">
                                         <img ng-src="{{item.imageURL}}" />
@@ -106,16 +102,20 @@
             </div>
             <!-- Video code-->
             <div class="video-container">
-                <video id="video" controls>
+                <video some-video video-current-time="currentTime" id="video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
                 <div id="controls">
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
                     </div>
-                    <div id="progressBar">
-                        <div id="progress">
+                    <div>
+                        <div id="progressBar">
+                            <div id="progress">
+                            </div>
                         </div>
+                        <p style="font-size: 10px; color: white; margin: 0;">{{currentTime | toMinSec}} / 1:01</p>
+
                     </div>
 
                     <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='1'/>
@@ -129,8 +129,6 @@
                     </div>
                     <div class="video-product-bar-content">
                         <ul class="video-bar-showing-product">
-
-
 
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
 
@@ -151,10 +149,7 @@
                     <div class="video-product-bar-right">
                         <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
                     </div>
-
                 </div>
-
-
             </div>
         </div>
 
@@ -163,10 +158,12 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <h4>Products</h4>
+                    <p>{{markerValue}}</p>
                 </div>
             </div>
 
             <div class="container-fluid">
+<<<<<<< HEAD
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
@@ -180,6 +177,13 @@
                                 <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>
 
 
+=======
+                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards" scroll-glue force-glue>
+                    <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
+                        <div class="product-card">
+                            <div class="product-card-thumb">
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
+>>>>>>> a8f546b568ffecee1e7c5e33029558cfaf5badab
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
@@ -193,10 +197,12 @@
                                         <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
                                         </span>
                                     </div>
+                                    <!--<p style="font-size:10px; margin-top: 48px;">Marker-time / 1:01</p>-->
                                 </div>
+
                             </div>
                             <div class="timeline-block timeline-btns">
-                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" ng-click="addTimeline($this)"></button>
+                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" add-timeslot></button>
                                 <button type="button" class="delete-product" ng-click="removeProductCard($event, $index)"><img src="../assets/images/bin.png"></button>
                                 <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
                             </div>
@@ -215,7 +221,7 @@
                                         </div>
                                         <div class="product-toggle">
                                             <button type="button" class="delete-product" ng-click="removeProduct(productCardIndex, $event, $index)"><img src="../assets/images/bin.png"></button>
-                                            <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }" ></button>
+                                            <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isProductCollapsed, 'glyphicon glyphicon-triangle-right': !isProductCollapsed }"></button>
                                         </div>
                                     </div>
                                     <div uib-collapse="!isProductCollapsed">
@@ -248,11 +254,11 @@
                                                   <td style="padding: 5px;"><input type="checkbox" id="default"/><label for="y" style="font-weight:normal;">Set as default product</label></td>
                                                 </tr>-->
                                                     </table>
-
                                             </div>
                                             <div class="col-sm-3" style="padding: 0 20px 0 0;">
                                                 <img class="product-image-collapse" ng-src="{{product.imageURL}}" alt="product image">
-                                                <button type="button" class="btn pink">Save</button>
+
+                                                <button type="button" class="btn pink" style="font-size: 12px;">Upload image</button>
                                             </div>
                                             </form>
                                         </div>
@@ -260,7 +266,8 @@
                                 </div>
 
                                 <div class="product-add">
-                                    <button type="button" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
+                                    <button type="button" ng-mouseover="hoverAddProduct=true" ng-mouseleave="hoverAddProduct=false" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
+                                    <h5 class="col-sm-11" ng-show="hoverAddProduct">Add products</h5>
                                 </div>
                             </div>
                         </div>
@@ -269,7 +276,7 @@
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
                     <h5 class="col-sm-11" ng-show="hoverAddButton">Add product card</h5>
-                    <button type="button" class="col-sm-12" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
+                    <button type="button" class="col-sm-12 add-button" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
                 </div>
             </div>
         </div>
@@ -283,7 +290,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
+<<<<<<< HEAD
     <script> var video = document.getElementById("video"); video.controls = false;</script>
+=======
+    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
+>>>>>>> a8f546b568ffecee1e7c5e33029558cfaf5badab
 
 
     <!-- include our JavaScript -->

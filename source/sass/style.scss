@@ -144,9 +144,9 @@ header .context-menu .option-menu > ul {
 
 .btn {
     color: white;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     padding: 8px 24px;
     border-radius: 30px;
+    /*transition: background-color 0.5s ease;*/
 }
 
 .btn.pink {
@@ -155,6 +155,16 @@ header .context-menu .option-menu > ul {
 
 .btn.yellow{
   background: #FFB25B;
+}
+
+.btn.yellow:hover{
+  background: #FFA642;
+  color: white;
+}
+
+.btn.pink:hover{
+  background: #F26A87;
+  color: white;
 }
 
 button:focus {
@@ -258,7 +268,7 @@ button:focus {
 }
 
 .modal-content .modal-header h4{
-  margin: 20px;
+  margin: 18px;
 }
 
 .modal-content .modal-body{
@@ -289,6 +299,11 @@ button:focus {
 .modal-content textarea, input, select{
     outline: none;
 }
+
+.modal-content .modal-body .search:focus{
+  border-bottom: 2px solid rgba(255,178,91, 1);
+}
+
 
 input[type=text]:focus{
   border-bottom: 2px solid rgba(255,178,91, 1);
@@ -350,10 +365,6 @@ input[type=text]:focus{
 .selectedItem{
   border: solid 2px yellow;
 }
-/*
-.notSelectedItem{
-  border: solid 1px transparent;
-}*/
 
 .modal-footer{
   border-top: 0;
@@ -362,6 +373,10 @@ input[type=text]:focus{
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.close-library {
+    margin-bottom: 10px;
 }
 //END styling product library
 
@@ -435,7 +450,7 @@ input[type=text]:focus{
 #progressBar {
     flex: 6;
     display: flex;
-   /*margin-top: 13px;*/
+   margin-top: 10px;
    border:1px solid #aaa;
    color:#fff;
    width:295px;
@@ -720,7 +735,7 @@ $c: #888;
     position: absolute;
     left: -3px;
     /*top: 40%;*/
-    margin-top:30px;
+    margin-top: 30px;
     border-left: 20px solid #f4f4f4;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
@@ -869,14 +884,15 @@ $c: #888;
         border: 1px solid #EBEBEB;
         border-radius: 5px;
         -moz-box-shadow:    inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
-       -webkit-box-shadow: inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
-       box-shadow:         inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
+        -webkit-box-shadow: inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
+        box-shadow:         inset 1px 1px 5px 0px rgba(119,119,119, 0.5);
 
 
         .product-bar {
             position: absolute;
             width: 10%;
             height: 15px;
+            color: #F27892 !important;
             background: #F27892 url('../../assets/images/drag.png') no-repeat;
             background-position: center;
             background-size: 6px;
@@ -892,8 +908,8 @@ $c: #888;
 
             &:hover {
                 cursor: pointer;
-                background-color: #ee648f;
-                border: 1px solid #ef4c7f;
+                background-color: #F26A87;
+                border: 1px solid #F26A87;
 
                 .seg-end,
                 .seg-start {
@@ -902,7 +918,7 @@ $c: #888;
             }
 
             &.edit-resize {
-                border: 2px solid #fed04f;
+                border: 2px solid #FFB25B;
 
                 .seg-end,
                 .seg-start {
@@ -921,7 +937,7 @@ $c: #888;
                     top: 0;
                     height: 100%;
                     width: 8px;
-                    background: #fed04f url('../../assets/images/drag.png') no-repeat;
+                    background: #FFB25B url('../../assets/images/drag.png') no-repeat;
                     background-position: center;
                     background-size: 6px;
                 }
@@ -944,10 +960,11 @@ $c: #888;
                 background: #444444;
                 text-align: center;
                 color: #999;
-                padding: 5px 10px;
+                padding: 2px 5px;
                 border-radius: 30px;
-                font-size: 12px;
+                font-size: 10px;
                 transform: translateX(-50%);
+                z-index: 100;
             }
 
             .seg-start {
@@ -970,8 +987,8 @@ $c: #888;
 
                 a {
                     display: block;
-                    height: 20px;
-                    width: 20px;
+                    height: 18px;
+                    width: 18px;
                     border-radius: 50%;
                     background: #9f3359 url('../../assets/images/cross.png') no-repeat;
                     background-size: 10px;
@@ -1138,20 +1155,12 @@ span {
     border-radius: 50%;
     transition: all 0.2s;
     z-index: 1;
-    -webkit-transition: all 0.3s ease-in;
-   -moz-transition: all 0.3s ease-in;
-   -ms-transition: all 0.3s ease-in;
-   -o-transition: all 0.3s ease-in;
-   transition: all 0.3s ease-in;
 }
 
 .product-card-add button:hover{
-  /*
-  -webkit-transform:scale(1.10);
-  -moz-transform:scale(1.10);
-  -ms-transform:scale(1.10);
-  -o-transform:scale(1.10);
-  transform:scale(1.10);
+  background: #F26A87 url('../../assets/images/plus.png') no-repeat;
+  background-position: center;
+  background-size: 17px;
 }
 
 //Adds padding to the last product card for better workability
@@ -1289,9 +1298,7 @@ span {
 }
 
 .product-collapse input:focus{
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255,178,91, 0.5);
+  border-bottom: 1px solid rgba(255,178,91, 1);
 }
 
 .product-collapse input[type=checkbox]{
