@@ -762,10 +762,11 @@ hr {
   position: absolute;
   z-index: 10;
   height: 40px;
-  width: 2px;
+  width: 8px;
   background: #999;
   margin: 30px 0 20px 0;
   cursor: grab;
+  opacity: .5;
   /*transform: translateY(-50%);*/
 }
 .marker .time {

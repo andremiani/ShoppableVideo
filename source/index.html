@@ -163,7 +163,6 @@
             <div class="row">
                 <div class="col-sm-12 column-header">
                     <h4>Products</h4>
-                    <p>{{markerValue}}</p>
                 </div>
             </div>
 
@@ -182,7 +181,7 @@
                                     <div class="marker group" marker></div>
                                     <div class="product-bar ui-widget-content" slider>
                                         <span class="seg-start">00:00:00</span>
-                                        <span class="seg-end">00:00:15</span>
+                                        <span class="seg-end">00:00:06</span>
                                         <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
                                         </span>
                                     </div>
@@ -191,7 +190,7 @@
 
                             </div>
                             <div class="timeline-block timeline-btns">
-                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" add-timeslot></button>
+                                <button type="button" class="add-timeslot " ng-class="{'disable-timeline': $parent.showLibrary}" ng-click="addTimeslot()" add-timeslot></button>
                                 <button type="button" class="delete-product" ng-click="removeProductCard($event, $index)"><img src="../assets/images/bin.png"></button>
                                 <button type="button" class="dropdown-triangle" ng-class="{'glyphicon glyphicon-triangle-bottom': isCollapsed, 'glyphicon glyphicon-triangle-right': !isCollapsed }" ng-click="isCollapsed = !isCollapsed"></button>
                             </div>
