@@ -15,16 +15,18 @@ app
         $scope.videoTitle = "";
 
         $scope.playPauseSrc = "../assets/images/play.png";
-        $scope.muteSrc = "../assets/images/mute.png";
+        $scope.muteSrc = "../assets/images/speaker.png";
 
         //Play and pause
         $scope.toggleMute = function() {
-            //  var playpause = document.getElementById("playpause");
-            if (!video.mute) {
-                video.mute = !video.mute;
+          var vid = document.getElementById("video");
+
+            if (vid.muted) {
+                vid.muted=false;
                 $scope.muteSrc = "../assets/images/speaker.png";
-            } else {
-                video.mute = video.mute;
+            }
+            else {
+                vid.muted=true;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };
@@ -40,6 +42,7 @@ app
                 $scope.playPauseSrc = "../assets/images/play.png";
             }
         };
+
 
         $scope.currentTime = 0;
         $scope.duration = 0;
@@ -59,7 +62,6 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
-
 
         //Variable to toggle the active product card
         $scope.selectedCard = 0;
@@ -378,14 +380,15 @@ app
 
         //Video controller
         //Volume
-        function setVolume() {
-            var volume = document.getElementById("volume");
-            video.volume = volume.value;
+
+        var setVolume = function() {
+          var mediaClip = document.getElementById("video");
+          mediaClip.volume = document.getElementById("volume").value;
+
         }
+
         //Mute
-        function toggleMute() {
-            video.muted = !video.muted;
-        }
+
         //Progressbar
         video.addEventListener('timeupdate', updateProgress, false);
 
@@ -399,6 +402,7 @@ app
         }
 
         // Initialize the scope functions
+        $scope.setVolume = setVolume;
         $scope.addProductCard = addProductCard;
         $scope.addProduct = addProduct;
         $scope.removeProductCard = removeProductCard;
@@ -411,6 +415,21 @@ app
 
     }])
 
+    .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll){
+
+  function linkFn(scope, element, attrs){
+      $location.hash(attrs.scrollToLast);
+      $anchorScroll();
+  }
+
+  return {
+    restrict: 'AE',
+    scope: {
+
+    },
+    link: linkFn
+  };
+}])
 
     .filter('toMinSec', function() {
         return function(input) {
@@ -423,7 +442,6 @@ app
             }
         }
     })
-
     /*.directive('popover', function ($compile) {
       return {
               restrict: 'A',
