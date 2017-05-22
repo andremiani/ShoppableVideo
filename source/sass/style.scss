@@ -920,6 +920,7 @@ $c: #888;
                 top: 50%;
                 margin-left: 10px;
                 transform: translateY(-50%);
+                z-index: 10;
 
                 a {
                     display: block;
@@ -931,7 +932,7 @@ $c: #888;
                     background-position: center;
 
                     &:hover {
-                        background-color: #ef4c7f;
+                        background-color: #C43E69;
                     }
                 }
             }

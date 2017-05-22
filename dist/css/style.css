@@ -886,6 +886,7 @@ hr {
   top: 50%;
   margin-left: 10px;
   transform: translateY(-50%);
+  z-index: 10;
 }
 .timeline .product-timeline .product-bar .del-seg a {
   display: block;
@@ -897,7 +898,7 @@ hr {
   background-position: center;
 }
 .timeline .product-timeline .product-bar .del-seg a:hover {
-  background-color: #ef4c7f;
+  background-color: #C43E69;
 }
 
 .disable-timeline {

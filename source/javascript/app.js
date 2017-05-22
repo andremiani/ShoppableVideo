@@ -634,7 +634,7 @@ app
                 }).text('hh:mm:ss');
                 var $delSeg = $("<span>", {
                     "class": "del-seg"
-                }).html('<a href="#"><span class="hover-help">Delete segment</span></a></span>');
+                }).html('<a href="#"></a></span>');
                 $div.append($segStart, $segEnd, $delSeg);
 
 
