@@ -19,6 +19,7 @@ app
 
         //Play and pause
         $scope.toggleMute = function() {
+
           var vid = document.getElementById("video");
 
             if (vid.muted) {
