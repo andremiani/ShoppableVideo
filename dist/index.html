@@ -107,7 +107,7 @@
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
                     </div>
-                    <div>
+                    <div class="col-sm-8">
                         <div id="progressBar">
                             <div id="progress">
                             </div>
@@ -116,7 +116,7 @@
 
                     </div>
 
-                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='1'/>
+                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='0.5'/>
                     <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
                 </div>
 
@@ -184,8 +184,8 @@
                                     <div class="marker group" marker></div>
                                     <div class="product-bar ui-widget-content" slider>
                                         <span class="seg-start">00:00:00</span>
-                                        <span class="seg-end">00:00:15</span>
-                                        <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
+                                        <span class="seg-end">00:00:06</span>
+                                        <span class="del-seg"><a href="#"></a>
                                         </span>
                                     </div>
                                     <!--<p style="font-size:10px; margin-top: 48px;">Marker-time / 1:01</p>-->
@@ -282,10 +282,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
     <script> var video = document.getElementById("video"); video.controls = false;</script>
 
-
     <!-- include our JavaScript -->
     <script src="js/app.js"></script>
-
 </body>
-
 </html>
