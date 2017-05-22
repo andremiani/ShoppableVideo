@@ -387,8 +387,6 @@ app
 
         }
 
-        //Mute
-
         //Progressbar
         video.addEventListener('timeupdate', updateProgress, false);
 
