@@ -59,17 +59,15 @@
                 </div>
 
                 <div class="modal-body">
-
                     <div id="modal-input">
                         <input type="text" class="search" placeholder="Search" ng-model="searchItem">
                         <select id="categories" ng-model="showCategory">
-                      <option value="" selected>All categories</option>
-                      <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
-
-                    </select>
+                          <option value="" selected>All categories</option>
+                          <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+                        </select>
                     </div>
 
-                    <ul class="items grid">
+                    <ul class="items grid" >
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
                             <div class="item" ng-click="addProduct(selectedCard, item)" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
                                 <div class="item-thumb">
@@ -105,17 +103,11 @@
                 <video some-video video-current-time="currentTime" id="video" controls>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
-                <script>
-                    // Grab a handle to the video
-                    var video = document.getElementById("video");
-                    // Turn off the default controls
-                    video.controls = false;
-                </script>
                 <div id="controls">
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
                     </div>
-                    <div>
+                    <div class="col-sm-8">
                         <div id="progressBar">
                             <div id="progress">
                             </div>
@@ -123,7 +115,8 @@
                         <p style="font-size: 10px; color: white; margin: 0;">{{currentTime | toMinSec}} / 1:01</p>
 
                     </div>
-                    <input id="volume" min="0" max="1" step="0.1" type="range" onchange="setVolume()" />
+
+                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='0.5'/>
                     <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
                 </div>
 
@@ -143,13 +136,14 @@
                                         <div class="ProductText">
                                             <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5>
                                             <hr>
-                                            <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5></div>
+                                            <h5 class="buttonText" ng-bind="productCard.products[0].buttonText"></h5>
+                                        </div>
                                     </div>
                                 </div>
+
                             </li>
-                            <!--
-            -->
-                        </ul>
+                            <!-- Commentmarking to delete blank space
+                      --></ul>
                     </div>
                     <div class="video-product-bar-right">
                         <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
@@ -167,11 +161,18 @@
             </div>
 
             <div class="container-fluid">
-                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards" scroll-glue force-glue>
-                    <div ng-repeat="productCard in productCards" ng-init="productCardIndex = $index">
+                <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
+                    <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
                             <div class="product-card-thumb">
-                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index<=2}"></div>
+                                <!--Hard coded highlight-arrow on productcard (4-8) when library is open-->
+                                <div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
+                                <div ng-class="{'product-card-hightlight-5': $index === selectedCard && showLibrary && $index ===4}"></div>
+                                <div ng-class="{'product-card-hightlight-6': $index === selectedCard && showLibrary && $index ===5}"></div>
+                                <div ng-class="{'product-card-hightlight-7': $index === selectedCard && showLibrary && $index ===6}"></div>
+                                <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>
+
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
@@ -182,7 +183,8 @@
                                     <div class="product-bar ui-widget-content" slider>
                                         <span class="seg-start">00:00:00</span>
                                         <span class="seg-end">00:00:06</span>
-                                        <span class="del-seg"><a href="#"><span class="hover-help">Delete segment</span></a>
+
+                                        <span class="del-seg"><a href="#"></a>
                                         </span>
                                     </div>
                                     <!--<p style="font-size:10px; margin-top: 48px;">Marker-time / 1:01</p>-->
@@ -252,7 +254,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="product-add">
                                     <button type="button" ng-mouseover="hoverAddProduct=true" ng-mouseleave="hoverAddProduct=false" data-ng-click="$parent.showLibrary = true; selectCard($index)"></button>
                                     <h5 class="col-sm-11" ng-show="hoverAddProduct">Add products</h5>
@@ -278,12 +279,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
-    <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
-
+    <script> var video = document.getElementById("video"); video.controls = false;</script>
 
     <!-- include our JavaScript -->
     <script src="js/app.js"></script>
-
 </body>
-
 </html>

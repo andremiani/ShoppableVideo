@@ -15,16 +15,18 @@ app
         $scope.videoTitle = "";
 
         $scope.playPauseSrc = "../assets/images/play.png";
-        $scope.muteSrc = "../assets/images/mute.png";
+        $scope.muteSrc = "../assets/images/speaker.png";
 
         //Play and pause
         $scope.toggleMute = function() {
-            //  var playpause = document.getElementById("playpause");
-            if (!video.mute) {
-                video.mute = !video.mute;
+          var vid = document.getElementById("video");
+
+            if (vid.muted) {
+                vid.muted=false;
                 $scope.muteSrc = "../assets/images/speaker.png";
-            } else {
-                video.mute = video.mute;
+            }
+            else {
+                vid.muted=true;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };
@@ -40,6 +42,7 @@ app
                 $scope.playPauseSrc = "../assets/images/play.png";
             }
         };
+
 
         $scope.currentTime = 0;
         $scope.duration = 0;
@@ -59,7 +62,6 @@ app
             // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
-
 
         //Variable to toggle the active product card
         $scope.selectedCard = 0;
@@ -377,14 +379,13 @@ app
 
         //Video controller
         //Volume
-        function setVolume() {
-            var volume = document.getElementById("volume");
-            video.volume = volume.value;
+
+        var setVolume = function() {
+          var mediaClip = document.getElementById("video");
+          mediaClip.volume = document.getElementById("volume").value;
+
         }
-        //Mute
-        function toggleMute() {
-            video.muted = !video.muted;
-        }
+
         //Progressbar
         video.addEventListener('timeupdate', updateProgress, false);
 
@@ -398,6 +399,7 @@ app
         }
 
         // Initialize the scope functions
+        $scope.setVolume = setVolume;
         $scope.addProductCard = addProductCard;
         $scope.addProduct = addProduct;
         $scope.removeProductCard = removeProductCard;
@@ -410,6 +412,21 @@ app
 
     }])
 
+    .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll){
+
+  function linkFn(scope, element, attrs){
+      $location.hash(attrs.scrollToLast);
+      $anchorScroll();
+  }
+
+  return {
+    restrict: 'AE',
+    scope: {
+
+    },
+    link: linkFn
+  };
+}])
 
     .filter('toMinSec', function() {
         return function(input) {
@@ -422,7 +439,6 @@ app
             }
         }
     })
-
     /*.directive('popover', function ($compile) {
       return {
               restrict: 'A',
@@ -627,37 +643,37 @@ app
                     var totalWidth = parseInt($('.timeline').css('width'));
                     var newPos = currentPos / totalWidth * 100;
 
-                    var $div = $("<div>", {
-                        "class": "product-bar ui-widget-content"
-                    });
-                    var $segStart = $("<span>", {
-                        "class": "seg-start"
-                    }).text('hh:mm:ss');
-                    var $segEnd = $("<span>", {
-                        "class": "seg-end"
-                    }).text('hh:mm:ss');
-                    var $delSeg = $("<span>", {
-                        "class": "del-seg"
-                    }).html('<a href="#"><span class="hover-help">Delete segment</span></a></span>');
-                    $div.append($segStart, $segEnd, $delSeg);
+                var $div = $("<div>", {
+                    "class": "product-bar ui-widget-content"
+                });
+                var $segStart = $("<span>", {
+                    "class": "seg-start"
+                }).text('hh:mm:ss');
+                var $segEnd = $("<span>", {
+                    "class": "seg-end"
+                }).text('hh:mm:ss');
+                var $delSeg = $("<span>", {
+                    "class": "del-seg"
+                }).html('<a href="#"></a></span>');
+                $div.append($segStart, $segEnd, $delSeg);
 
 
-                    $div.css('left', newPos + '%');
-                    $div.css('position', 'absolute');
-                    $div.resizable({
-                        maxHeight: 20,
-                        minHeight: 20,
-                        handles: 'e, w'
-                    });
-                    $div.draggable({
-                        containment: ".product-timeline",
-                        axis: "x",
-                        drag: function(event, ui) {
-                            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
-                            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
-                        }
-                    });
-                    $div.resizable("disable");
+                $div.css('left', newPos + '%');
+                $div.css('position', 'absolute');
+                $div.resizable({
+                    maxHeight: 20,
+                    minHeight: 20,
+                    handles: 'e, w'
+                });
+                $div.draggable({
+                    containment: ".product-timeline",
+                    axis: "x",
+                    drag: function(event, ui) {
+                        $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                        $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                    }
+                });
+                $div.resizable("disable");
 
                     element.parent().parent().find('.product-timeline').append($div)
                     $div.find('.seg-start').text(positionToTime($div.css('left')));

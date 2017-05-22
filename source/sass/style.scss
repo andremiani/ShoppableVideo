@@ -385,7 +385,6 @@ input[type=text]:focus{
     flex: 0 1 100%;
     width: 100%    !important;
     height: auto   !important;
-  /*padding-left: 15px;*/
 }
 
 //Styling for the progressbar of the video
@@ -420,42 +419,33 @@ input[type=text]:focus{
 }
 
 #playpause{
-  /*margin-top: 5px;*/
-  /*float:left;*/
-  width: 40px;
-  /*margin-right: 15px;*/
+  margin: 0 0 4px 15px;
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
+  top: 5px;
 }
 
 #play {
     text-align: center;
-    flex: 1;
 }
 
 #mute:focus{
   outline: 0;
 }
 #mute{
-    flex: .5;
-  /*margin-top: 5px;
-  float:left;
-  width: 40px;*/
-  /*margin-right: 15px;*/
+  margin: 0 15px 4px 0;
   background-color: rgba(0, 0, 0, 0.0);
   border: none;
   box-shadow: none;
 }
 #progressBar {
-    flex: 6;
     display: flex;
    margin-top: 10px;
    border:1px solid #aaa;
    color:#fff;
-   width:295px;
+   width:100%;
    height:12px;
-   margin-right: 20px;
    border-radius: 5px;
    float: left;
    background: #676767;
@@ -474,12 +464,12 @@ input[type=text]:focus{
 }
 
 #volume{
-    flex:2;
-  /*margin-top: 17px;*/
   width: 20%;
   float: left;
-  margin-right: 5px;
+  margin-right: 15px;
+  margin-bottom: 3px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -503,7 +493,8 @@ input[type=text]:focus{
       width: 8px;
       cursor: ew-resize;
       background: #fac071;
-      box-shadow: -80px 0 0 80px #f69784;
+      box-shadow: -80px 20px 0 80px #f69784;
+      border-radius: 10px;
     }
 
     /* All the same stuff for Firefox */
@@ -579,8 +570,6 @@ input[type="range"]::-ms-fill-upper {
 
 #productCardsShowing{
   width: 100%;
-  max-height: 137px;
-  max-width: 137px;
   }
 
   .container{
@@ -707,7 +696,6 @@ $c: #888;
     max-height: 70vh;
     /*height: 65vh;*/
     transition: box-shadow .2s ease;
-
 }
 
 .shadow-top {
@@ -739,6 +727,73 @@ $c: #888;
     left: -3px;
     /*top: 40%;*/
     margin-top: 30px;
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+
+//Hard coded highlight-arrow on productcard (4-8) when library is open
+.product-card-hightlight-4 {
+    position: absolute;
+    left: -3px;
+    margin-top: -90px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-5 {
+    position: absolute;
+    left: -3px;
+    margin-top: -250px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-6 {
+    position: absolute;
+    left: -3px;
+    margin-top: -410px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-7 {
+    position: absolute;
+    left: -3px;
+    margin-top: -570px;
+    /*top: 40%;*/
+    border-left: 20px solid #f4f4f4;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(4px 0px 2px #AAA);
+    z-index: 999999;
+}
+.product-card-hightlight-8 {
+    position: absolute;
+    left: -3px;
+    margin-top: -730px;
+    /*top: 40%;*/
     border-left: 20px solid #f4f4f4;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
@@ -785,6 +840,7 @@ $c: #888;
     margin: 30px 0 20px 0;
     cursor: grab;
     opacity: .5;
+    border-radius: 15%;
     /*transform: translateY(-50%);*/
     .time {
 			position: absolute;
@@ -921,6 +977,7 @@ $c: #888;
                 top: 50%;
                 margin-left: 10px;
                 transform: translateY(-50%);
+                z-index: 10;
 
                 a {
                     display: block;
@@ -932,7 +989,7 @@ $c: #888;
                     background-position: center;
 
                     &:hover {
-                        background-color: #ef4c7f;
+                        background-color: #C43E69;
                     }
                 }
             }
