@@ -465,7 +465,21 @@ app
               }
           };
     })*/
+    .directive('closeOthers', function () {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, elem, attrs) {
 
+                  var lanopt = $(".card-container");
+
+                  lanopt.on("show.bs.collapse",".collapse", function(){
+                      lanopt.find(".collapse.in").collapse("hide");
+});
+
+              }
+          };
+    })
     //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
         return {
@@ -490,6 +504,7 @@ app
                 var newPos = currentPos / totalWidth * 100;
                 // set up timeslot slider on doc ready
                 angular.element(document).ready(function() {
+
                     //scope.appendTimeslot = function() {
 
                     $(".product-bar").resizable({
