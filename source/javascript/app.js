@@ -42,7 +42,7 @@ app
             }
         };
 
-
+        $scope.markerTime = 0;
         $scope.currentTime = 0;
         $scope.duration = 0;
 
@@ -386,26 +386,64 @@ app
         }
 
         //Progressbar
-        video.addEventListener('timeupdate', updateProgress, false);
+        video.addEventListener('timeupdate', updateProgress);
 
         function updateProgress() {
-            var progress = document.getElementById("progress");
-            var value = 0;
-            if (video.currentTime > 0) {
-                value = Math.floor((100 / video.duration) * video.currentTime);
-            }
-            progress.style.width = value + "%";
+            var currentPos = video.currentTime;
+            var maxduration = video.duration;
+            var percentage = 100 * currentPos / maxduration;
+            $('#progress').css('width', percentage + '%');
         }
+
+        $scope.timeDrag = false;
+
+        $scope.progressClick = function(e) {
+            $scope.timeDrag = true;
+            updatebar(e.pageX);
+        };
+
+        $scope.progressGo = function(e) {
+            if ($scope.timeDrag) {
+                $scope.timeDrag = false;
+                updatebar(e.pageX);
+            }
+        }
+
+        $scope.progressMove = function(e) {
+            if ($scope.timeDrag) {
+                updatebar(e.pageX);
+            }
+        }
+
+        var updatebar = function(x) {
+            var progress = $('#progressBar');
+            var maxduration = video.duration;
+            var position = x - progress.offset().left;
+            var percentage = 100 * position / progress.width();
+
+            //Check within range
+            if (percentage > 100) {
+                percentage = 100;
+            }
+
+            if (percentage < 0) {
+                percentage = 0;
+            }
+
+            //Update progress bar and video currenttime
+            $('#progress').css('width', percentage + '%');
+            video.currentTime = ((maxduration * percentage) / 100);
+        };
 
         $scope.scrollToRight = function() {
             var element = angular.element(document.querySelector('#letters'));
-            var x = element.scrollLeft()+140;
+            var x = element.scrollLeft() + 140;
             element.scrollLeft(x);
         };
 
         $scope.scrollToLeft = function() {
             var element = angular.element(document.querySelector('#letters'));
-            var x = element.scrollLeft()-140;
+            var x = element.scrollLeft() - 140;
             element.scrollLeft(x);
         };
 
@@ -502,6 +540,14 @@ app
                             $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                         }
                     });
+                    $(".marker").draggable({
+                        containmetn: ".product-timeline",
+                        axis: "x",
+                        drag: function(event, ui) {
+                            $(this).find('.current').text(positionToTime($(this).css('left')));
+
+                        }
+                    })
                     $(".product-bar").resizable("disable");
                     $(".product-bar").click(function() {
                         if ($(this).hasClass("edit-resize")) {
@@ -722,7 +768,7 @@ function convertSecondsToTime(sec) {
     var minutes = parseInt(totalSec / 60) % 60;
     var seconds = totalSec % 60;
 
-    var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+    var result = /*(hours < 10 ? "0" + hours : hours) + ":" +*/ (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
     return result;
 }
 
