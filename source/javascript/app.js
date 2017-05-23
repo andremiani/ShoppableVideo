@@ -466,7 +466,7 @@ app
           };
     })*/
 
-    //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders
+    //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
         return {
             restrict: 'A',
@@ -482,9 +482,12 @@ app
         },*/
             link: function(scope, element, attrs) {
 
-
-                // set up slider on load
+                var currentPos = parseInt($('.marker').css('left'));
+                var totalWidth = parseInt($('.timeline').css('width'));
+                var newPos = currentPos / totalWidth * 100;
+                // set up timeslot slider on doc ready
                 angular.element(document).ready(function() {
+                    //scope.appendTimeslot = function() {
 
                     $(".product-bar").resizable({
                         maxHeight: 20,
@@ -519,6 +522,7 @@ app
                     $('.del-seg').click(function() {
                         $(this).parent().remove();
                     });
+
                 });
             }
         };
@@ -564,7 +568,6 @@ app
     })
 
     //Directive for the time marker draggable
-
     .directive('marker', function() {
         return {
             restrict: 'A',
@@ -590,25 +593,26 @@ app
                     start: function(event, ui) {
                         posLeftArray = [];
                         if ($(this).hasClass("group")) {
+
                             $(".group").each(function(i) {
 
-                                //thiscssleft = $(this).css('left', newPos);
                                 thiscssleft = $(this).css('left');
                                 if (thiscssleft == 'auto') thiscssleft = 0; // For IE
 
                                 posLeftArray[i] = parseInt(thiscssleft);
-                                //posLeftArray[i] = parseInt(markerValue);
 
                             });
                         }
                         beginleft = $(this).offset().left;
+
                     },
                     drag: function(event, ui) {
                         var leftdiff = $(this).offset().left - beginleft;
 
                         if ($(this).hasClass("group")) {
                             $(".group").each(function(i) {
-                                $(this).css('left', posLeftArray[i] + leftdiff);
+                                //$(this).css('left', posLeftArray[i] + leftdiff);
+                                $(this).css('left', posLeftArray[0] + leftdiff);
                             });
                         }
                     }
@@ -639,9 +643,10 @@ app
             link: function(scope, element, attrs) {
 
                 // set up slider on add-timeslot-click
-                var addBtn = document.getElementsByClassName('add-timeslot');
-                angular.element(addBtn).click(function() {
+                //var addBtn = document.getElementsByClassName('add-timeslot');
+                //angular.element(addBtn).click(function() {
 
+                scope.addTimeslot = function() {
                     //$(elem).click(function() {
                     //$('.add-timeslot').click(function() {
 
@@ -705,7 +710,7 @@ app
                     $delSeg.click(function() {
                         $(this).parent().remove();
                     });
-                });
+                };
             }
         };
 
