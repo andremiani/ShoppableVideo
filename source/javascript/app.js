@@ -14,20 +14,21 @@ app
         // Variable for the video title
         $scope.videoTitle = "";
 
+        //Video controller
+        // Variable for video controller
         $scope.playPauseSrc = "../assets/images/play.png";
         $scope.muteSrc = "../assets/images/speaker.png";
 
         //Play and pause
         $scope.toggleMute = function() {
 
-          var vid = document.getElementById("video");
+            var vid = document.getElementById("video");
 
             if (vid.muted) {
-                vid.muted=false;
+                vid.muted = false;
                 $scope.muteSrc = "../assets/images/speaker.png";
-            }
-            else {
-                vid.muted=true;
+            } else {
+                vid.muted = true;
                 $scope.muteSrc = "../assets/images/mute.png";
             }
         };
@@ -87,15 +88,14 @@ app
         };*/
 
 
-        $scope.isProductAdded = function(item ,selectedCardIndex) {
+        $scope.isProductAdded = function(item, selectedCardIndex) {
             //return $scope.productCards[selectedCardIndex].products.indexOf(item.Id) != -1;
             //return $.inArray(item.Id, $scope.productCards[selectedCardIndex].products[0]) >= 0;
-                if ($scope.productCards.indexOf(item.Id) == -1){
-                    return false;
-                }
-                else {
-                    return true;
-                }
+            if ($scope.productCards.indexOf(item.Id) == -1) {
+                return false;
+            } else {
+                return true;
+            }
         };
 
         // Array to store the products in the library
@@ -381,11 +381,9 @@ app
 
         //Video controller
         //Volume
-
         var setVolume = function() {
-          var mediaClip = document.getElementById("video");
-          mediaClip.volume = document.getElementById("volume").value;
-
+            var mediaClip = document.getElementById("video");
+            mediaClip.volume = document.getElementById("volume").value;
         }
 
         //Progressbar
@@ -414,21 +412,21 @@ app
 
     }])
 
-    .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll){
+    .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll) {
 
-  function linkFn(scope, element, attrs){
-      $location.hash(attrs.scrollToLast);
-      $anchorScroll();
-  }
+        function linkFn(scope, element, attrs) {
+            $location.hash(attrs.scrollToLast);
+            $anchorScroll();
+        }
 
-  return {
-    restrict: 'AE',
-    scope: {
+        return {
+            restrict: 'AE',
+            scope: {
 
-    },
-    link: linkFn
-  };
-}])
+            },
+            link: linkFn
+        };
+    }])
 
     .filter('toMinSec', function() {
         return function(input) {
@@ -636,41 +634,41 @@ app
                     //$(elem).click(function() {
                     //$('.add-timeslot').click(function() {
 
-                var currentPos = parseInt($('.marker').css('left'));
-                var totalWidth = parseInt($('.timeline').css('width'));
-                var newPos = currentPos / totalWidth * 100;
+                    var currentPos = parseInt($('.marker').css('left'));
+                    var totalWidth = parseInt($('.timeline').css('width'));
+                    var newPos = currentPos / totalWidth * 100;
 
-                var $div = $("<div>", {
-                    "class": "product-bar ui-widget-content"
-                });
-                var $segStart = $("<span>", {
-                    "class": "seg-start"
-                }).text('hh:mm:ss');
-                var $segEnd = $("<span>", {
-                    "class": "seg-end"
-                }).text('hh:mm:ss');
-                var $delSeg = $("<span>", {
-                    "class": "del-seg"
-                }).html('<a href="#"></a></span>');
-                $div.append($segStart, $segEnd, $delSeg);
+                    var $div = $("<div>", {
+                        "class": "product-bar ui-widget-content"
+                    });
+                    var $segStart = $("<span>", {
+                        "class": "seg-start"
+                    }).text('hh:mm:ss');
+                    var $segEnd = $("<span>", {
+                        "class": "seg-end"
+                    }).text('hh:mm:ss');
+                    var $delSeg = $("<span>", {
+                        "class": "del-seg"
+                    }).html('<a href="#"></a></span>');
+                    $div.append($segStart, $segEnd, $delSeg);
 
 
-                $div.css('left', newPos + '%');
-                $div.css('position', 'absolute');
-                $div.resizable({
-                    maxHeight: 20,
-                    minHeight: 20,
-                    handles: 'e, w'
-                });
-                $div.draggable({
-                    containment: ".product-timeline",
-                    axis: "x",
-                    drag: function(event, ui) {
-                        $(this).find('.seg-start').text(positionToTime($(this).css('left')));
-                        $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
-                    }
-                });
-                $div.resizable("disable");
+                    $div.css('left', newPos + '%');
+                    $div.css('position', 'absolute');
+                    $div.resizable({
+                        maxHeight: 20,
+                        minHeight: 20,
+                        handles: 'e, w'
+                    });
+                    $div.draggable({
+                        containment: ".product-timeline",
+                        axis: "x",
+                        drag: function(event, ui) {
+                            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                        }
+                    });
+                    $div.resizable("disable");
 
                     element.parent().parent().find('.product-timeline').append($div)
                     $div.find('.seg-start').text(positionToTime($div.css('left')));
@@ -702,24 +700,24 @@ app
 
     });
 
-    function convertSecondsToTime(sec) {
-        totalSec = Math.round(sec);
-        var hours = parseInt(totalSec / 3600) % 24;
-        var minutes = parseInt(totalSec / 60) % 60;
-        var seconds = totalSec % 60;
+function convertSecondsToTime(sec) {
+    totalSec = Math.round(sec);
+    var hours = parseInt(totalSec / 3600) % 24;
+    var minutes = parseInt(totalSec / 60) % 60;
+    var seconds = totalSec % 60;
 
-        var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-        return result;
-    }
+    var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+    return result;
+}
 
-    function positionToTime(position) {
-        var totalDuration = 61;
+function positionToTime(position) {
+    var totalDuration = 61;
 
-        var totalWidth = parseInt($('.timeline').css('width'));
+    var totalWidth = parseInt($('.timeline').css('width'));
 
-        var currentPos = parseInt(position);
-        var percentage = currentPos / totalWidth;
-        var newTime = totalDuration * percentage;
+    var currentPos = parseInt(position);
+    var percentage = currentPos / totalWidth;
+    var newTime = totalDuration * percentage;
 
-        return convertSecondsToTime(newTime);
-    }
+    return convertSecondsToTime(newTime);
+}
