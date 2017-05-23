@@ -88,12 +88,21 @@ app
         //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
 
-            var arrLen = $scope.productCards[selectedCardIndex].products.length;
+            if (isDefined($scope.productCards[selectedCardIndex].products)) {
 
-            for (var i = 0; i < arrLen; i++) {
-                return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
+                var arrLen = $scope.productCards[selectedCardIndex].products.length;
+
+                for (var i = 0; i < arrLen; i++) {
+                    return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
+                }
             }
         };
+
+        // Helper to check if defined
+        var isDefined = function(x) {
+            //var undefined;
+            return x !== undefined;
+        }
 
         // Array to store the products in the library
         $scope.libraryProducts = [{
