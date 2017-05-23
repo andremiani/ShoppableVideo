@@ -122,10 +122,10 @@
 
                 <div class="col-sm-12 video-product-bar">
 
-                    <div class="video-product-bar-left">
+                    <div class="video-product-bar-left" ng-click="scrollToLeft()">
                         <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
                     </div>
-                    <div class="video-product-bar-content">
+                    <div class="video-product-bar-content" id="letters">
                         <ul class="video-bar-showing-product">
 
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
@@ -145,7 +145,7 @@
                             <!-- Commentmarking to delete blank space
                       --></ul>
                     </div>
-                    <div class="video-product-bar-right">
+                    <div class="video-product-bar-right" ng-click="scrollToRight()">
                         <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
                     </div>
                 </div>
@@ -165,13 +165,13 @@
                     <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
                             <div class="product-card-thumb">
-                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index<=2}"></div>
+                                <!--<div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index<=2}"></div>-->
                                 <!--Hard coded highlight-arrow on productcard (4-8) when library is open-->
-                                <div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
+                                <!--<div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
                                 <div ng-class="{'product-card-hightlight-5': $index === selectedCard && showLibrary && $index ===4}"></div>
                                 <div ng-class="{'product-card-hightlight-6': $index === selectedCard && showLibrary && $index ===5}"></div>
                                 <div ng-class="{'product-card-hightlight-7': $index === selectedCard && showLibrary && $index ===6}"></div>
-                                <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>
+                                <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>-->
 
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
