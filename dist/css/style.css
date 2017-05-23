@@ -127,6 +127,10 @@ header .context-menu .video-title:after {
   background-size: 22px;
 }
 
+.video-title::placeholder {
+  color: #d3d3d3;
+}
+
 header .context-menu .option-menu {
   float: right;
 }

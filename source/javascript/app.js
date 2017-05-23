@@ -471,6 +471,9 @@ app
         },*/
             link: function(scope, element, attrs) {
 
+                // Causes "Na — jquery.min.js:2215TypeError: undefined is not an object (evaluating 'b.ownerDocument.defaultView'"
+                //var self = this;
+
                 var currentPos = parseInt($('.marker').css('left'));
                 var totalWidth = parseInt($('.timeline').css('width'));
                 var newPos = currentPos / totalWidth * 100;
@@ -492,7 +495,9 @@ app
                         }
                     });
                     $(".product-bar").resizable("disable");
-                    $(".product-bar").click(function() {
+
+                    $(".product-bar").unbind('click');
+                    $(".product-bar").on('click', function() {
                         if ($(this).hasClass("edit-resize")) {
                             $(".product-bar").removeClass("edit-resize");
                             $(".product-bar").resizable("disable");
@@ -508,7 +513,7 @@ app
                         }
                     });
 
-                    $('.del-seg').click(function() {
+                    $('.del-seg').on('click', function() {
                         $(this).parent().remove();
                     });
 
