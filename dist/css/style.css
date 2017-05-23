@@ -127,6 +127,10 @@ header .context-menu .video-title:after {
   background-size: 22px;
 }
 
+.video-title::placeholder {
+  color: #d3d3d3;
+}
+
 header .context-menu .option-menu {
   float: right;
 }
@@ -245,6 +249,18 @@ button:focus {
   padding: 0;
 }
 
+#modal-input {
+  display: flex;
+}
+
+.search {
+  flex: 3;
+}
+
+#categories {
+  flex: 1;
+}
+
 .modal-content {
   background: #F4f4f4;
   height: auto;
@@ -313,7 +329,7 @@ input[type=text]:focus {
 
 .items {
   overflow-y: scroll;
-  height: 65vh;
+  height: 70vh;
   display: block;
   list-style: none;
 }
@@ -1120,7 +1136,7 @@ span:hover .hover-help {
 }
 
 .product-card-add button:hover {
-  background: #F26A87 url("../../assets/images/plus.png") no-repeat;
+  background: #F96A87 url("../../assets/images/plus.png") no-repeat;
   background-position: center;
   background-size: 17px;
 }
@@ -1190,6 +1206,10 @@ span:hover .hover-help {
   border-radius: 50%;
   transition: all 0.2s;
   z-index: 1;
+}
+
+.product-add button:hover {
+  background-color: #222;
 }
 
 .product-thumb {

@@ -85,13 +85,13 @@ app
         };*/
 
 
+        //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
-            //return $scope.productCards[selectedCardIndex].products.indexOf(item.Id) != -1;
-            //return $.inArray(item.Id, $scope.productCards[selectedCardIndex].products[0]) >= 0;
-            if ($scope.productCards.indexOf(item.Id) == -1) {
-                return false;
-            } else {
-                return true;
+
+            var arrLen = $scope.productCards[selectedCardIndex].products.length;
+
+            for (var i = 0; i < arrLen; i++) {
+                return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
             }
         };
 
@@ -503,7 +503,20 @@ app
               }
           };
     })*/
+    .directive('closeOthers', function () {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, elem, attrs) {
 
+                    var lanopt = $(".card-container");
+                    lanopt.on("show.bs.collapse",".collapse", function(){
+                    lanopt.find(".collapse.in").collapse("hide");
+                  });
+
+              }
+          };
+    })
     //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
         return {
@@ -520,11 +533,15 @@ app
         },*/
             link: function(scope, element, attrs) {
 
+                // Causes "Na — jquery.min.js:2215TypeError: undefined is not an object (evaluating 'b.ownerDocument.defaultView'"
+                //var self = this;
+
                 var currentPos = parseInt($('.marker').css('left'));
                 var totalWidth = parseInt($('.timeline').css('width'));
                 var newPos = currentPos / totalWidth * 100;
                 // set up timeslot slider on doc ready
                 angular.element(document).ready(function() {
+
                     //scope.appendTimeslot = function() {
 
                     $(".product-bar").resizable({
@@ -549,7 +566,9 @@ app
                         }
                     })
                     $(".product-bar").resizable("disable");
-                    $(".product-bar").click(function() {
+
+                    $(".product-bar").unbind('click');
+                    $(".product-bar").on('click', function() {
                         if ($(this).hasClass("edit-resize")) {
                             $(".product-bar").removeClass("edit-resize");
                             $(".product-bar").resizable("disable");
@@ -565,7 +584,7 @@ app
                         }
                     });
 
-                    $('.del-seg').click(function() {
+                    $('.del-seg').on('click', function() {
                         $(this).parent().remove();
                     });
 

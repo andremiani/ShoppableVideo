@@ -9,7 +9,7 @@ Instructions
 (http://sass-lang.com/install)
 
 
-In your open terminal window type:
+In your terminal window type:
 
 > gem install sass
 
@@ -49,22 +49,20 @@ command to install the Sass gem.
 > npm install jshint-stylish
 
 
-* ...Install a bunch of other gulp modules in the same manner if needed.
-
-
 * Install gulp in directory.
 
 > npm install gulp
 
 
-* Compile application.
+* Compile application (And read point below).
 
 > gulp
 
-* Install a bunch of other gulp modules in this manner until successful
+* You are likely to receive some complaints from the terminal.
+  Then you need to install a bunch of other gulp modules in this manner until successful
   compilation.
 
-> npm install <'name of module'>
+> npm install <'name of module in complaint'>
 
 
-* Open dist/index.html in your browser.
+* Start app by opening dist/index.html in your browser.

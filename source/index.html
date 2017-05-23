@@ -121,7 +121,6 @@
                 </div>
 
                 <div class="col-sm-12 video-product-bar">
-
                     <div class="video-product-bar-left" ng-click="scrollToLeft()">
                         <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
                     </div>
@@ -165,7 +164,7 @@
                     <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
                             <div class="product-card-thumb">
-                                <!--<div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index<=2}"></div>-->
+                                <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary}"></div>
                                 <!--Hard coded highlight-arrow on productcard (4-8) when library is open-->
                                 <!--<div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
                                 <div ng-class="{'product-card-hightlight-5': $index === selectedCard && showLibrary && $index ===4}"></div>
