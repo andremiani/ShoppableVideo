@@ -85,13 +85,13 @@ app
         };*/
 
 
+        //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
-            //return $scope.productCards[selectedCardIndex].products.indexOf(item.Id) != -1;
-            //return $.inArray(item.Id, $scope.productCards[selectedCardIndex].products[0]) >= 0;
-            if ($scope.productCards.indexOf(item.Id) == -1) {
-                return false;
-            } else {
-                return true;
+
+            var arrLen = $scope.productCards[selectedCardIndex].products.length;
+
+            for (var i = 0; i < arrLen; i++) {
+                return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
             }
         };
 
@@ -471,11 +471,10 @@ app
               scope: true,
               link: function (scope, elem, attrs) {
 
-                  var lanopt = $(".card-container");
-
-                  lanopt.on("show.bs.collapse",".collapse", function(){
-                      lanopt.find(".collapse.in").collapse("hide");
-});
+                    var lanopt = $(".card-container");
+                    lanopt.on("show.bs.collapse",".collapse", function(){
+                    lanopt.find(".collapse.in").collapse("hide");
+                  });
 
               }
           };
