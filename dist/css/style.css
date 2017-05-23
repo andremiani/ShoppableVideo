@@ -127,6 +127,10 @@ header .context-menu .video-title:after {
   background-size: 22px;
 }
 
+.video-title::placeholder {
+  color: #d3d3d3;
+}
+
 header .context-menu .option-menu {
   float: right;
 }
@@ -245,6 +249,18 @@ button:focus {
   padding: 0;
 }
 
+#modal-input {
+  display: flex;
+}
+
+.search {
+  flex: 3;
+}
+
+#categories {
+  flex: 1;
+}
+
 .modal-content {
   background: #F4f4f4;
   height: auto;
@@ -313,7 +329,7 @@ input[type=text]:focus {
 
 .items {
   overflow-y: scroll;
-  height: 65vh;
+  height: 70vh;
   display: block;
   list-style: none;
 }
@@ -723,7 +739,6 @@ hr {
   position: absolute;
   left: -3px;
   margin-top: -90px;
-  /*top: 40%;*/
   border-left: 20px solid #f4f4f4;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
@@ -737,7 +752,6 @@ hr {
   position: absolute;
   left: -3px;
   margin-top: -250px;
-  /*top: 40%;*/
   border-left: 20px solid #f4f4f4;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
@@ -751,7 +765,6 @@ hr {
   position: absolute;
   left: -3px;
   margin-top: -410px;
-  /*top: 40%;*/
   border-left: 20px solid #f4f4f4;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
@@ -765,7 +778,6 @@ hr {
   position: absolute;
   left: -3px;
   margin-top: -570px;
-  /*top: 40%;*/
   border-left: 20px solid #f4f4f4;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
@@ -779,7 +791,6 @@ hr {
   position: absolute;
   left: -3px;
   margin-top: -730px;
-  /*top: 40%;*/
   border-left: 20px solid #f4f4f4;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
@@ -816,7 +827,7 @@ hr {
 }
 
 .marker {
-  top: -42px;
+  top: -46px;
   left: 0;
   position: absolute;
   z-index: 10;
@@ -825,23 +836,48 @@ hr {
   background: #999;
   margin: 30px 0 20px 0;
   cursor: grab;
+  opacity: .7;
+  border-radius: 15%;
   /*transform: translateY(-50%);*/
 }
 .marker .time {
+  top: -5px;
+  left: 45px;
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
-  top: 0;
-  left: 10px;
   white-space: nowrap;
-  background: #1a1a1a;
+  background: #444444;
   text-align: center;
   color: #999;
-  padding: 5px 10px;
+  padding: 2px 5px;
   border-radius: 30px;
-  font-size: 12px;
-  transform: translateY(-50%);
+  font-size: 10px;
+  transform: translateX(-50%);
+  z-index: 100;
 }
 .marker .time .current {
   color: #fff;
+}
+.marker:active .time {
+  opacity: 1;
+}
+.marker:hover .time {
+  opacity: 1;
+}
+
+.timeline .marker:after {
+  content: "";
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #FFB25B;
+  position: absolute;
+  opacity: 1 !important;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 1px 1px 5px 0px rgba(119, 119, 119, 0.5);
 }
 
 /* Time line from SM */
@@ -1100,7 +1136,7 @@ span:hover .hover-help {
 }
 
 .product-card-add button:hover {
-  background: #F26A87 url("../../assets/images/plus.png") no-repeat;
+  background: #F96A87 url("../../assets/images/plus.png") no-repeat;
   background-position: center;
   background-size: 17px;
 }
@@ -1170,6 +1206,10 @@ span:hover .hover-help {
   border-radius: 50%;
   transition: all 0.2s;
   z-index: 1;
+}
+
+.product-add button:hover {
+  background-color: #222;
 }
 
 .product-thumb {

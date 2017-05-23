@@ -21,7 +21,6 @@ app
 
         //Play and pause
         $scope.toggleMute = function() {
-
             var vid = document.getElementById("video");
 
             if (vid.muted) {
@@ -45,7 +44,7 @@ app
             }
         };
 
-
+        $scope.markerTime = 0;
         $scope.currentTime = 0;
         $scope.duration = 0;
 
@@ -87,16 +86,24 @@ app
             $scope.showLibrary = false;
         };*/
 
-
+        //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
-            //return $scope.productCards[selectedCardIndex].products.indexOf(item.Id) != -1;
-            //return $.inArray(item.Id, $scope.productCards[selectedCardIndex].products[0]) >= 0;
-            if ($scope.productCards.indexOf(item.Id) == -1) {
-                return false;
-            } else {
-                return true;
+
+            if (isDefined($scope.productCards[selectedCardIndex].products)) {
+
+                var arrLen = $scope.productCards[selectedCardIndex].products.length;
+
+                for (var i = 0; i < arrLen; i++) {
+                    return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
+                }
             }
         };
+
+        // Helper to check if defined
+        var isDefined = function(x) {
+            //var undefined;
+            return x !== undefined;
+        }
 
         // Array to store the products in the library
         $scope.libraryProducts = [{
@@ -387,16 +394,66 @@ app
         }
 
         //Progressbar
-        video.addEventListener('timeupdate', updateProgress, false);
+        video.addEventListener('timeupdate', updateProgress);
 
         function updateProgress() {
-            var progress = document.getElementById("progress");
-            var value = 0;
-            if (video.currentTime > 0) {
-                value = Math.floor((100 / video.duration) * video.currentTime);
-            }
-            progress.style.width = value + "%";
+            var currentPos = video.currentTime;
+            var maxduration = video.duration;
+            var percentage = 100 * currentPos / maxduration;
+            $('#progress').css('width', percentage + '%');
         }
+
+        $scope.timeDrag = false;
+
+        $scope.progressClick = function(e) {
+            $scope.timeDrag = true;
+            updatebar(e.pageX);
+        };
+
+        $scope.progressGo = function(e) {
+            if ($scope.timeDrag) {
+                $scope.timeDrag = false;
+                updatebar(e.pageX);
+            }
+        }
+
+        $scope.progressMove = function(e) {
+            if ($scope.timeDrag) {
+                updatebar(e.pageX);
+            }
+        }
+
+        var updatebar = function(x) {
+            var progress = $('#progressBar');
+            var maxduration = video.duration;
+            var position = x - progress.offset().left;
+            var percentage = 100 * position / progress.width();
+
+            //Check within range
+            if (percentage > 100) {
+                percentage = 100;
+            }
+
+            if (percentage < 0) {
+                percentage = 0;
+            }
+
+            //Update progress bar and video currenttime
+            $('#progress').css('width', percentage + '%');
+            video.currentTime = ((maxduration * percentage) / 100);
+        };
+
+        $scope.scrollToRight = function() {
+            var element = angular.element(document.querySelector('#letters'));
+            var x = element.scrollLeft() + 140;
+            element.scrollLeft(x);
+        };
+
+        $scope.scrollToLeft = function() {
+            var element = angular.element(document.querySelector('#letters'));
+            var x = element.scrollLeft() - 140;
+            element.scrollLeft(x);
+        };
 
         // Initialize the scope functions
         $scope.setVolume = setVolume;
@@ -454,8 +511,21 @@ app
               }
           };
     })*/
+    .directive('closeOthers', function () {
+      return {
+              restrict: 'A',
+              scope: true,
+              link: function (scope, elem, attrs) {
 
-    //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders
+                    var lanopt = $(".card-container");
+                    lanopt.on("show.bs.collapse",".collapse", function(){
+                    lanopt.find(".collapse.in").collapse("hide");
+                  });
+
+              }
+          };
+    })
+    //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
         return {
             restrict: 'A',
@@ -471,9 +541,16 @@ app
         },*/
             link: function(scope, element, attrs) {
 
+                // Causes "Na — jquery.min.js:2215TypeError: undefined is not an object (evaluating 'b.ownerDocument.defaultView'"
+                //var self = this;
 
-                // set up slider on load
+                var currentPos = parseInt($('.marker').css('left'));
+                var totalWidth = parseInt($('.timeline').css('width'));
+                var newPos = currentPos / totalWidth * 100;
+                // set up timeslot slider on doc ready
                 angular.element(document).ready(function() {
+
+                    //scope.appendTimeslot = function() {
 
                     $(".product-bar").resizable({
                         maxHeight: 20,
@@ -488,8 +565,18 @@ app
                             $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                         }
                     });
+                    $(".marker").draggable({
+                        containmetn: ".product-timeline",
+                        axis: "x",
+                        drag: function(event, ui) {
+                            $(this).find('.current').text(positionToTime($(this).css('left')));
+
+                        }
+                    })
                     $(".product-bar").resizable("disable");
-                    $(".product-bar").click(function() {
+
+                    $(".product-bar").unbind('click');
+                    $(".product-bar").on('click', function() {
                         if ($(this).hasClass("edit-resize")) {
                             $(".product-bar").removeClass("edit-resize");
                             $(".product-bar").resizable("disable");
@@ -505,9 +592,10 @@ app
                         }
                     });
 
-                    $('.del-seg').click(function() {
+                    $('.del-seg').on('click', function() {
                         $(this).parent().remove();
                     });
+
                 });
             }
         };
@@ -553,7 +641,6 @@ app
     })
 
     //Directive for the time marker draggable
-
     .directive('marker', function() {
         return {
             restrict: 'A',
@@ -579,25 +666,26 @@ app
                     start: function(event, ui) {
                         posLeftArray = [];
                         if ($(this).hasClass("group")) {
+
                             $(".group").each(function(i) {
 
-                                //thiscssleft = $(this).css('left', newPos);
                                 thiscssleft = $(this).css('left');
                                 if (thiscssleft == 'auto') thiscssleft = 0; // For IE
 
                                 posLeftArray[i] = parseInt(thiscssleft);
-                                //posLeftArray[i] = parseInt(markerValue);
 
                             });
                         }
                         beginleft = $(this).offset().left;
+
                     },
                     drag: function(event, ui) {
                         var leftdiff = $(this).offset().left - beginleft;
 
                         if ($(this).hasClass("group")) {
                             $(".group").each(function(i) {
-                                $(this).css('left', posLeftArray[i] + leftdiff);
+                                //$(this).css('left', posLeftArray[i] + leftdiff);
+                                $(this).css('left', posLeftArray[0] + leftdiff);
                             });
                         }
                     }
@@ -628,9 +716,10 @@ app
             link: function(scope, element, attrs) {
 
                 // set up slider on add-timeslot-click
-                var addBtn = document.getElementsByClassName('add-timeslot');
-                angular.element(addBtn).click(function() {
+                //var addBtn = document.getElementsByClassName('add-timeslot');
+                //angular.element(addBtn).click(function() {
 
+                scope.addTimeslot = function() {
                     //$(elem).click(function() {
                     //$('.add-timeslot').click(function() {
 
@@ -694,7 +783,7 @@ app
                     $delSeg.click(function() {
                         $(this).parent().remove();
                     });
-                });
+                };
             }
         };
 
@@ -706,7 +795,7 @@ function convertSecondsToTime(sec) {
     var minutes = parseInt(totalSec / 60) % 60;
     var seconds = totalSec % 60;
 
-    var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+    var result = /*(hours < 10 ? "0" + hours : hours) + ":" +*/ (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
     return result;
 }
 
