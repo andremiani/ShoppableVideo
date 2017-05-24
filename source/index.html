@@ -12,6 +12,7 @@
     <!-- include our compiled CSS -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 <!-- this will be the only controller AppCtrl -->
 
 <body ng-controller="AppCtrl" ng-cloak>
@@ -28,6 +29,7 @@
                         <li><a href="">Publish</a></li>
                     </ul>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="option-menu">
                         <div class="options">
@@ -42,6 +44,7 @@
                     </div>
                     <a href="#" class="btn yellow btn-sm" style="float: right; margin-top: 2px; margin-right: 10px;">Save</a>
                 </div>
+
             </div>
         </div>
     </header>
@@ -67,7 +70,7 @@
                         </select>
                     </div>
 
-                    <ul class="items grid" >
+                    <ul class="items grid">
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
                             <div class="item" ng-click="addProduct(selectedCard, item)" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
                                 <div class="item-thumb">
@@ -98,9 +101,10 @@
                     <h4>Preview</h4>
                 </div>
             </div>
+            
             <!-- Video code-->
             <div class="video-container">
-                <video some-video video-current-time="currentTime" id="video" controls>
+                <video some-video video-current-time="currentTime" id="video" controls loop>
                 <source src="../assets/videos/Croissants.mp4" type="video/mp4">
             </video>
                 <div id="controls">
@@ -112,11 +116,11 @@
                             <div id="progress">
                             </div>
                         </div>
-                        <p style="font-size: 10px; color: white; margin: 0;">{{currentTime | toMinSec}} / 1:01</p>
+                        <p style="font-size: 10px; color: white; margin: 0;">{{Time | toMinSec}} / 1:01</p>
 
                     </div>
 
-                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='0.5'/>
+                    <input type="range" ng-click="setVolume()" id='volume' min=0 max=1 step=0.01 value='0.5' />
                     <button id="mute" ng-click="toggleMute()"> <img ng-src="{{muteSrc}}" alt="Play" style="width:20px; height:20px;"></button>
                 </div>
 
@@ -142,7 +146,8 @@
 
                             </li>
                             <!-- Commentmarking to delete blank space
-                      --></ul>
+                      -->
+                        </ul>
                     </div>
                     <div class="video-product-bar-right" ng-click="scrollToRight()">
                         <img class="arrows" src="../assets/images/arrow-right.png" alt="Arrow right">
@@ -160,6 +165,7 @@
             </div>
 
             <div class="container-fluid">
+
                 <div id="card-container" class="card-container" ui-sortable="sortableCardOptions" ng-model="productCards">
                     <div ng-repeat="productCard in productCards" id="productCard-{{::$index}}" scroll-to-last="productCard-{{::$index}}" ng-init="productCardIndex = $index">
                         <div class="product-card">
@@ -284,9 +290,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.2/sortable.min.js"></script>
-    <script> var video = document.getElementById("video"); video.controls = false;</script>
+    <script>
+        var video = document.getElementById("video");
+        video.controls = false;
+    </script>
 
     <!-- include our JavaScript -->
     <script src="js/app.js"></script>
 </body>
+
 </html>
