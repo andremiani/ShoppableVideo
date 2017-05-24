@@ -138,8 +138,11 @@
 
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">
 
-                                <div class="container" ng-if="productCard.products.length > 0">
-                                    <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" alt="">
+                                <div class="container">
+
+                                  <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
+                                  <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
+
                                     <div class="overlay">
                                         <div class="ProductText">
                                             <h5 class="productTitle" ng-bind="productCard.products[0].productTitle"></h5>
