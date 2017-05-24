@@ -133,10 +133,6 @@ header .context-menu .video-title:after {
     background-size: 22px;
 }
 
- .video-title::placeholder {
-     color: #d3d3d3;
- }
-
 header .context-menu .option-menu {
     float: right;
 }
@@ -170,6 +166,7 @@ header .context-menu .option-menu > ul {
   background: #F26A87;
   color: white;
 }
+
 
 button:focus {
   outline: none !important;
@@ -289,7 +286,6 @@ button:focus {
 
 .modal-content .modal-body{
   padding: 0 20px;
-  margin-bottom: 40px;
 }
 
 .modal-content .modal-input{
@@ -338,7 +334,7 @@ input[type=text]:focus{
 
 .items {
   overflow-y: scroll;
-  height: 70vh;
+  height: 68vh;
     display: block;
     list-style: none;
 }
@@ -478,6 +474,21 @@ input[type=text]:focus{
    z-index: 999;
    width: 0;
 }
+#progressBar #progress:after {
+    content: "";
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #F6F6F6;
+    position: absolute;
+    opacity: 1 !important;
+    top: -2px;
+    left: 100%;
+    transform: translateX(-50%);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0, 0.8);
+
+}
+
 
 #volume{
   width: 20%;
@@ -494,6 +505,7 @@ input[type=text]:focus{
       width: 80px;
       -webkit-appearance: none;
       background-color: white;
+      
     }
 
     input[type='range']::-webkit-slider-runnable-track {
@@ -886,8 +898,6 @@ $c: #888;
       }
     }
 }
-
-
 
 .timeline .marker:after {
     content: "";

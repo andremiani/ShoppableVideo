@@ -43,8 +43,9 @@ app
         };
 
         $scope.markerTime = 0;
-        $scope.currentTime = 0;
+        $scope.Time = 0;
         $scope.duration = 0;
+        $scope.uppdatera = 0;
 
         // Array to store the productCards
         $scope.productCards = [];
@@ -88,20 +89,11 @@ app
         //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
 
-            if (isDefined($scope.productCards[selectedCardIndex].products)) {
+            var arrLen = $scope.productCards[selectedCardIndex].products.length;
 
-                var arrLen = $scope.productCards[selectedCardIndex].products.length;
-
-                for (var i = 0; i < arrLen; i++) {
-                    return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
-                }
+            for (var i = 0; i < arrLen; i++) {
+                return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
             }
-        };
-
-        // Helper to check if defined
-        var isDefined = function(x) {
-            //var undefined;
-            return x !== undefined;
         };
 
         // Array to store the products in the library
@@ -387,7 +379,6 @@ app
 
         //Video controller
         //Volume
-
         var setVolume = function() {
             var mediaClip = document.getElementById("video");
             mediaClip.volume = document.getElementById("volume").value;
@@ -402,7 +393,14 @@ app
             var maxduration = video.duration;
             var percentage = 100 * currentPos / maxduration;
             $('#progress').css('width', percentage + '%');
+
+            $scope.$apply(function () {
+              $scope.Time = video.currentTime;
+            });
+
         }
+
+
 
         $scope.timeDrag = false;
 
@@ -497,6 +495,7 @@ app
             }
         };
     })
+
     /*.directive('popover', function ($compile) {
       return {
               restrict: 'A',
@@ -548,15 +547,15 @@ app
                 var currentPos = parseInt($('.marker').css('left'));
                 var totalWidth = parseInt($('.timeline').css('width'));
                 var newPos = currentPos / totalWidth * 100;
-                // set up timeslot slider on doc ready
-                angular.element(document).ready(function() {
 
-                    //scope.appendTimeslot = function() {
+                // set up timeslot slider on doc ready
+                $(document).on('click', '.add-card-button', function () {
 
                     $(".product-bar").resizable({
                         maxHeight: 20,
                         minHeight: 20,
                         handles: 'e, w',
+                        //Bug: This is initially undef.
                         resize: function(event, ui) {
                             $(this).find('.seg-start').text(positionToTime($(this).css('left')));
                             $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
@@ -598,46 +597,6 @@ app
             }
         };
     })
-
-    .directive('someVideo', function($window, $timeout) {
-        return {
-            scope: {
-                videoCurrentTime: "=videoCurrentTime"
-            },
-            controller: function($scope, $element) {
-
-                $scope.onTimeUpdate = function() {
-                    var currTime = $element[0].currentTime;
-                    if (currTime - $scope.videoCurrentTime > 2 || $scope.videoCurrentTime - currTime > 2) {
-
-                        $element[0].currentTime = $scope.videoCurrentTime;
-                    }
-
-
-                    $scope.$apply(function() {
-                        $scope.videoCurrentTime = $element[0].currentTime;
-                    });
-                };
-            },
-            link: function(scope, elm) {
-                // Use this $watch to restart the video if it has ended
-                scope.$watch('videoCurrentTime', function(newVal) {
-
-                    if (elm[0].ended) {
-                        // Do a second check because the last 'timeupdate'
-                        // after the video stops causes a hiccup.
-                        if (elm[0].currentTime !== newVal) {
-                            elm[0].currentTime = newVal;
-                            elm[0].play();
-                        }
-                    }
-                });
-                // Otherwise keep any model syncing here.
-                elm.bind('timeupdate', scope.onTimeUpdate);
-            }
-        };
-    })
-
     //Directive for the time marker draggable
     .directive('marker', function() {
         return {
@@ -662,8 +621,10 @@ app
                     containment: ".product-timeline",
                     axis: "x",
                     create: function(event, ui) {
-                        if (scope.markerPosLeft !== undefined){
-                            $(this).css('left', markerPosLeft);
+                        if (scope.productCards.length > 1){
+
+                            
+                            $(this).css('left', $('.primaryMarker').offset().left - $(this).offset().left);
                         }
 
                     },
@@ -694,9 +655,9 @@ app
                         $(this).find('.current').text(positionToTime($(this).css('left')));
 
                     },
-                    stop: function(event, ui) {
+                    /*stop: function(event, ui) {
                         scope.markerPosLeft = ui.position.left;
-                    }
+                    }*/
 
                 };
 
