@@ -566,14 +566,14 @@ app
                             $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                         }
                     });
-                    $(".marker").draggable({
-                        containmetn: ".product-timeline",
+                    /*$(".marker").draggable({
+                        containment: ".product-timeline",
                         axis: "x",
                         drag: function(event, ui) {
                             $(this).find('.current').text(positionToTime($(this).css('left')));
 
                         }
-                    })
+                    })*/
                     $(".product-bar").resizable("disable");
 
                     $(".product-bar").unbind('click');
@@ -689,6 +689,7 @@ app
                                 $(this).css('left', posLeftArray[0] + leftdiff);
                             });
                         }
+                        $(this).find('.current').text(positionToTime($(this).css('left')));
                     }
                 };
 
