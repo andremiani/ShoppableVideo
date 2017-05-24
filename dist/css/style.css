@@ -1067,6 +1067,12 @@ span:hover .hover-help {
 .timeline-btns span img {
   width: 30px;
 }
+.timeline-btns span button {
+  background-color: #444;
+}
+.timeline-btns span button:hover {
+  background-color: #222;
+}
 .timeline-btns .edit-timeline.active img {
   opacity: 0.5;
 }

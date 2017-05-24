@@ -1117,6 +1117,13 @@ span {
         img {
             width: 30px;
         }
+
+        button {
+            background-color: #444;
+            &:hover { background-color: #222;
+            }
+        }
+
     }
 
     .edit-timeline {
