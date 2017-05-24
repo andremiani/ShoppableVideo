@@ -101,33 +101,7 @@
                     <h4>Preview</h4>
                 </div>
             </div>
-            <input type="range" step="any" id="seekbar">
-            <script>
-                var video = document.getElementById('video');
-                var seekbar = document.getElementById('seekbar');
-
-                function updateUI() {
-                    var lastBuffered = video.buffered.end(video.buffered.length - 1);
-                    seekbar.min = 0;
-                    seekbar.max = 61;
-                    seekbar.value = video.currentTime;
-                }
-
-                function setupSeekbar() {
-                    seekbar.min = video.startTime;
-                    seekbar.max = video.startTime + video.duration;
-                }
-
-                function seekVideo() {
-                    video.currentTime = seekbar.value;
-                }
-
-
-                seekbar.onchange = seekVideo;
-                video.ontimeupdate = updateUI;
-                video.ondurationchange = setupSeekbar;
-                var lastBuffered = video.buffered.end(video.buffered.length - 1);
-            </script>
+            
             <!-- Video code-->
             <div class="video-container">
                 <video some-video video-current-time="currentTime" id="video" controls loop>
@@ -142,7 +116,7 @@
                             <div id="progress">
                             </div>
                         </div>
-                        <p style="font-size: 10px; color: white; margin: 0;">{{currentTime | toMinSec}} / 1:01</p>
+                        <p style="font-size: 10px; color: white; margin: 0;">{{Time | toMinSec}} / 1:01</p>
 
                     </div>
 

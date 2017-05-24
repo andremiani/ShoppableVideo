@@ -45,7 +45,7 @@ app
         };
 
         $scope.markerTime = 0;
-        $scope.currentTime = 0;
+        $scope.Time = 0;
         $scope.duration = 0;
 
         // Array to store the productCards
@@ -401,6 +401,7 @@ app
             var maxduration = video.duration;
             var percentage = 100 * currentPos / maxduration;
             $('#progress').css('width', percentage + '%');
+            $scope.Time = video.currentTime;
         }
 
         $scope.timeDrag = false;
@@ -441,6 +442,7 @@ app
             //Update progress bar and video currenttime
             $('#progress').css('width', percentage + '%');
             video.currentTime = ((maxduration * percentage) / 100);
+
         };
 
         $scope.scrollToRight = function() {
@@ -599,45 +601,6 @@ app
                 });
             }
         };
-    })
-
-    .directive('someVideo', function($window, $timeout) {
-        return {
-            scope: {
-                videoCurrentTime: "=videoCurrentTime"
-            },
-            controller: function($scope, $element) {
-
-                $scope.onTimeUpdate = function() {
-                    var currTime = $element[0].currentTime;
-                    if (currTime - $scope.videoCurrentTime > 2 || $scope.videoCurrentTime - currTime > 2) {
-
-                        $element[0].currentTime = $scope.videoCurrentTime;
-                    }
-
-
-                    $scope.$apply(function() {
-                        $scope.videoCurrentTime = $element[0].currentTime;
-                    });
-                }
-            },
-            link: function(scope, elm) {
-                // Use this $watch to restart the video if it has ended
-                scope.$watch('videoCurrentTime', function(newVal) {
-
-                    if (elm[0].ended) {
-                        // Do a second check because the last 'timeupdate'
-                        // after the video stops causes a hiccup.
-                        if (elm[0].currentTime !== newVal) {
-                            elm[0].currentTime = newVal;
-                            elm[0].play();
-                        }
-                    }
-                });
-                // Otherwise keep any model syncing here.
-                elm.bind('timeupdate', scope.onTimeUpdate);
-            }
-        }
     })
 
     //Directive for the time marker draggable
