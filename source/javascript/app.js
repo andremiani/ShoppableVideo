@@ -47,6 +47,7 @@ app
         $scope.markerTime = 0;
         $scope.Time = 0;
         $scope.duration = 0;
+        $scope.uppdatera = 0;
 
         // Array to store the productCards
         $scope.productCards = [];
@@ -401,8 +402,9 @@ app
             var maxduration = video.duration;
             var percentage = 100 * currentPos / maxduration;
             $('#progress').css('width', percentage + '%');
-            $scope.Time = video.currentTime;
         }
+
+
 
         $scope.timeDrag = false;
 
@@ -602,6 +604,7 @@ app
             }
         };
     })
+
 
     //Directive for the time marker draggable
     .directive('marker', function() {
