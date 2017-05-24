@@ -14,8 +14,6 @@ app
         // Variable for the video title
         $scope.videoTitle = "";
 
-        //Video controller
-        // Variable for video controller
         $scope.playPauseSrc = "../assets/images/play.png";
         $scope.muteSrc = "../assets/images/speaker.png";
 
@@ -87,24 +85,16 @@ app
             $scope.showLibrary = false;
         };*/
 
+
         //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
 
-            if (isDefined($scope.productCards[selectedCardIndex].products)) {
+            var arrLen = $scope.productCards[selectedCardIndex].products.length;
 
-                var arrLen = $scope.productCards[selectedCardIndex].products.length;
-
-                for (var i = 0; i < arrLen; i++) {
-                    return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
-                }
+            for (var i = 0; i < arrLen; i++) {
+                return $scope.productCards[selectedCardIndex].products[i].Id === item.Id;
             }
         };
-
-        // Helper to check if defined
-        var isDefined = function(x) {
-            //var undefined;
-            return x !== undefined;
-        }
 
         // Array to store the products in the library
         $scope.libraryProducts = [{
@@ -392,6 +382,7 @@ app
         var setVolume = function() {
             var mediaClip = document.getElementById("video");
             mediaClip.volume = document.getElementById("volume").value;
+
         }
 
         //Progressbar
@@ -402,6 +393,11 @@ app
             var maxduration = video.duration;
             var percentage = 100 * currentPos / maxduration;
             $('#progress').css('width', percentage + '%');
+
+            $scope.$apply(function () {
+              $scope.Time = video.currentTime;
+            });
+
         }
 
 
@@ -444,7 +440,6 @@ app
             //Update progress bar and video currenttime
             $('#progress').css('width', percentage + '%');
             video.currentTime = ((maxduration * percentage) / 100);
-
         };
 
         $scope.scrollToRight = function() {
@@ -500,6 +495,7 @@ app
             }
         }
     })
+
     /*.directive('popover', function ($compile) {
       return {
               restrict: 'A',
@@ -604,8 +600,7 @@ app
             }
         };
     })
-
-
+    
     //Directive for the time marker draggable
     .directive('marker', function() {
         return {

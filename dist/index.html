@@ -98,15 +98,16 @@
         <div class="col-sm-6" style="padding-left: 30px;">
             <div class="row">
                 <div class="col-sm-12 column-header">
-                    <h4>Preview</h4><p>{{uppdatera}}</p>
+                    <h4>Preview</h4>
                 </div>
             </div>
 
             <!-- Video code-->
             <div class="video-container">
-                <video id="video" controls loop>
-                <source src="../assets/videos/Croissants.mp4" type="video/mp4">
-            </video>
+                <video id="video" controls>
+                  <source src="../assets/videos/Croissants.mp4" type="video/mp4">
+                </video>
+
                 <div id="controls">
                     <div id="play">
                         <button id="playpause" ng-click="togglePlayPause()"> <img ng-src="{{playPauseSrc}}" alt="Play" style="width:20px; height:20px;"> </button>
@@ -114,7 +115,7 @@
                     <div class="col-sm-8">
                         <div id="progressBar" ng-mousedown="progressClick($event)" ng-mouseup="progressGo($event)" ng-mousemove=progressMove($event)>
                             <div id="progress">
-                              <div class="progressKnob">                    
+                              <div class="progressKnob">
                               </div>
 
                             </div>
@@ -189,10 +190,10 @@
                             <div class="timeline">
                                 <div class="product-timeline" ng-class="{'disable-timeline': showLibrary}">
                                     <div class="marker group" marker>
-                                      <div class="time">
-                                        <span class="current">00:00</span>
-                                        <span class="total">/ 01:01</span>
-                                      </div>
+                                        <div class="time">
+                                            <span class="current">00:00</span>
+                                            <span class="total">/ 01:01</span>
+                                        </div>
                                     </div>
                                     <div class="product-bar ui-widget-content" slider>
                                         <span class="seg-start"><!--00:-->00:00</span>
