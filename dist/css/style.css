@@ -462,6 +462,20 @@ input[type=text]:focus {
   min-width: 10px;
 }
 
+#progressBar #progress:after {
+  content: "";
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #F6F6F6;
+  position: absolute;
+  opacity: 1 !important;
+  top: -2px;
+  left: 100%;
+  transform: translateX(-50%);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.8);
+}
+
 #volume {
   width: 20%;
   float: left;
