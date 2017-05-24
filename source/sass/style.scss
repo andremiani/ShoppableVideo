@@ -472,7 +472,7 @@ input[type=text]:focus{
    border-radius: 5px;
    position: absolute;
    z-index: 999;
-   width: 0;
+   min-width: 10px;
 }
 
 #volume{
