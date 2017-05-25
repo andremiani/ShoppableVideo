@@ -192,7 +192,7 @@
                             </div>
                             <div class="timeline">
                                 <div class="product-timeline" ng-class="{'disable-timeline': showLibrary}">
-                                    <div class="marker group" marker>
+                                    <div class="marker group primaryMarker" marker>
                                         <div class="time">
                                             <span class="current">00:00</span>
                                             <span class="total">/ 01:01</span>
@@ -284,7 +284,7 @@
                 <!--Static bar for add product card-->
                 <div class="product-card-add">
                     <h5 class="col-sm-11" ng-show="hoverAddButton">Add product card</h5>
-                    <button type="button" class="col-sm-12 add-button" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
+                    <button type="button" class="col-sm-12 add-card-button" ng-mouseover="hoverAddButton=true" ng-mouseleave="hoverAddButton=false" ng-click="showLibrary = true; isCollapsed = true; addProductCard()"></button>
                 </div>
             </div>
         </div>

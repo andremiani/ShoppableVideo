@@ -383,7 +383,7 @@ app
             var mediaClip = document.getElementById("video");
             mediaClip.volume = document.getElementById("volume").value;
 
-        }
+        };
 
         //Progressbar
         video.addEventListener('timeupdate', updateProgress);
@@ -415,13 +415,13 @@ app
                 $scope.timeDrag = false;
                 updatebar(e.pageX);
             }
-        }
+        };
 
         $scope.progressMove = function(e) {
             if ($scope.timeDrag) {
                 updatebar(e.pageX);
             }
-        }
+        };
 
         var updatebar = function(x) {
             var progress = $('#progressBar');
@@ -495,7 +495,7 @@ app
             } else {
                 return minutes + ':' + seconds;
             }
-        }
+        };
     })
 
     /*.directive('popover', function ($compile) {
@@ -549,15 +549,19 @@ app
                 var currentPos = parseInt($('.marker').css('left'));
                 var totalWidth = parseInt($('.timeline').css('width'));
                 var newPos = currentPos / totalWidth * 100;
-                // set up timeslot slider on doc ready
-                angular.element(document).ready(function() {
 
-                    //scope.appendTimeslot = function() {
+                // set up timeslot slider on doc ready
+                $(document).on('click', '.add-card-button', function () {
 
                     $(".product-bar").resizable({
                         maxHeight: 20,
                         minHeight: 20,
-                        handles: 'e, w'
+                        handles: 'e, w',
+                        //Bug: This is initially undef.
+                        resize: function(event, ui) {
+                            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                        }
                     });
                     $(".product-bar").draggable({
                         containment: ".product-timeline",
@@ -567,14 +571,7 @@ app
                             $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
                         }
                     });
-                    $(".marker").draggable({
-                        containmetn: ".product-timeline",
-                        axis: "x",
-                        drag: function(event, ui) {
-                            $(this).find('.current').text(positionToTime($(this).css('left')));
 
-                        }
-                    })
                     $(".product-bar").resizable("disable");
 
                     $(".product-bar").unbind('click');
@@ -609,13 +606,11 @@ app
             restrict: 'A',
             scope: true,
             controller: function($scope, $element, $attrs) {
-                $scope.onDrag = function(e, ui) {
-                    $scope.markerValue = ui.value;
+                    /*$scope.markerValue = ui.value;
                     // or set it on the model
                     // DataModel.model = ui.value;
                     // add to angular digest cycle
-                    $scope.$digest();
-                };
+                    $scope.$digest();*/
             },
             link: function(scope, element, attrs) {
 
@@ -623,20 +618,29 @@ app
                 var totalWidth = parseInt($('.timeline').css('width'));
                 var newPos = currentPos / totalWidth * 100;
 
+                var posLeftArray = [];
+
                 var options = {
                     containment: ".product-timeline",
                     axis: "x",
+                    create: function(event, ui) {
+                        if (scope.productCards.length > 1){
+
+
+                            $(this).css('left', $('.primaryMarker').offset().left - $(this).offset().left);
+                        }
+
+                    },
                     start: function(event, ui) {
-                        posLeftArray = [];
+                        //posLeftArray = [];
+
                         if ($(this).hasClass("group")) {
 
                             $(".group").each(function(i) {
-
                                 thiscssleft = $(this).css('left');
                                 if (thiscssleft == 'auto') thiscssleft = 0; // For IE
 
                                 posLeftArray[i] = parseInt(thiscssleft);
-
                             });
                         }
                         beginleft = $(this).offset().left;
@@ -652,7 +656,13 @@ app
 
                             });
                         }
-                    }
+                        $(this).find('.current').text(positionToTime($(this).css('left')));
+
+                    },
+                    /*stop: function(event, ui) {
+                        scope.markerPosLeft = ui.position.left;
+                    }*/
+
                 };
 
                 // set up marker on load
@@ -711,7 +721,11 @@ app
                     $div.resizable({
                         maxHeight: 20,
                         minHeight: 20,
-                        handles: 'e, w'
+                        handles: 'e, w',
+                        resize: function(event, ui) {
+                            $(this).find('.seg-start').text(positionToTime($(this).css('left')));
+                            $(this).find('.seg-end ').text(positionToTime(parseInt($(this).css('left')) + parseInt($(this).css('width'))));
+                        }
                     });
                     $div.draggable({
                         containment: ".product-timeline",
@@ -723,7 +737,7 @@ app
                     });
                     $div.resizable("disable");
 
-                    element.parent().parent().find('.product-timeline').append($div)
+                    element.parent().parent().find('.product-timeline').append($div);
                     $div.find('.seg-start').text(positionToTime($div.css('left')));
                     $div.find('.seg-end ').text(positionToTime(parseInt($div.css('left')) + parseInt($div.css('width'))));
 
