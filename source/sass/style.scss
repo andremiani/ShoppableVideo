@@ -469,10 +469,10 @@ input[type=text]:focus{
    height:10px;
    display:inline-block;
    box-shadow: inset -30px 0px 69px -20px #fac071;
-   border-radius: 5px;
+   border-radius: 4px;
    position: absolute;
    z-index: 999;
-   min-width: 10px;
+   min-width: 0;
 }
 #progressBar #progress:after {
     content: "";
@@ -505,7 +505,7 @@ input[type=text]:focus{
       width: 80px;
       -webkit-appearance: none;
       background-color: white;
-      
+
     }
 
     input[type='range']::-webkit-slider-runnable-track {
@@ -960,6 +960,7 @@ $c: #888;
                 .seg-end,
                 .seg-start {
                     opacity: 1;
+                    background: rgba(68,68,68, 0.7);
                 }
             }
 
@@ -969,6 +970,7 @@ $c: #888;
                 .seg-end,
                 .seg-start {
                     opacity: 1;
+                    background: rgba(68,68,68, 0.7);
                 }
 
                 .del-seg {
@@ -1005,7 +1007,7 @@ $c: #888;
                 white-space: nowrap;
                 background: #444444;
                 text-align: center;
-                color: #999;
+                color: #fff;
                 padding: 2px 5px;
                 border-radius: 30px;
                 font-size: 10px;
