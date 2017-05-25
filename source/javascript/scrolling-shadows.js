@@ -74,4 +74,4 @@ var scrollShadow = (function() {
 }());
 
 // start
-scrollShadow.init(".container");
+scrollShadow.init("#card-container");
