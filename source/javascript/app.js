@@ -393,6 +393,7 @@ app
             var maxduration = video.duration;
             var percentage = 100 * currentPos / maxduration;
             $('#progress').css('width', percentage + '%');
+            $('.marker').css('left', percentage + '%');
 
             $scope.$apply(function () {
               $scope.Time = video.currentTime;
@@ -439,6 +440,7 @@ app
 
             //Update progress bar and video currenttime
             $('#progress').css('width', percentage + '%');
+            $('.marker').css('left', percentage + '%');
             video.currentTime = ((maxduration * percentage) / 100);
         };
 
@@ -597,6 +599,7 @@ app
             }
         };
     })
+
     //Directive for the time marker draggable
     .directive('marker', function() {
         return {
@@ -623,7 +626,7 @@ app
                     create: function(event, ui) {
                         if (scope.productCards.length > 1){
 
-                            
+
                             $(this).css('left', $('.primaryMarker').offset().left - $(this).offset().left);
                         }
 
@@ -650,6 +653,7 @@ app
                             $(".group").each(function(i) {
                                 //$(this).css('left', posLeftArray[i] + leftdiff);
                                 $(this).css('left', posLeftArray[0] + leftdiff);
+
                             });
                         }
                         $(this).find('.current').text(positionToTime($(this).css('left')));
