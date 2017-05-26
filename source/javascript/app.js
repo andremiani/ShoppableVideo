@@ -10,7 +10,6 @@ app
         // Product counter, used for product naming
         var productCounter = "";
 
-
         // Variable for the video title
         $scope.videoTitle = "";
 
@@ -297,7 +296,6 @@ app
                 targetGroup: "#Traditionell #Miljövänlig",
                 category: "Tools"
             }
-
         ];
 
         // Array that store all the categories that are used in the dropdown-list
@@ -357,7 +355,6 @@ app
                 targetGroup: item.targetGroup,
                 imageURL: item.imageURL,
                 category: item.category,
-
             });
         };
 
@@ -382,7 +379,6 @@ app
         var setVolume = function() {
             var mediaClip = document.getElementById("video");
             mediaClip.volume = document.getElementById("volume").value;
-
         };
 
         //Progressbar
@@ -395,14 +391,10 @@ app
             $('#progress').css('width', percentage + '%');
             $('.marker').css('left', percentage + '%');
 
-            $scope.$apply(function () {
-              $scope.Time = video.currentTime;
+            $scope.$apply(function() {
+                $scope.Time = video.currentTime;
             });
-
         }
-
-
-
         $scope.timeDrag = false;
 
         $scope.progressClick = function(e) {
@@ -467,7 +459,6 @@ app
         /*for (var i = 0; i < 5; i++) {
             addProductCard();
         }*/
-
     }])
 
     .directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll) {
@@ -513,19 +504,18 @@ app
               }
           };
     })*/
-    .directive('closeOthers', function () {
-      return {
-              restrict: 'A',
-              scope: true,
-              link: function (scope, elem, attrs) {
+    .directive('closeOthers', function() {
+        return {
+            restrict: 'A',
+            scope: true,
+            link: function(scope, elem, attrs) {
 
-                    var lanopt = $(".card-container");
-                    lanopt.on("show.bs.collapse",".collapse", function(){
+                var lanopt = $(".card-container");
+                lanopt.on("show.bs.collapse", ".collapse", function() {
                     lanopt.find(".collapse.in").collapse("hide");
-                  });
-
-              }
-          };
+                });
+            }
+        };
     })
     //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
@@ -551,7 +541,7 @@ app
                 var newPos = currentPos / totalWidth * 100;
 
                 // set up timeslot slider on doc ready
-                $(document).on('click', '.add-card-button', function () {
+                $(document).on('click', '.add-card-button', function()  {
 
                     $(".product-bar").resizable({
                         maxHeight: 20,
@@ -594,7 +584,6 @@ app
                     $('.del-seg').on('click', function() {
                         $(this).parent().remove();
                     });
-
                 });
             }
         };
@@ -606,11 +595,11 @@ app
             restrict: 'A',
             scope: true,
             controller: function($scope, $element, $attrs) {
-                    /*$scope.markerValue = ui.value;
-                    // or set it on the model
-                    // DataModel.model = ui.value;
-                    // add to angular digest cycle
-                    $scope.$digest();*/
+                /*$scope.markerValue = ui.value;
+                // or set it on the model
+                // DataModel.model = ui.value;
+                // add to angular digest cycle
+                $scope.$digest();*/
             },
             link: function(scope, element, attrs) {
 
@@ -624,7 +613,7 @@ app
                     containment: ".product-timeline",
                     axis: "x",
                     create: function(event, ui) {
-                        if (scope.productCards.length > 1){
+                        if (scope.productCards.length > 1) {
 
 
                             $(this).css('left', $('.primaryMarker').offset().left - $(this).offset().left);
@@ -644,7 +633,6 @@ app
                             });
                         }
                         beginleft = $(this).offset().left;
-
                     },
                     drag: function(event, ui) {
                         var leftdiff = $(this).offset().left - beginleft;
@@ -662,7 +650,6 @@ app
                     /*stop: function(event, ui) {
                         scope.markerPosLeft = ui.position.left;
                     }*/
-
                 };
 
                 // set up marker on load
@@ -671,7 +658,6 @@ app
                 });
             }
         };
-
     })
     //Directive to append a new timeslot when user uses the add timeslot button
     .directive('addTimeslot', function() {
@@ -714,7 +700,6 @@ app
                         "class": "del-seg"
                     }).html('<a href="#"></a></span>');
                     $div.append($segStart, $segEnd, $delSeg);
-
 
                     $div.css('left', newPos + '%');
                     $div.css('position', 'absolute');
@@ -764,7 +749,6 @@ app
                 };
             }
         };
-
     });
 
 function convertSecondsToTime(sec) {
