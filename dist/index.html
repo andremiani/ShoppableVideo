@@ -72,7 +72,7 @@
 
                     <ul class="items grid">
                         <li ng-repeat="item in libraryProducts | filter:searchItem | filter:showCategory">
-                            <div class="item" ng-click="addProduct(selectedCard, item)" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
+                            <div class="item" ng-click="addProduct(selectedCard, item)" ng-mousedown="scrollToTop()" ng-class="{'selectedItem': isProductAdded(item, selectedCard)}">
                                 <div class="item-thumb">
                                     <a href="#">
                                         <img ng-src="{{item.imageURL}}" />
@@ -117,7 +117,6 @@
                             <div id="progress">
                               <div class="progressKnob">
                               </div>
-
                             </div>
 
                         </div>
@@ -133,7 +132,7 @@
                     <div class="video-product-bar-left" ng-click="scrollToLeft()">
                         <img class="arrows" src="../assets/images/arrow-left.png" alt="Arrow left">
                     </div>
-                    <div class="video-product-bar-content" id="letters">
+                    <div class="video-product-bar-content" id="product-bar">
                         <ul class="video-bar-showing-product">
 
                             <li class="video-product-bar-item" ng-repeat="productCard in productCards track by $index">

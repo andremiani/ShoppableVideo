@@ -356,6 +356,8 @@ app
                 imageURL: item.imageURL,
                 category: item.category,
             });
+
+            scrollToLast('product-'+index+(productCounter-1));
         };
 
         // Remove product card by index
@@ -437,16 +439,22 @@ app
         };
 
         $scope.scrollToRight = function() {
-            var element = angular.element(document.querySelector('#letters'));
+            var element = angular.element(document.querySelector('#product-bar'));
             var x = element.scrollLeft() + 140;
             element.scrollLeft(x);
         };
 
         $scope.scrollToLeft = function() {
-            var element = angular.element(document.querySelector('#letters'));
+            var element = angular.element(document.querySelector('#product-bar'));
             var x = element.scrollLeft() - 140;
             element.scrollLeft(x);
         };
+
+        $scope.scrollToTop = function(){
+          var element = angular.element(document.querySelector('#card-container'));
+          var y = element.scrollTop() +60;
+          element.scrollTop(y);
+        }
 
         // Initialize the scope functions
         $scope.setVolume = setVolume;
