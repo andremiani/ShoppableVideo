@@ -855,7 +855,6 @@ $c: #888;
     width: 2px;
     background: #999;
     margin: 30px 0 20px;
-    cursor: grab;
     opacity: 0.7;
     border-radius: 15%;
     /*transform: translateY(-50%);*/
@@ -905,6 +904,7 @@ $c: #888;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 1px 1px 5px 0 rgba(119,119,119, 0.5);
+
 }
 /* Time line from SM */
 .timeline {
@@ -1031,7 +1031,7 @@ $c: #888;
                     width: 18px;
                     border-radius: 50%;
                     background: #9f3359 url('../../assets/images/cross.png') no-repeat;
-                    background-size: 10px;
+                    background-size: 8px;
                     background-position: center;
 
                     &:hover {
@@ -1057,32 +1057,6 @@ $c: #888;
 .product-card-toggle button {
     border: none;
     background-color: inherit;
-}
-
-a,
-span {
-    .hover-help {
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        background: #1a1a1a;
-        bottom: -40px;
-        text-align: center;
-        color: #999;
-        padding: 5px 10px;
-        border-radius: 30px;
-        font-size: 12px;
-        white-space: nowrap;
-        transform: translateX(-50%);
-        left: 50%;
-        transition: opacity 0.2s;
-    }
-
-    &:hover {
-        .hover-help {
-            opacity: 1;
-        }
-    }
 }
 
 .timeline-block {
