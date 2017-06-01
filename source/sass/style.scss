@@ -31,6 +31,7 @@ textarea {
     outline: none;
 }
 //Styling for header bar (from SM)
+
 header {
     position: fixed;
     top: 0;
@@ -45,7 +46,7 @@ header .main-nav {
     white-space: nowrap;
     display: inline-block;
     position: absolute;
-    left: 50%;
+    left: 42%;
     transform: translateX(-50%);
 }
 
@@ -112,8 +113,7 @@ header .context-menu .video-title {
     border-style: none;
     background: url("../../assets/images/edit2.png") no-repeat;
     background-size: 30px;
-    background-position: 92% 40%;
-
+    background-position: right;
 }
 
 header .context-menu .video-title:hover {
@@ -125,9 +125,9 @@ header .context-menu .video-title:hover:after {
     opacity: 1;
 }
 
-.video-title::placeholder{
-  color: white;
-  opacity: 0.7;
+.video-title::placeholder {
+    color: white;
+    opacity: 0.7;
 }
 
 header .context-menu .option-menu {
@@ -240,6 +240,7 @@ button:focus {
 }
 // END Styling for header bar (from SM)
 //Styling for product library
+
 #myModal {
     z-index: 999999;
     position: absolute;
@@ -258,7 +259,7 @@ button:focus {
 }
 
 #categories {
-    flex:2;
+    flex: 2;
 }
 
 .modal-content {
@@ -386,12 +387,14 @@ input[type=text]:focus {
 }
 //END styling product library
 //Styling for video
+
 #video {
     flex: 0 1 100%;
     width: 100% !important;
     height: auto !important;
 }
 //Styling for the progressbar of the video
+
 #controls {
     /*padding-left: 15px;*/
     top: -45px;
@@ -459,14 +462,14 @@ input[type=text]:focus {
 }
 
 #progress {
-   background-color: #f69784;
-   height:10px;
-   display:inline-block;
-   box-shadow: inset -30px 0px 69px -20px #fac071;
-   border-radius: 4px;
-   position: absolute;
-   z-index: 999;
-   min-width: 0;
+    background-color: #f69784;
+    height: 10px;
+    display: inline-block;
+    box-shadow: inset -30px 0 69px -20px #fac071;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 999;
+    min-width: 0;
 }
 
 #progressBar #progress:after {
@@ -751,6 +754,7 @@ $c: #888;
     z-index: 999999;
 }
 //Hard coded highlight-arrow on productcard (4-8) when library is open
+
 .product-card-hightlight-4 {
     position: absolute;
     left: -3px;
@@ -900,7 +904,6 @@ $c: #888;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 1px 1px 5px 0 rgba(119,119,119, 0.5);
-
 }
 /* Time line from SM */
 .timeline {
@@ -1277,6 +1280,7 @@ $c: #888;
     margin: 10px;
 }
 //wraps save button
+
 .product-collapse {
     display: flex;
     align-content: center;

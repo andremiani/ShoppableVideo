@@ -115,8 +115,8 @@
                     <div class="col-sm-8">
                         <div id="progressBar" ng-mousedown="progressClick($event)" ng-mouseup="progressGo($event)" ng-mousemove=progressMove($event)>
                             <div id="progress">
-                              <div class="progressKnob">
-                              </div>
+                                <div class="progressKnob">
+                                </div>
                             </div>
 
                         </div>
@@ -139,8 +139,8 @@
 
                                 <div class="container">
 
-                                  <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
-                                  <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
+                                    <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
+                                    <img id="productCardsShowing" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
 
                                     <div class="overlay">
                                         <div class="ProductText">
@@ -152,8 +152,6 @@
                                 </div>
 
                             </li>
-                            <!-- Commentmarking to delete blank space
-                      -->
                         </ul>
                     </div>
                     <div class="video-product-bar-right" ng-click="scrollToRight()">
@@ -178,13 +176,6 @@
                         <div class="product-card">
                             <div class="product-card-thumb">
                                 <div ng-class="{'product-card-hightlight': $index === selectedCard && showLibrary && $index < 3}"></div>
-                                <!--Hard coded highlight-arrow on productcard (4-8) when library is open-->
-                                <!--<div ng-class="{'product-card-hightlight-4': $index === selectedCard && showLibrary && $index ===3}"></div>
-                                <div ng-class="{'product-card-hightlight-5': $index === selectedCard && showLibrary && $index ===4}"></div>
-                                <div ng-class="{'product-card-hightlight-6': $index === selectedCard && showLibrary && $index ===5}"></div>
-                                <div ng-class="{'product-card-hightlight-7': $index === selectedCard && showLibrary && $index ===6}"></div>
-                                <div ng-class="{'product-card-hightlight-8': $index === selectedCard && showLibrary && $index ===7}"></div>-->
-
                                 <input type="text" class="product-card-title" ng-model="productCard.cardTitle" name="" value="" placeholder="{{productCard.cardTitle}}">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="!productCard.products.length > 0" src="../assets/images/insertpicture.png">
                                 <img class="product-card-image" ng-src="{{productCard.products[0].imageURL}}" ng-if="productCard.products.length > 0" src="../assets/images/insertpicture.png">
@@ -257,10 +248,7 @@
                                                             <th>Target Group</th>
                                                             <td><input type="text" ng-model="product.targetGroup"></td>
                                                         </tr>
-                                                        <!--<tr>
-                                                  <th></th>
-                                                  <td style="padding: 5px;"><input type="checkbox" id="default"/><label for="y" style="font-weight:normal;">Set as default product</label></td>
-                                                </tr>-->
+
                                                     </table>
                                             </div>
                                             <div class="col-sm-3" style="padding: 0 20px 0 0;">

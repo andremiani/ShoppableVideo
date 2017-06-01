@@ -58,7 +58,6 @@ app
         //Tells ui-sortable what and how to sort products
         $scope.sortableProductOptions = {
             handle: '.product',
-            // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
 
@@ -76,14 +75,6 @@ app
             var pos = $scope.productCards[index].position.top + $scope.productCards[index].height;
             alert(pos);
         };
-
-        /*$scope.showLibrary = function() {
-            $scope.showLibrary = true;
-        };
-        $scope.hideLibrary = function() {
-            $scope.showLibrary = false;
-        };*/
-
 
         //Returns true if library product exists in the selected productcard
         $scope.isProductAdded = function(item, selectedCardIndex) {
@@ -309,24 +300,9 @@ app
         //Tells ui-sortable what and how to sort product cards
         $scope.sortableCardOptions = {
             handle: '.product-card',
-            // items: ' .panel:not(.panel-heading)'
             axis: 'y'
         };
 
-        /*
-        $scope.setCollapsed = function(index){
-          for (var i = 0; i < $scope.productCards[index].products.length; i++) {
-            if(i == ($scope.productCards[index].products.length-1)){
-
-              sProductCollapsed=true;
-            }
-            else{
-
-              isProductCollapsed=false;
-            }
-          }
-        };
-*/
         // Add productCard to the end of the array
         var addProductCard = function() {
             $scope.productCards.push({
@@ -337,10 +313,6 @@ app
             cardCounter++;
             $scope.selectedCard = $scope.productCards.length - 1;
 
-            /*
-                        $scope.productCards.reverse();
-                        $scope.productCards[0].scrollIntoView({block: "end"});
-            */
         };
 
         //Add product to a product card
@@ -357,7 +329,7 @@ app
                 category: item.category,
             });
 
-            scrollToLast('product-'+index+(productCounter-1));
+            scrollToLast('product-' + index + (productCounter - 1));
         };
 
         // Remove product card by index
@@ -450,10 +422,10 @@ app
             element.scrollLeft(x);
         };
 
-        $scope.scrollToTop = function(){
-          var element = angular.element(document.querySelector('#card-container'));
-          var y = element.scrollTop() +60;
-          element.scrollTop(y);
+        $scope.scrollToTop = function() {
+            var element = angular.element(document.querySelector('#card-container'));
+            var y = element.scrollTop() + 60;
+            element.scrollTop(y);
         }
 
         // Initialize the scope functions
@@ -497,52 +469,12 @@ app
         };
     })
 
-    /*.directive('popover', function ($compile) {
-      return {
-              restrict: 'A',
-              scope: true,
-              link: function (scope, elem, attrs) {
-                  $(elem).on('isOpen', function () {
-                      var positionTop = parseInt($('.product-card').position().top + 30);
-                      var positionLeft = parseInt($(this).position().left + $(this).width - 20);
-
-                      $('.product-card-hightlight').css('top', positionTop + 'px');
-
-                  });
-              }
-          };
-    })*/
-    .directive('closeOthers', function() {
-        return {
-            restrict: 'A',
-            scope: true,
-            link: function(scope, elem, attrs) {
-
-                var lanopt = $(".card-container");
-                lanopt.on("show.bs.collapse", ".collapse", function() {
-                    lanopt.find(".collapse.in").collapse("hide");
-                });
-            }
-        };
-    })
     //Directive to append jQueryUI draggable/resizable-functionality to the timeslot sliders on load
     .directive('slider', function() {
         return {
             restrict: 'A',
             scope: true,
-            /*controller: function ($scope, $element, $attrs) {
-            $scope.onSlide = function (e, ui) {
-              $scope.model = ui.value;
-              // or set it on the model
-              // DataModel.model = ui.value;
-              // add to angular digest cycle
-              $scope.$digest();
-            };
-        },*/
             link: function(scope, element, attrs) {
-
-                // Causes "Na — jquery.min.js:2215TypeError: undefined is not an object (evaluating 'b.ownerDocument.defaultView'"
-                //var self = this;
 
                 var currentPos = parseInt($('.marker').css('left'));
                 var totalWidth = parseInt($('.timeline').css('width'));
@@ -602,13 +534,6 @@ app
         return {
             restrict: 'A',
             scope: true,
-            controller: function($scope, $element, $attrs) {
-                /*$scope.markerValue = ui.value;
-                // or set it on the model
-                // DataModel.model = ui.value;
-                // add to angular digest cycle
-                $scope.$digest();*/
-            },
             link: function(scope, element, attrs) {
 
                 var currentPos = parseInt($('.marker').css('left'));
@@ -655,9 +580,7 @@ app
                         $(this).find('.current').text(positionToTime($(this).css('left')));
 
                     },
-                    /*stop: function(event, ui) {
-                        scope.markerPosLeft = ui.position.left;
-                    }*/
+
                 };
 
                 // set up marker on load
@@ -672,24 +595,9 @@ app
         return {
             restrict: 'A',
             scope: true,
-            /*controller: function ($scope, $element, $attrs) {
-            $scope.onSlide = function (e, ui) {
-              $scope.model = ui.value;
-              // or set it on the model
-              // DataModel.model = ui.value;
-              // add to angular digest cycle
-              $scope.$digest();
-            };
-        },*/
             link: function(scope, element, attrs) {
 
-                // set up slider on add-timeslot-click
-                //var addBtn = document.getElementsByClassName('add-timeslot');
-                //angular.element(addBtn).click(function() {
-
                 scope.addTimeslot = function() {
-                    //$(elem).click(function() {
-                    //$('.add-timeslot').click(function() {
 
                     var currentPos = parseInt($('.marker').css('left'));
                     var totalWidth = parseInt($('.timeline').css('width'));
@@ -765,7 +673,7 @@ function convertSecondsToTime(sec) {
     var minutes = parseInt(totalSec / 60) % 60;
     var seconds = totalSec % 60;
 
-    var result = /*(hours < 10 ? "0" + hours : hours) + ":" +*/ (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+    var result = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
     return result;
 }
 
