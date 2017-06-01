@@ -3,7 +3,7 @@
 A shoppable video application UI built with Bootstrap and AngularJS.
 
 
-###Instructions
+### Instructions
 
 * Navigate to the project directory in your terminal
 
